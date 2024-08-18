@@ -1,0 +1,713 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+}
+
+body{
+    background: rgb(225, 225, 226);
+}
+
+nav{
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    width: 70px;
+    /* width: 280px; */
+    background: #fff;
+    overflow: hidden;
+    transition: 1s;
+}
+
+nav:hover{
+    width: 280px;
+    transition: 1s;
+}
+
+.logo{
+    display: flex;
+    margin-top: 15px;
+    padding-bottom: 3rem;
+    padding-left: 10px;
+}
+
+.logo img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.logo span{
+    font-weight: bold;
+    padding-left: 5px;
+    font-size: 18px;
+    margin-top: -10px;
+    text-transform: uppercase;
+}
+
+a{
+    position: relative;
+    width: 280px;
+    font-size: 12px;
+    color: rgb(85, 83, 83);
+    display: table;
+    padding: 9px;
+}
+
+.container-fluid h5{
+    position: relative;
+    margin-left: 15px;
+    border-bottom: 1px solid black;
+    margin-top: 25px;
+    color: #414d47;
+}
+
+nav .fas{
+    position: relative;
+    width: 55px;
+    height: 30px;
+    top: 20px;
+    font-size: 15px;
+    text-align: center;
+    margin-left: -5px;
+    border: none;
+    height: 10px;
+}
+
+.nav-item{
+    position: relative;
+    top: 19px;
+    margin-left: 8px;
+}
+
+
+a:hover i{
+    color: #34af6d;
+    transition: 0.5s;
+}
+
+.logout{
+    position: absolute;
+    bottom: 20px;
+}
+
+.container{
+    display: flex;
+}
+
+.container-fluid{
+    display: flex;
+}
+
+/* Main section */
+
+.main{
+    position: relative;
+    padding: 20px;
+    width: 100%;
+}
+
+.main-top{
+    display: flex;
+    width: 100%;
+}
+
+.main-top i{
+    position: absolute;
+    right: 0;
+    margin-top: -35px;
+    color: rgb(110, 109, 109);
+    cursor: pointer;
+    position: fixed;
+    padding-right: 10px;
+    font-size: 30px;
+}
+
+.main-top h6{
+    position: absolute;
+    right: 0;
+    margin-top: -31px;
+    color: rgb(110, 109, 109);
+    cursor: pointer;
+    position: fixed;
+    padding-right: 45px;
+    font-size: 15px;
+}
+
+.main-top h6:hover{
+    color: #34af6d;
+    transition: 0.5s;
+
+}
+
+.main .users{
+    display: flex;
+    width: 100%;
+}
+
+.users .card{
+    width: 25%;
+    margin: 10px;
+    background: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.users .card img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.users .card h4{
+    text-transform: uppercase;
+}
+
+.users .card p{
+    font-size: 12px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/*  sec shift start*/
+
+
+
+/* sec shift end */
+
+/* card-sec start */
+
+.users .card-sec{
+    width: 25%;
+    height: 150px;
+    margin: 10px;
+    background: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.users .card-sec span i{
+    align-items: center;
+    font-size: 55px;
+    margin-top: 10px;
+}
+
+.users .card-sec h4{
+    color: #34af6d;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.users .card-sec p{
+    font-size: 12px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.users .card-sec button{
+    width: 100%;
+    margin-top: 8px;
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid #4ad489;
+}
+
+.users .card-sec button:hover{
+    background: #4ad489;
+    color: #fff;
+    transition: 0.5s;
+}
+
+.users .per-card span{
+    padding: 5px;
+    border-radius: 10px;
+    background: rgb(223, 223, 223);
+}
+
+.users td{
+    font-size: 14px;
+    padding-right: 15px;
+}
+
+
+
+/* card-sec end */
+
+
+
+/* sec details start */
+.details .card-body{
+    width: 32%;
+    max-height: 450px;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin: 10px;
+    background: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.details .card-body h4{
+    font-size: 17px;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.details .card-body-emp{
+    width: 32%;
+    max-height: 370px;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin: 10px;
+    background: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.details .card-body-emp h4{
+    font-size: 17px;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.details .card-body-dis{
+    width: 33%;
+    max-height: 250px;
+    margin: 10px;
+    background: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.details .card-body-dis h4{
+    font-size: 17px;
+    text-align: center;
+    padding-left: 15px;
+}
+.details .card-body-dis img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    align-items: center;
+}
+
+
+.users .card-body-dis p{
+    font-size: 12px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    align-items: center;
+}
+
+.users .card-body-dis button{
+    width: 100%;
+    margin-top: 8px;
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid #4ad489;
+}
+
+.users .card-body-dis button:hover{
+    background: #4ad489;
+    color: #fff;
+    transition: 0.5s;
+}
+
+
+/* sed details end */
+
+.users table{
+    margin: auto;
+}
+
+.users .per span{
+    padding: 5px;
+    border-radius: 10px;
+    background: rgb(223, 223, 223);
+}
+
+.users td{
+    font-size: 14px;
+    padding-right: 15px;
+}
+
+.users .card button{
+    width: 100%;
+    margin-top: 8px;
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid #4ad489;
+}
+
+.users .card button:hover{
+    background: #4ad489;
+    color: #fff;
+    transition: 0.5s;
+}
+
+/* Attendance List */
+
+.attendance {
+    margin-top: 20px;
+    text-transform: capitalize;
+}
+
+.attendance-list{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 15px;
+    min-width: 100%;
+    overflow: hidden;
+    border-radius: 5px 5px 0 0;
+}
+
+table thead tr{
+    color: #fff;
+    background: #34af6d;
+    text-align: left;
+    font-weight: bold;
+}
+
+.table th,
+.table td{
+    padding: 12px 15px;
+}
+
+.table tbody tr{
+    border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr:nth-of-type(odd){
+    background: #f3f3f3;
+}
+
+.table tbody tr.active{
+    font-weight: bold;
+    color: #4ad489;
+}
+
+.table tbody tr:last-of-type{
+    border-bottom: 2px solid #4ad489;
+}
+
+.table button{
+    padding: 6px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #4ad489;
+}
+
+.table button:hover{
+    background: #4ad489;
+    color: #fff;
+    transition: 0.5rem;
+}
+
+/* another */
+
+/* table depart start */
+
+.table-Depart{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 15px;
+    min-width: 100%;
+    overflow: hidden;
+    border-radius: 5px 5px 0 0;
+}
+
+.table-Depart thead tr{
+    color: #fff;
+    background: #34af6d;
+    text-align: left;
+    font-weight: bold;
+}
+
+.table-Depart th,
+.table-Depart td{
+    padding: 12px 15px;
+}
+
+.table-Depart tbody tr{
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.table-Depart tbody tr:nth-of-type(odd){
+    background: #f3f3f3;
+}
+
+.table-Depart tbody tr.active{
+    font-weight: bold;
+    color: #4ad489;
+}
+
+.table tbody tr:last-of-type{
+    border-bottom: 2px solid #4ad489;
+}
+
+/* table depart end */
+
+
+/* department */
+
+.container-fluid{
+    display: flex;
+}
+
+.container-fluid h1{
+    font-size: 35px;
+    margin-top: 10px;
+}
+
+.attendance-depart .department-list  .btnAddDepartment{
+    width: 100%;
+    margin-top: 5px;
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid #4ad489;
+    font-size: 20px;
+}
+
+.attendance-depart .department-list .btnAddDepartment  h6{
+    font-size: 20px;
+    text-align: center;
+    margin-top: -37px;
+    margin-right: -50px;
+}
+
+
+.attendance-depart .department-list  .btnAddDepartment:hover{
+    background: #4ad489;
+    color: #fff;
+    transition: 0.5s;
+}
+
+.attendance-depart .department-list .btnAddDepartment i{
+    margin-right: 230px;
+    font-size: 40px;
+    text-align: left;
+    margin-top: -4px;
+    margin-left: -10px;
+}
+
+.department-list{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    overflow: scroll;
+    overflow-x: hidden;
+    /* margin-left: 30%;
+    margin-top: -20px; */
+}
+
+.table .a button{
+    padding: 6px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #4ad489;
+}
+
+.table .a button:hover{
+    background: #4ad489;
+    color: #fff;
+    transition: 0.5rem;
+}
+
+.department-entry{
+    max-width: 750px;
+    padding: 28px;
+    margin: 0 28px;
+    background: lightblue;
+    border-radius: 10px;
+    box-shadow: 0 15px 20px #abb2b9;
+    align-items: center;
+    border: 1px solid black;
+    position: relative;
+    margin-top: 10px;
+}
+
+.content .input-box{
+    border-bottom: 1px solid black;
+}
+
+h3{
+    font-size: 26px;
+    font-weight: 600;
+    text-align: left;
+    color: #2f4f4f;
+    padding-bottom: 8px;
+    border-bottom: 1px solid gray;
+}
+
+.content{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.input-box{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    padding-bottom: 15px;
+
+}
+
+.input-box:nth-child(2n){
+    justify-content: end;
+}
+
+.input-box label{
+    width: 95%;
+    color: #2f4f4f;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.gender-category input{
+    padding: 0 10px;
+
+}
+
+.input-box input{
+    height: 40px;
+    width: 95%;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+.input-box input:is(:focus,:valid){
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 2);
+}
+
+.gender-category{
+    color: gray;
+    margin: 0 10px;
+    height: 40px;
+}
+
+.gender-title{
+    color: #2f4f4f;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.gender-category label{
+    padding: 0 20px 0 5px;
+    font-size: 14px;
+}
+
+.gender-category label, .gender-category input{
+    cursor: pointer;
+}
+
+.alert p{
+    font-size: 14px;
+    font-style: italic;
+    color: dimgray;
+    margin: 5px 0;
+    padding: 10px;
+}
+
+.button-container{
+    margin: 15px 0;
+
+}
+
+.button-container button{
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    display: block;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    background-image: linear-gradient(to right, #aa076b,#61045f);
+}
+
+.button-container button:hover{
+    background-image: linear-gradient(to right,#61045f,#aa076b);
+}
+
+.attendance  .btnAddDepartment-add{
+    width: 100%;
+    margin-top: 5px;
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid #4ad489;
+    font-size: 20px;
+    align-items: center;
+}
+
+.attendance  .btnAddDepartment-add  h6{
+    font-size: 20px;
+    text-align: center;
+    margin-top: -37px;
+    margin-left: 80px;
+}
+
+
+.attendance  .btnAddDepartment-add:hover{
+    background: #4ad489;
+    color: #fff;
+    transition: 0.5s;
+}
+
+.attendance  .btnAddDepartment-add i{
+    margin-right: 230px;
+    font-size: 40px;
+    margin-top: -4px;
+}
+
+.attendance{
+    margin-top: 8%;
+    margin-left: 20%;
+}
+
+.main-top h1{
+    margin-left: 20px;
+}

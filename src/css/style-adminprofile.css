@@ -1,0 +1,159 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #4070F4;
+}
+
+.container{
+    position: relative;
+    max-width: 1300px;
+    width: 100%;
+    border-radius: 6px;
+    padding: 30px;
+    margin: 0 15px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+    /* max-width: 100%;
+    padding: 28px;
+    margin: 0 28px;
+    /* box-shadow: 0 15px 20px #abb2b9;  */
+    /* background: #FFF;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    POS */ 
+}
+
+.content .input-box{
+    border-bottom: 1px solid black;
+}
+
+.content .input-box .option{
+    display: flex;
+    flex-wrap: wrap;
+    width: 95%;
+    padding: 0 10px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+    color:  #2f4f4f;
+}
+
+.content .input-box .option:is(:focus,:valid){
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 2);
+}
+
+
+h2{
+    font-size: 26px;
+    font-weight: 600;
+    text-align: left;
+    color: #2f4f4f;
+    padding-bottom: 2px;
+    border-bottom: 1px solid silver;
+}
+
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.input-box{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-bottom: 15px;
+    width: calc(100% / 3 - 15px);
+}
+
+
+.input-box:nth-child(2n){
+    justify-content: end;
+}
+
+.input-box label, .gender-title{
+    width: 95%;
+    color: #2f4f4f;
+    font-weight: bold;
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.gender-title{
+    font-size: 18px;
+}
+
+.input-box input{
+    height: 40px;
+    width: 95%;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+.input-box input:is(:focus,:valid){
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 2);
+}
+
+.gender-category{
+    color: gray;
+}
+
+.gender-category label{
+    padding: 0 20px 0 5px;
+    font-size: 14px;
+}
+
+.gender-category label, .gender-category input{
+    cursor: pointer;
+}
+
+.button-container{
+    width: 100%;
+    padding-bottom: -15px;
+}
+
+.button-container button{
+    width: 100%;
+    margin-top: 5px;
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid #4ad489;
+    font-size: 20px;
+    display: block;
+}
+
+.button-container button:hover{
+    background: #4ad489;
+    color: #fff;
+    transition: 0.5s;
+}
+
+.button-container button i{
+    padding-right: 5px;
+    font-size: 25px;
+}
+
+.content p{
+    margin-top: -15px;
+    margin-bottom: -10px;
+}
+

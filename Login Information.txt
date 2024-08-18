@@ -1,0 +1,16 @@
+**Visit MrGraduateDecorder YouTube Channel For More Information**
+
+**Database Name: payroll**
+
+**Developed by Vishwakarma Abhishek**
+
+**Recommended PHP Version 7.4**
+
+
+**Admin Login Details**
+
+Username: hello@gmail.com
+Password: 12345
+
+
+**For employee login, please create one from the admin panel**
