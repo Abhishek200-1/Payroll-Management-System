@@ -94,7 +94,7 @@
             <div class="users">
                 <div class="card-sec">
                     <span><i class="fa-solid fa-building icon"></i></span>
-                    <h4>Departments</h4>
+                    <h4>Depart.</h4>
                     <div class="per-card">
                         <table>
                             <tr>
