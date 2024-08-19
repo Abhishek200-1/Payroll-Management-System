@@ -30,7 +30,7 @@ body {
 /* =============== Navigation ================ */
 .navigation {
   position: fixed;
-  width: 280px;
+  width: 270px;
   height: 100%;
   background: var(--blue);
   border-left: 10px solid var(--blue);
@@ -132,8 +132,8 @@ body {
 /* ===================== Main ===================== */
 .main {
   position: absolute;
-  width: calc(100% - 280px);
-  left: 280px;
+  width: calc(100% - 270px);
+  left: 270px;
   min-height: 100vh;
   background: var(--white);
   transition: 0.5s;
@@ -229,6 +229,7 @@ body {
   justify-content: space-between;
   cursor: pointer;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .cardBox .card .numbers {
