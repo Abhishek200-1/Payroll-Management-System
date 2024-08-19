@@ -132,8 +132,8 @@ body {
 /* ===================== Main ===================== */
 .main {
   position: absolute;
-  width: calc(100% - 300px);
-  left: 300px;
+  width: calc(100% - 280px);
+  left: 280px;
   min-height: 100vh;
   background: var(--white);
   transition: 0.5s;
