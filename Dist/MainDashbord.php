@@ -8,6 +8,7 @@ if (!isset($_SESSION['AdminId'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,7 +28,7 @@ if (!isset($_SESSION['AdminId'])) {
         <nav>
             <ul>
                 <li>
-                    <a href="../Admin/AdminProfile.php" class="logo">
+                    <a href="../Admin/Profile.php" class="logo">
                         <img src="../src/Images/Abhishek.jpg" />
                         <span class="nav-item">Vishwakarma Abhishek</span>
                     </a>
