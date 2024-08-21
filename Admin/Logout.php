@@ -4,4 +4,4 @@ session_start();
 echo $_SESSION['AdminId'];
 
 unset($_SESSION['AdminId']);
-header("Location: ../Dist/tblAdminLogin.php");
+header("Location: ../Dist/indexx.php");

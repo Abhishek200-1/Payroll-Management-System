@@ -93,7 +93,7 @@ nav .fas {
 
 
 a:hover i {
-    color: #34af6d;
+    color: #4d84e2;
     transition: 0.5s;
 }
 
@@ -231,6 +231,7 @@ a:hover i {
 
 .users .card-sec:hover {
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    
 }
 
 
@@ -248,7 +249,7 @@ a:hover i {
     width: 70px;
     border-radius: 50%;
     font-size: 45px;
-    background: #34af6d;
+    background: #4d84e2;
     display: flex;
     align-items: center;
 }
@@ -260,13 +261,13 @@ a:hover i {
     width: 70px;
     border-radius: 50%;
     font-size: 45px;
-    background: #34af6d;
+    background: #4d84e2;
     display: flex;
     align-items: center;
 }
 
 .users .card-sec h4 {
-    color: #34af6d;
+    color: #4d84e2;
     text-transform: uppercase;
     padding-bottom: 20px;
 }
@@ -284,11 +285,11 @@ a:hover i {
     cursor: pointer;
     border-radius: 10px;
     background: transparent;
-    border: 1px solid #4ad489;
+    border: 1px solid #4d84e2;
 }
 
 .users .card-sec button:hover {
-    background: #4ad489;
+    background: #4d84e2;
     color: #fff;
     transition: 0.5s;
 }
@@ -397,11 +398,11 @@ a:hover i {
     cursor: pointer;
     border-radius: 10px;
     background: transparent;
-    border: 1px solid #4ad489;
+    border: 1px solid #4d84e2;
 }
 
 .users .card-body-dis button:hover {
-    background: #4ad489;
+    background: #4d84e2;
     color: #fff;
     transition: 0.5s;
 }
@@ -431,11 +432,11 @@ a:hover i {
     cursor: pointer;
     border-radius: 10px;
     background: transparent;
-    border: 1px solid #4ad489;
+    border: 1px solid #4d84e2;
 }
 
 .users .card button:hover {
-    background: #4ad489;
+    background: #4d84e2;
     color: #fff;
     transition: 0.5s;
 }
@@ -467,7 +468,7 @@ a:hover i {
 
 table thead tr {
     color: #fff;
-    background: #34af6d;
+    background: #4d84e2;
     text-align: left;
     font-weight: bold;
 }
@@ -487,11 +488,11 @@ table thead tr {
 
 .table tbody tr.active {
     font-weight: bold;
-    color: #4ad489;
+    color: #4d84e2;
 }
 
 .table tbody tr:last-of-type {
-    border-bottom: 2px solid #4ad489;
+    border-bottom: 2px solid #4d84e2;
 }
 
 .table button {
@@ -499,11 +500,11 @@ table thead tr {
     border-radius: 10px;
     cursor: pointer;
     background: transparent;
-    border: 1px solid #4ad489;
+    border: 1px solid #4d84e2;
 }
 
 .table button:hover {
-    background: #4ad489;
+    background: #4d84e2;
     color: #fff;
     transition: 0.5rem;
 }
@@ -523,7 +524,7 @@ table thead tr {
 
 .table-Depart thead tr {
     color: #fff;
-    background: #34af6d;
+    background: #4d84e2;
     text-align: left;
     font-weight: bold;
 }
@@ -544,11 +545,11 @@ table thead tr {
 
 .table-Depart tbody tr.active {
     font-weight: bold;
-    color: #4ad489;
+    color: #4d84e2;
 }
 
 .table tbody tr:last-of-type {
-    border-bottom: 2px solid #4ad489;
+    border-bottom: 2px solid #4d84e2;
 }
 
 /* table depart end */
