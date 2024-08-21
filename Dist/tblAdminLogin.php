@@ -1,5 +1,9 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +13,7 @@
     <link rel="stylesheet" href="../src/bootstrap-4.6.2-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
+
 <body>
     <div class="wrapper">
         <span class="icon-close"><ion-icon name="close"></ion-icon></span>
@@ -17,7 +22,7 @@
             <form method="get">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail"></ion-icon></span>
-                    <input type="email" name="Mailid" required>
+                    <input type="email" name="MailId" required>
                     <label>Email</label>
                 </div>
 
@@ -40,26 +45,27 @@
         </div>
     </div>
     <?php
-        include("../Backend/Database/connection.php");
-        if(isset($_REQUEST['btn']))
-        {
-            $U=$_REQUEST['Mailid'];
-            $Pass=$_REQUEST['Passkey'];
-            $q="select * from tbladdadmin where User_Name='$U' and Password='$Pass'";
-            $r=mysqli_query($conn,$q);
-            $row=mysqli_num_rows($r);
-            if($row == 1)
-            {
-                header("location:MainDashbord.php");
+    include("../Backend/Database/connection.php");
+    if (isset($_REQUEST['btn'])) {
+        $email = $_REQUEST['MailId'];
+        $password = $_REQUEST['Passkey'];
+        $q = "select id from tbladdadmin where User_Name='$email' and Password='$password'";
+        $r = mysqli_query($conn, $q);
+        $adminId;
+        if (mysqli_num_rows($r) == 1) {
+            while ($row = mysqli_fetch_assoc($r)) {
+                $adminId = $row['id'];
+                $_SESSION['AdminId'] = $adminId;
             }
-            else
-            {
-                echo "<script>alert('Invalid Username And Password');</script>";
-            }
+            header("location:MainDashbord.php");
+        } else {
+            echo "<script>alert('Invalid Username And Password');</script>";
         }
+    }
     ?>
 
     <script src="script.js"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 </body>
+
 </html>

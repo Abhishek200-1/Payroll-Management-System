@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login-cum registration form</title>
-    <link rel="stylesheet" href="../src/css/sytle-add-employee.css">
+    <!-- <link rel="stylesheet" href="../src/css/sytle-add-employee.css"> -->
+    <link rel="stylesheet" href="../../../src/css/sytle-add-employee.css">
     <script src="https://kit.fontawesome.com/81aa89284e.js" crossorigin="anonymous"></script>
 </head>
 
@@ -17,7 +18,7 @@
                 <div class="input-box">
                     <label for="name">Emp Id</label>
                     <input type="text" placeholder="Enter Emp Id" name="Emp_Id" id="empId" required>
-                
+
                 </div>
 
                 <div class="input-box">
@@ -82,7 +83,6 @@
         if ($result) {
             //echo "Attendance Added!!";
             header('location:../Admin/Display/display-add-attendance.php');
-
         } else {
             echo "Error found : " . mysqli_error($conn);
         }

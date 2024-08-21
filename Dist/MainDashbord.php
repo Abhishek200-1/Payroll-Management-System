@@ -1,85 +1,114 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['AdminId'])) {
+    header("Location: tblAdminLogin.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/81aa89284e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../src/css/dashbord.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script
+        src="https://kit.fontawesome.com/81aa89284e.js"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../src/css/dashbord.css" />
 </head>
 
 <body>
     <div class="container-fluid">
+        <!-- Side navbar -->
         <nav>
             <ul>
                 <li>
-                    <a href="../Admin/AdminProfile.php" class="logo">
-                        <img src="../src/Images/Abhishek.jpg">
+                    <a href="../Admin/Profile.php" class="logo">
+                        <img src="../src/Images/Abhishek.jpg" />
                         <span class="nav-item">Vishwakarma Abhishek</span>
                     </a>
                 </li>
                 <h5>Admin</h5>
-                <li><a href="../Dist/MainDashbord.php">
+                <li>
+                    <a href="../Dist/MainDashbord.php">
                         <i class="fas fa-solid fa-bars pe-2"></i>
                         <span class="nav-item">Dashbord</span>
                     </a>
                 </li>
 
-                <li><a href="../Admin/display-add-Admin.php">
+                <li>
+                    <a href="../Admin/display-add-Admin.php">
                         <i class="fas fa-solid fa-user-tie pe-2"></i>
                         <span class="nav-item">New Admin</span>
                     </a>
                 </li>
                 <h5>Master</h5>
-                <li><a href="../Admin/Master/Employee/display-add-employee.php">
+                <li>
+                    <a href="../Admin/Master/Employee/display-add-employee.php">
                         <i class="fas fa-solid fa-users pe-2"></i>
                         <span class="nav-item">New Employee</span>
                     </a>
                 </li>
 
-                <li><a href="../Admin/Master/User/display-add-users.php">
+                <li>
+                    <a href="../Admin/Master/User/display-add-users.php">
                         <i class="fas fa-solid fa-users-line pe-2"></i>
                         <span class="nav-item">Users</span>
                     </a>
                 </li>
 
-                <li><a href="../Admin/Master/Shift/display-add-shift.php">
+                <li>
+                    <a href="../Admin/Master/Shift/display-add-shift.php">
                         <i class="fas fa-regular fa-calendar pe-2"></i>
                         <span class="nav-item">Shift</span>
                     </a>
                 </li>
 
-                <li><a href="../Admin/Master/Department/display-add-department.php">
+                <li>
+                    <a href="../Admin/Master/Department/display-add-department.php">
                         <i class="fas fa-solid fa-building"></i>
                         <span class="nav-item">Department</span>
                     </a>
                 </li>
 
-                <li><a href="../Dist/contact.php">
+                <li>
+                    <a href="../Dist/contact.php">
                         <i class="fas fa-solid fa-comment pe-2"></i>
                         <span class="nav-item">Message</span>
                     </a>
                 </li>
 
-                <li><a href="../Admin/Master/Location/display-add-location.php">
+                <li>
+                    <a href="../Admin/Master/Location/display-add-location.php">
                         <i class="fas fa-solid fa-location-dot"></i>
                         <span class="nav-item">Location</span>
                     </a>
                 </li>
 
-                <li><a href="../Admin/Master/Attendance/display-add-attendance.php">
+                <li>
+                    <a href="../Admin/Master/Attendance/display-add-attendance.php">
                         <i class="fas fa-solid fa-chart-bar pe-2"></i>
                         <span class="nav-item">Attendance</span>
                     </a>
                 </li>
                 <h5>Report</h5>
-                <li><a href="">
+                <li>
+                    <a href="">
                         <i class="fas fa-solid fa-database pe-2"></i>
                         <span class="nav-item">Print Report</span>
                     </a>
                 </li>
-
+                <li>
+                    <a href="../Admin/Logout.php">
+                        <i class="fas fa-solid fa-sign-out pe-2"></i>
+                        <span class="nav-item">Logout</span>
+                    </a>
+                </li>
             </ul>
         </nav>
 
@@ -105,7 +134,9 @@
                                 if ($department) {
                                     while ($row = mysqli_fetch_assoc($department)) {
                                 ?>
-                                        <td><span><?php echo $row['department']; ?></span></td>
+                                        <td>
+                                            <span><?php echo $row['department']; ?></span>
+                                        </td>
                                 <?php
                                     }
                                 }
@@ -117,7 +148,9 @@
                 </div>
 
                 <div class="card-sec">
-                    <span><i class="fa-solid fa-right-left icon-s"></i></span>
+                    <span>
+                        <i class="fa-solid fa-right-left icon-s"></i>
+                    </span>
                     <h4>Working Shifts</h4>
                     <div class="per-card">
                         <table>
@@ -130,7 +163,9 @@
                                 if ($shift) {
                                     while ($row = mysqli_fetch_assoc($shift)) {
                                 ?>
-                                        <td><span><?php echo $row['shift']; ?></span></td>
+                                        <td>
+                                            <span><?php echo $row['shift']; ?></span>
+                                        </td>
                                 <?php
                                     }
                                 }
@@ -148,18 +183,20 @@
                         <table>
                             <tr>
                                 <?php
-                                    include("../Backend/Database/connection.php");
+                                include("../Backend/Database/connection.php");
 
-                                    $query = "SELECT count(First_Name) AS Fname from `tbladdemployee`";
-                                    $shift = mysqli_query($conn, $query);
-                                    if ($shift) {
-                                        while ($row = mysqli_fetch_assoc($shift)) {
-                                    ?>
-                                            <td><span><?php echo $row['Fname']; ?></span></td>
-                                    <?php
-                                        }
+                                $query = "SELECT count(First_Name) AS Fname from `tbladdemployee`";
+                                $shift = mysqli_query($conn, $query);
+                                if ($shift) {
+                                    while ($row = mysqli_fetch_assoc($shift)) {
+                                ?>
+                                        <td>
+                                            <span><?php echo $row['Fname']; ?></span>
+                                        </td>
+                                <?php
                                     }
-                                ?>    
+                                }
+                                ?>
                                 <td><span>Employee</span></td>
                             </tr>
                         </table>
@@ -172,7 +209,7 @@
                     <div class="per-card">
                         <table>
                             <tr>
-                            <?php
+                                <?php
                                 include("../Backend/Database/connection.php");
 
                                 $query = "SELECT count(uSER_Name) AS userId from `tblusername`";
@@ -180,18 +217,20 @@
                                 if ($shift) {
                                     while ($row = mysqli_fetch_assoc($shift)) {
                                 ?>
-                                    <td><span><?php echo $row['userId']; ?></span></td>
+                                        <td>
+                                            <span><?php echo $row['userId']; ?></span>
+                                        </td>
                                 <?php
                                     }
                                 }
-                            ?>
-                            <td><span>Active Users</span></td>
+                                ?>
+                                <td><span>Active Users</span></td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
-            <br>
+            <br />
             <section class="details">
                 <div class="users">
                     <div class="card-body">
@@ -259,7 +298,7 @@
                     </div>
                     <!-- admin  profile start -->
                     <div class="card-body-dis">
-                        <img src="../src/Images/Abhishek.jpg">
+                        <img src="../src/Images/Abhishek.jpg" />
                         <h4>Abhishek Vishwakarma</h4>
                         <p>Manager</p>
                         <div class="per">
@@ -274,12 +313,10 @@
                                 </tr>
                             </table>
                         </div>
-                        <button onclick.>Profile</button>
-                    <!-- admin profile end -->
-
+                        <button onclick="window.location.href = '../Admin/Profile.php'">Profile</button>
+                        <!-- admin profile end -->
                     </div>
                 </div>
-
             </section>
             <section class="attendance">
                 <div class="attendance-list">
