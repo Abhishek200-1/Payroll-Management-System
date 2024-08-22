@@ -34,9 +34,18 @@ body{
 .container-image{
     width: 350px;
     height: 600px;
-    margin-right: 150px;
+    margin-right: 50px;
     border-radius: 10px;
     border: 2px solid #2f4f4f;
+}
+
+.container-navbar{
+    border: 1px solid black;
+    width: 100px;
+    height: 600px;
+    margin-right: 50px;
+    background-color: #333;
+    padding: 10px 20px;
 }
 
 .card img {
@@ -133,6 +142,13 @@ h2{
     color: #2f4f4f;
     padding-bottom: 2px;
     border-bottom: 1px solid silver;
+    margin-left: 5px;
+}
+
+h2:hover{
+    cursor: pointer;
+    color: #0056b3;
+    transition: 0.5s;
 }
 
 .content{
@@ -160,6 +176,12 @@ h2{
     font-weight: bold;
     margin: 8px 0;
     font-size: 18px;
+}
+
+.input-box label, .gender-title:hover{
+    cursor: pointer;
+    color: #0056b3;
+    transition: 0.5s;
 }
 
 .gender-title{
@@ -207,13 +229,13 @@ h2{
     cursor: pointer;
     border-radius: 10px;
     background: transparent;
-    border: 1px solid #4ad489;
+    border: 1px solid #0056b3;
     font-size: 20px;
     display: block;
 }
 
 .button-container button:hover{
-    background: #4ad489;
+    background: #0056b3;
     color: #fff;
     transition: 0.5s;
     transform: scale(1.05);
@@ -228,3 +250,4 @@ h2{
     margin-top: -15px;
     margin-bottom: -10px;
 }
+
