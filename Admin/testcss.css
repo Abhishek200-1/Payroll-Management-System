@@ -1,0 +1,230 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+    /* ========== Mian Container ========== */
+.container{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    background-color: beige;
+}
+    /* ========== Form Container ========== */
+.container-form{
+   width: 850px;
+   height: 680px;
+   margin-left: 30px;
+   margin-top: 30px;
+}
+    /* ========== Image Container ========== */
+.container-image{
+    width: 350px;
+    height: 600px;
+    margin-right: 150px;
+    border-radius: 10px;
+    border: 2px solid #2f4f4f;
+}
+
+.card img {
+    width: 350px;
+    height: auto;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+/* .card img:hover {
+    right: 55%;
+    transform: translate(10%);
+    transition: 0.5S;
+} */
+
+.card-body .input-box{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-bottom: 15px;   
+}
+
+.card-body .input-box input{
+    height: 40px;
+    width: 320px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-text {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.card-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: transparent;
+    color: #333;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    width: 100%;
+    border: 1px solid #0056b3;
+    font-size: 18px;
+}
+
+.card-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    transition: 0.5s;
+    color: #fff;
+}
+    /* ========== Mian Container End ========== */
+
+.content .input-box{
+    border-bottom: 1px solid black;
+}
+
+.content .input-box .option{
+    display: flex;
+    flex-wrap: wrap;
+    width: 95%;
+    padding: 0 10px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+    color:  #2f4f4f;
+}
+
+.content .input-box .option:is(:focus,:valid){
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 2);
+}
+
+h2{
+    font-size: 26px;
+    font-weight: 600;
+    text-align: left;
+    color: #2f4f4f;
+    padding-bottom: 2px;
+    border-bottom: 1px solid silver;
+}
+
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.input-box{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    padding-bottom: 15px;
+
+}
+
+.input-box:nth-child(2n){
+    justify-content: end;
+}
+
+.input-box label, .gender-title{
+    width: 95%;
+    color: #2f4f4f;
+    font-weight: bold;
+    margin: 8px 0;
+    font-size: 18px;
+}
+
+.gender-title{
+    font-size: 18px;
+}
+
+.gender-details{
+    margin: 8px 0;
+}
+
+.input-box input{
+    height: 40px;
+    width: 95%;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+.input-box input:is(:focus,:valid){
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 2);
+}
+
+.gender-category{
+    color: gray;
+}
+
+.gender-category label{
+    padding: 0 20px 0 5px;
+    font-size: 14px;
+}
+
+.gender-category label, .gender-category input{
+    cursor: pointer;
+}
+
+.button-container{
+    width: 50%;
+    padding-bottom: -15px;
+}
+
+.button-container button{
+    width: 100%;
+    margin-top: 5px;
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid #4ad489;
+    font-size: 20px;
+    display: block;
+}
+
+.button-container button:hover{
+    background: #4ad489;
+    color: #fff;
+    transition: 0.5s;
+    transform: scale(1.05);
+}
+
+.button-container button i{
+    padding-right: 5px;
+    font-size: 25px;
+}
+
+.content p{
+    margin-top: -15px;
+    margin-bottom: -10px;
+}
