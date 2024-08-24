@@ -43,7 +43,7 @@
                //  $Gender = $_POST['gender'];
 
 
-                $q = "update into `tbladdemployee` (First_Name,Last_Name,Image,Email,Department,Shift,Pnumber,Address,Date_of_birth,Date_of_joining,Gender) values ('$Firstname','$Lastname','$image','$Email','$Department','$Shift','$Pnumber','$Address','$Dateofbirth','$Dateofjoining','$Gender')";
+                $q = "insert into `tbladdemployee` (First_Name,Last_Name,Image,Email,Department,Shift,Pnumber,Address,Date_of_birth,Date_of_joining,Gender) values ('$Firstname','$Lastname','$image','$Email','$Department','$Shift','$Pnumber','$Address','$Dateofbirth','$Dateofjoining','$Gender')";
                 $result = mysqli_query($conn, $q);
                 if ($result) {
                     // echo "<script>alert('Record Inserted Successfully');</script>";
