@@ -43,7 +43,7 @@
                 <?php   
                     $i = 1;
                     include('../Backend/Database/connection.php');
-                    $q="SELECT * FROM `tbladdadmin`";
+                    $q="SELECT * FROM `tbladmin`";
                     $result = mysqli_query($conn, $q);
                     if ($result) 
                     {
