@@ -2,15 +2,15 @@
     include '../Database/connection.php';
     if(isset($_GET['deleteid']))
     {
-        $id=$_GET['deleteid'];
+        $admin_Id=$_GET['deleteid'];
     }
 
-    $q="delete from `tbladdadmin` where Id=$id";
+    $q="delete from `tbladdadmin` where Id=$admin_Id";
     $result=mysqli_query($conn,$q);
     if($result)
     {
         //echo "Deleted Successfully";
-        header("location:../../Admin/Display/display-add-admin.php");
+        header("location:../../Admin/display-add-admin.php");
     }
     else
     {

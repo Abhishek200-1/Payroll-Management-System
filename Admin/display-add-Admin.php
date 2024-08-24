@@ -3,61 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance Table</title>
-    <script src="https://kit.fontawesome.com/81aa89284e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../src/css/style-admin-display.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../src/css/display-table-only.css">
+    <title>Document</title>
 </head>
 <body>
-    <!-- <nav class="navbar navbar-expand-lg justify-content-center fs-5 mb-5" style="background-color:#00ff5573;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Payroll Management System</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../../Dist/AdminDashbord.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../Dist/about.php">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../Dist/contact.php">Contact</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-dark" type="submit">Search</button>
-                    </form>
-                </div>
+    <div class="container-fluid">
+        <div class="table-uppar">
+            <div class="Button-container">
+                <Button type="button" class="btn btn-light" onclick="location.href='../../../Dist/MainDashbord.php'"><i class="fa-solid fa-arrow-left me-2"></i>Go Back</Button>
+            </div>
+            <div class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </div>
         </div>
-    </nav> -->
-    <div class="my-5 mx-2">
-        <div class="button-container">
-            <button type="button" class="btn btn-info"><a href="../add-admin.php">Add New Admin</a></button>
-        </div>
-        <h3>Admin Detailes</h3>
-        <table class="table table-striped table-hover border-primary table-bordered">
-            <thead class="table-light">
-                <tr>
-                    <th scope="col">Id Number</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">User Name</th>
-                    <!-- <th scope="col">Password</th> -->
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone Number</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Date Of Birth</th>
-                    <th scope="col">Gender</th>
-                    <th scope="col">Operations</th>
-                </tr>
-            </thead>
-
-            <tbody class="table-group-divider">
-                <?php
+        <div class="table-body">
+            <h4>Admin Master Table</h4>
+            <button class="add btn btn-light" type="submit" onclick="location.href='add-admin.php'"><i class="fa-solid fa-plus me-2"></i>Add New Admin In Syste.</button>
+            <table class="col-xs-7 table table-striped table-condensed table-fixed">
+                <thead class="table-info">
+                    <tr> 
+                        <th class="col">Admin Id</th>
+                        <th class="col">Fisrt Name</th>
+                        <th class="col">Last Name</th>
+                        <!-- <th>Employee Image</th> -->
+                        <th class="col">Email</th>
+                        <th class="col">Department</th>
+                        <th class="col">Shift</th>
+                        <th class="col">Phone Number</th>
+                        <!-- <th>Address</th> -->
+                        <th class="col">Date Of Birth</th>
+                        <th class="col">Date Of Joining</th>
+                        <th class="col">Gender</th>
+                        <th class="col">Operations</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                <?php   
+                    $i = 1;
                     include('../Backend/Database/connection.php');
                     $q="SELECT * FROM `tbladdadmin`";
                     $result = mysqli_query($conn, $q);
@@ -65,78 +49,45 @@
                     {
                         while ($row = mysqli_fetch_assoc($result)) 
                         {
-                            $id = $row['Id'];
+                            $admin_Id=$row['Id'];
                             $name = $row['First_Name'];
                             $lastname = $row['Last_Name'];
-                            $username = $row['User_Name'];
+                            // $image = $row['Image'];
                             // $password = $row['Password'];
                             $email = $row['Email'];
-                            $Phone_Number = $row['Phone_Number'];
-                            $Address=$row['Address'];
+                            $Department = $row['Department'];
+                            $Shift=$row['Shift_Name'];
+                            $Phone_Number=$row['Phone_Number'];
+                            // $Address=$row['Address'];
                             $Dob=$row['Date_Of_Birth'];
+                            $Doj=$row['Date_Of_Joining'];
                             $Gender=$row['Gender'];
                             echo
                             '<tr>
-                                <th scope="row">' . $id . '</th>
+                                <th scope="row">' . $i++ . '</th>
                                     <td>' . $name . '</td>
                                     <td>' . $lastname . '</td>
-                                    <td>' . $username . '</td>
                                     <td>' . $email . '</td>
+                                    <td>' . $Department . '</td>
+                                    <td>' . $Shift  . '</td>
                                     <td>' . $Phone_Number . '</td>
-                                    <td>' . $Address . '</td>
                                     <td>' . $Dob . '</td>
+                                    <td>' . $Doj . '</td>
                                     <td>' . $Gender . '</td>
                                 <td>
-                                    <button class="btn btn-primary"><a href="../../Backend/Update/update-add-admin.php? updateid=' . $id . '" class="text-light">Update</a></button>
-                                    <button class="btn btn-danger"><a href="../../Backend/Update/delete-add-admin.php? deleteid=' . $id . '" class="text-light">Delete</a></button>
+                                    <button><a href="../Backend/Update/update-add-admin.php? updateid=' . $admin_Id . '" class="text-success"><i class="fa-solid fa-pen-to-square fa-1x"></i></i></a></button>
+                                    <button><a href="../Backend/Update/delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-info mx-1"><i class="fa-solid fa-info fa-1x"></i></i></a></button>
+                                    <button><a href="../Backend/Update/delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
                                 </td>
                             </tr>';
                         }
                     }
                 ?>
-            </tbody>
-        </table>
+                <link rel="stylesheet" href="../Backend/Update/delete-add-admin.php">
+                </tbody> 
+            </table>
+        </div>
     </div>
-    <!-- <?php
-        include('../Database/connection.php');
-        if(isset($_POST['btnSearch']))
-        $sql="select Id,First_Name,Address from `tbladdadmin` where Id=".$_REQUEST['Search'];
-        $result= mysqli_query($conn, $sql);
-        if($result)
-        {
-            while ($row = mysqli_fetch_assoc($result)) 
-                {
-                    $id = $row['Id'];
-                    $name = $row['First_Name'];
-                    $lastname = $row['Last_Name'];
-                    $username = $row['User_Name'];
-                    $password = $row['Password'];
-                    $email = $row['Email'];
-                    $Phone_Number = $row['Phone_Number'];
-                    $Address=$row['Address'];
-                    $Dob=$row['Date_Of_Birth'];
-                    $Gender=$row['Gender'];
-                    echo
-                    '<tr>
-                        <th scope="row">' . $id . '</th>
-                            <td>' . $name . '</td>
-                            <td>' . $lastname . '</td>
-                            <td>' . $username . '</td>
-                            <td>' . $password . '</td>
-                            <td>' . $email . '</td>
-                            <td>' . $Phone_Number . '</td>
-                            <td>' . $Address . '</td>
-                            <td>' . $Dob . '</td>
-                            <td>' . $Gender . '</td>
-                            <td>
-                                <button class="btn btn-primary"><a href="update.php? updateid=' . $id . '" class="text-light">Update</a></button>
-                                <button class="btn btn-danger"><a href="delete.php? deleteid=' . $id . '" class="text-light">Delete</a></button>
-                            </td>
-                    </tr>';
-                }
-        }
-    ?> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="javascript/script.js"></script>
 </body>
 </html>
+<link rel="stylesheet" href="">

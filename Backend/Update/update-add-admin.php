@@ -1,38 +1,101 @@
 <?php
-    include("../Database/connection.php");
-    $id=$_GET['updateid'];
-    $sql2="SELECT * FROM `tbladdadmin` where Id=$id";
-    $updateresult=mysqli_query($conn, $sql2);
-    $row=mysqli_fetch_assoc($updateresult);
-    $First_Name=$row['First_Name'];
-    $lastname = $row['Last_Name'];
-    $username = $row['User_Name'];
-    $password = $row['Password'];
-    $email = $row['Email'];
-    $Phone_Number = $row['Phone_Number'];
-    $Address=$row['Address'];
-    $Dob=$row['Date_Of_Birth'];
-    $Gender=$row['Gender'];
-?>
+            $pic_upload=0;
+            include("../Database/connection.php");
+            if (isset($_POST['btn'])) {
+                $Firstname = $_POST['Fname'];
+                $Lastname = $_POST['Lname'];
+                $image = time().$_FILES['Image']['name'];
+                if(move_uploaded_file($_FILES['Image']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/Abhishek/Payroll-Management-System/Images/admin_image/'.$image)){
+                    $target_file=$_SERVER['DOCUMENT_ROOT'].'/Abhishek/Payroll-Management-System/Images/admin_image/'.$image;
+                    $imageFileType=strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                    $picname=basename($_FILES['Image']['name']);
+                    $photo=time().$picname;
+                    if($imageFileType !="jpg" && $imageFileType !="jpeg" && $imageFileType != "png" )
+                    {?>
+                        <script>
+                            alert("please upload image having extension .jpg/.jpeg/.png");
+                        </script>\
+                        <?php
+                    }
+                    else if($_FILES['image']['size']>20000000)
+                    {?>
+                        <script>
+                            alert("please image exceed the size of 2 MB");
+                        </script>\
+                        <?php 
+                    }
+                    else{
+                        $pic_upload=1;
+                    }
+                    if($pic_upload ==1){
+
+                    }
+
+                    
+                }
+                $Email = $_POST['mail'];
+                $Department = $_POST['depart'];
+                $Shift = $_POST['Shift_Name'];
+                $Pnumber = $_POST['PhoneNum'];
+                $Address = $_POST['address'];
+                $Dateofbirth = $_POST['DOB'];
+                $Dateofjoining = $_POST['DOJ'];
+               //  $Gender = $_POST['gender'];
+
+
+                $q = "insert into `tbladdadmin` (First_Name,Last_Name,Image,Email,Department,Shift,Pnumber,Address,Date_of_birth,Date_of_joining,Gender) values ('$Firstname','$Lastname','$image','$Email','$Department','$Shift','$Pnumber','$Address','$Dateofbirth','$Dateofjoining','$Gender')";
+                $result = mysqli_query($conn, $q);
+                if ($result) {
+                    // echo "<script>alert('Record Inserted Successfully');</script>";
+                    header('location:../../Admin/Master/Employee/display-add-employee.php');
+                }
+            }
+        ?>
+
+
+<!-- Php code view data in table -->
+<?php
+include("../Database/connection.php");
+$admin_Id = $_GET['updateid'];
+
+$sql2 = "SELECT * FROM `tbladdadmin` where Id=$admin_Id";
+$updateresult = mysqli_query($conn, $sql2);
+$row = mysqli_fetch_assoc($updateresult);
+
+$Emp_Id = $row['Id'];
+$name = $row['First_Name'];
+$lastname = $row['Last_Name'];
+$image = $row['Image'];
+$Email = $row['Email'];
+$Shift=$row['Shift_Name'];
+$Phone_Number = $row['Phone_Number'];
+$Address = $row['Address'];
+$Department = $row['Department'];
+$Dob = $row['Date_Of_Birth'];
+$Doj = $row['Date_Of_Joining'];
+// $Gender = $row['Gender'];
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login-cum registration form</title>
-    <link rel="stylesheet" href="../../src/css/sytle-add-employee.css">
+    <link rel="stylesheet" href="../../src/css/style-emp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/81aa89284e.js" crossorigin="anonymous"></script>
+    <title>Document</title>
 </head>
-
 <body>
     <div class="container">
-        <form method="POST">
-            <h2>Update Values</h2>
+        <form action="" method="POST">
+            <h2>Admin Master Data</h2>
             <div class="content">
-                <div class="input-box">
-                    <label for="name">First Name</label>
-                    <input type="text" placeholder="Enter Your First Name" name="Fname" value=<?php echo $First_Name; ?> required>
-                </div>
+                <p>Form To Update Admin Details In System</p>
+                <div class="content">
+                    <div class="input-box">
+                        <label for="name">Fisrt Name</label>
+                        <input type="text" placeholder="Enter Your First Name" name="Fname" value=<?php echo $name; ?> required>
+                    </div>
 
                 <div class="input-box">
                     <label for="name">Last Name</label>
@@ -40,18 +103,59 @@
                 </div>
 
                 <div class="input-box">
-                    <label for="username">User Name</label>
-                    <input type="text" placeholder="Enter Your Username" name="User_name" value=<?php echo $username; ?> required>
-                </div>
-
-                <div class="input-box">
-                    <label for="username">Password</label>
-                    <input type="password" placeholder="Enter Your Password" name="passkey" value=<?php echo $password; ?> required>
+                    <label for="name">Employee image</label>
+                    <input type="file" placeholder="Enter Your First Name" data-parsley-trigger="keyup" name="Image" class="form-control" required />
                 </div>
 
                 <div class="input-box">
                     <label for="Email">Email</label>
-                    <input type="text" placeholder="Enter Your Email" name="mail" value=<?php echo $email; ?> required>
+                    <input type="text" placeholder="Enter Your Email" name="mail" value=<?php echo $Email; ?> required>
+                </div>
+
+                <div class="input-box">
+                    <label for="depart">Department</label>
+                    <input type="text" placeholder="Enter Your Department" name="depart" value=<?php echo $Department; ?> required>
+                    <select class="option" name="depart">
+                        <option value="default">Select Department</option>
+                            <?php
+                                include("../Backend/Database/connection.php");
+                                $query = "SELECT Id, Name FROM `tbldepartment`";
+                                $result = mysqli_query($conn, $query);
+
+                                if ($result) 
+                                {
+                                    while ($row = mysqli_fetch_assoc($result)) 
+                                    {
+                                        ?>
+                                            <option value="<?php echo $row['Id'] ?>"><?php echo $row['Name'] ?></option>
+                                        <?php
+                                    }
+                                }
+                            ?>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label for="addresss">Shift</label>
+                    <input type="text" placeholder="Enter Your Department" name="shift" value=<?php echo $Shift; ?> required>
+                    <select class="option" name="Shift_Name">
+                        <option value="default">Select Shift</option>
+                            <?php
+                                include("../Backend/Database/connection.php");
+                                $query = "SELECT Id, Shift_Name, Start_Time, End_Time FROM `tblshift`";
+                                $result = mysqli_query($conn, $query);
+
+                                if ($result) 
+                                {
+                                    while ($row = mysqli_fetch_assoc($result)) 
+                                    {
+                                        ?>
+                                            <option value="<?php echo $row['Id'] ?>"><?php echo $row['Shift_Name'] ?></option>
+                                        <?php
+                                    }
+                                }
+                            ?>
+                    </select>
                 </div>
 
                 <div class="input-box">
@@ -69,58 +173,26 @@
                     <input type="date" placeholder="Enter Your Date Of Birth" name="DOB" value=<?php echo $Dob; ?> required>
                 </div>
 
-                <div class="gender-details">
-                    <span class="gender-title">Gender</span>
-                    <div class="gender-category">
-                        <input type="radio" name="gender" value="Male" >
-                        <span>Male</span>
-                        <input type="radio" name="gender" value="Female">
-                        <span>Female</span>
-                        <input type="radio" name="gender" value="Other">
-                        <span>Other</span>
-                    </div>
+                <div class="input-box">
+                    <label for="Dob">Date Of Joining</label>
+                    <input type="date" placeholder="Enter Your Date Of Birth" name="DOJ" value=<?php echo $Doj; ?> required>
                 </div>
+
+                <!-- <span class="gender-title">Gender</span>
+                <div class="gender-category">
+                    <input type="radio" name="gender" id="Male">
+                    <label>Male</label>
+                    <input type="radio" name="gender" id="Female">
+                    <labe>Female</labe>
+                    <input type="radio" name="gender" id="Other">
+                    <label>Other</label>
+                </div> -->
             </div>
             <div class="button-container">
-                <button type="submit" class="btn" name="btn">Update Detailes</button>
+                <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i>Update Admin Details</button>
+            </div>
             </div>
         </form>
     </div>
-    <?php
-    include("../Database/connection.php");
-    if (isset($_POST['btn'])) 
-    {
-        $Firstname = $_POST['Fname'];
-        $Lastname = $_POST['Lname'];
-        $User_Name = $_POST['User_name'];
-        $Password = $_POST['passkey'];
-        $Email = $_POST['mail'];
-        $Pnumber = $_POST['PhoneNum'];
-        $Address = $_POST['address'];
-        $Dateofbirth = $_POST['DOB'];
-        $Gender = $_POST['gender'];
-
-        $existingUser = "SELECT User_Name from `tbladdadmin` where user_name='$User_Name'";
-        if (mysqli_query($conn, $existingUser)) 
-        {
-            echo "<script>alert('User name already exists!');</script>";
-        }
-
-        $addAdminQuery = "update `tbladdadmin` set Id=$id,First_Name='$Firstname',last_name='$Lastname',User_Name='$User_Name',Password='$Password',Email='$Email',Phone_Number='$Pnumber',Address='$Address',Date_Of_Birth='$Dateofbirth',Gender='$Gender' where Id=$id";
-        $result = mysqli_query($conn, $addAdminQuery);
-        if ($result) 
-        {
-            echo "<script>alert('Record Updated Successfully');</script>";
-            header('location:../../Admin/Display/display-add-admin.php');
-        } 
-        else 
-        {
-            echo "<script>alert('Record not Inserted');</script>";
-        }
-    }
-    ?>
-    <script src="script.js"></script>
-    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 </body>
-
 </html>
