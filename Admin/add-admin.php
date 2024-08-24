@@ -4,28 +4,6 @@ include("../Backend/Database/connection.php");
 if (isset($_POST['btn'])) {
     $Firstname = $_POST['Fname'];
     $Lastname = $_POST['Lname'];
-    $image = time() . $_FILES['Image']['name'];
-    if (move_uploaded_file($_FILES['Image']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . '/Abhishek/Payroll-Management-System/Images/employee_image/' . $image)) {
-        $target_file = $_SERVER['DOCUMENT_ROOT'] . '/Abhishek/Payroll-Management-System/Images/employee_image/' . $image;
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-        $picname = basename($_FILES['Image']['name']);
-        $photo = time() . $picname;
-        if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") { ?>
-            <script>
-                alert("please upload image having extension .jpg/.jpeg/.png");
-            </script>\
-        <?php
-        } else if ($_FILES['image']['size'] > 20000000) { ?>
-            <script>
-                alert("please image exceed the size of 2 MB");
-            </script>\
-<?php
-        } else {
-            $pic_upload = 1;
-        }
-        if ($pic_upload == 1) {
-        }
-    }
     $Email = $_POST['mail'];
     $Department = $_POST['depart'];
     $Shift = $_POST['shift'];
@@ -36,11 +14,15 @@ if (isset($_POST['btn'])) {
     $Gender = $_POST['gender'];
 
 
-    $q = "insert into `tbladdemployee` (First_Name,Last_Name,Image,Email,Department,Shift,Pnumber,Address,Date_of_birth,Date_of_joining,Gender) values ('$Firstname','$Lastname','$image','$Email','$Department','$Shift','$Pnumber','$Address','$Dateofbirth','$Dateofjoining','$Gender')";
+    $q = "insert into `tbladdadmin` (First_Name,Last_Name,Email,Department,Shift_Name,Phone_Number,Address,Date_of_birth,Date_of_joining,Gender) values ('$Firstname','$Lastname','$Email','$Department','$Shift','$Pnumber','$Address','$Dateofbirth','$Dateofjoining','$Gender')";
     $result = mysqli_query($conn, $q);
     if ($result) {
         // echo "<script>alert('Record Inserted Successfully');</script>";
-        header('location:../../../Admin/Master/Employee/display-add-employee.php');
+        header('location:../Admin/display-add-admin.php');
+    }
+    else
+    {
+        echo "Error found : " . mysqli_error($conn);
     }
 }
 ?>
@@ -53,7 +35,7 @@ if (isset($_POST['btn'])) {
     <link rel="stylesheet" href="../src/css/style-emp.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/81aa89284e.js" crossorigin="anonymous"></script>
-    <title>Add-New Admin Dashbord</title>
+    <title>Document</title>
 </head>
 
 <body>
@@ -73,10 +55,10 @@ if (isset($_POST['btn'])) {
                         <input type="text" placeholder="Enter Your Last Name" name="Lname" required>
                     </div>
 
-                    <div class="input-box">
+                    <!-- <div class="input-box">
                         <label for="name">Admin image</label>
                         <input type="file" placeholder="Enter Your First Name" data-parsley-trigger="keyup" name="Image" class="form-control" required />
-                    </div>
+                    </div> -->
 
                     <div class="input-box">
                         <label for="Email">Email</label>
@@ -156,7 +138,7 @@ if (isset($_POST['btn'])) {
                     </div>
                 </div>
                 <div class="button-container">
-                    <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i> Add Admin Employee</button>
+                    <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i> Add New Admin</button>
                 </div>
             </div>
         </form>

@@ -1,38 +1,9 @@
 <?php
-            $pic_upload=0;
             include("../Database/connection.php");
+            $Emp_Id = $_GET['updateid'];
             if (isset($_POST['btn'])) {
                 $Firstname = $_POST['Fname'];
                 $Lastname = $_POST['Lname'];
-                $image = time().$_FILES['Image']['name'];
-                if(move_uploaded_file($_FILES['Image']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/Abhishek/Payroll-Management-System/Images/employee_image/'.$image)){
-                    $target_file=$_SERVER['DOCUMENT_ROOT'].'/Abhishek/Payroll-Management-System/Images/employee_image/'.$image;
-                    $imageFileType=strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-                    $picname=basename($_FILES['Image']['name']);
-                    $photo=time().$picname;
-                    if($imageFileType !="jpg" && $imageFileType !="jpeg" && $imageFileType != "png" )
-                    {?>
-                        <script>
-                            alert("please upload image having extension .jpg/.jpeg/.png");
-                        </script>\
-                        <?php
-                    }
-                    else if($_FILES['image']['size']>20000000)
-                    {?>
-                        <script>
-                            alert("please image exceed the size of 2 MB");
-                        </script>\
-                        <?php 
-                    }
-                    else{
-                        $pic_upload=1;
-                    }
-                    if($pic_upload ==1){
-
-                    }
-
-                    
-                }
                 $Email = $_POST['mail'];
                 $Department = $_POST['depart'];
                 $Shift = $_POST['shift'];
@@ -43,11 +14,15 @@
                //  $Gender = $_POST['gender'];
 
 
-                $q = "insert into `tbladdemployee` (First_Name,Last_Name,Image,Email,Department,Shift,Pnumber,Address,Date_of_birth,Date_of_joining,Gender) values ('$Firstname','$Lastname','$image','$Email','$Department','$Shift','$Pnumber','$Address','$Dateofbirth','$Dateofjoining','$Gender')";
+                $q = "update `tbladdemployee` set Emp_Id=$Emp_Id,First_Name='$Firstname',Last_Name='$Lastname',Email='$Email',Department='$Department',Shift='$Shift',Pnumber='$Pnumber',Address='$Address',Date_Of_Birth='$Dateofbirth',Date_Of_Joining='$Dateofjoining'";
                 $result = mysqli_query($conn, $q);
                 if ($result) {
-                    // echo "<script>alert('Record Inserted Successfully');</script>";
-                    header('location:../../Admin/Master/Employee/display-add-employee.php');
+                    echo "<script>alert('Record Inserted Successfully');</script>";
+                    // header('location:../../Admin/Master/Employee/display-add-employee.php');
+                }
+                else
+                {
+                    echo "Error found : " . mysqli_error($conn);
                 }
             }
         ?>
@@ -56,7 +31,6 @@
 <!-- Php code view data in table -->
 <?php
 include("../Database/connection.php");
-$Emp_Id = $_GET['updateid'];
 
 $sql2 = "SELECT * FROM `tbladdemployee` where Emp_Id=$Emp_Id";
 $updateresult = mysqli_query($conn, $sql2);
@@ -65,8 +39,8 @@ $row = mysqli_fetch_assoc($updateresult);
 $Emp_Id = $row['Emp_Id'];
 $name = $row['First_Name'];
 $lastname = $row['Last_Name'];
-$image = $row['Image'];
 $Email = $row['Email'];
+$Shift = $row['Shift'];
 $Phone_Number = $row['Pnumber'];
 $Address = $row['Address'];
 $Department = $row['Department'];
@@ -101,14 +75,19 @@ $Doj = $row['Date_Of_Joining'];
                     <input type="text" placeholder="Enter Your Last Name" name="Lname" value=<?php echo $lastname; ?> required>
                 </div>
 
-                <div class="input-box">
+                <!-- <div class="input-box">
                     <label for="name">Employee image</label>
                     <input type="file" placeholder="Enter Your First Name" data-parsley-trigger="keyup" name="Image" class="form-control" required />
-                </div>
+                </div> -->
 
                 <div class="input-box">
                     <label for="Email">Email</label>
                     <input type="text" placeholder="Enter Your Email" name="mail" value=<?php echo $Email; ?> required>
+                </div>
+
+                <div class="input-box">
+                    <label for="PhoneNumber">Phone Number</label>
+                    <input type="text" placeholder="Enter Your Phone Number" name="PhoneNum" value=<?php echo $Phone_Number; ?> required>
                 </div>
 
                 <div class="input-box">
@@ -136,7 +115,7 @@ $Doj = $row['Date_Of_Joining'];
 
                 <div class="input-box">
                     <label for="addresss">Shift</label>
-                    <input type="text" placeholder="Enter Your Department" name="shift" value=<?php echo $Address; ?> required>
+                    <input type="text" placeholder="Enter Your Department" name="shift" value=<?php echo $Shift; ?> required>
                     <select class="option" name="shift">
                         <option value="default">Select Shift</option>
                             <?php
@@ -155,11 +134,6 @@ $Doj = $row['Date_Of_Joining'];
                                 }
                             ?>
                     </select>
-                </div>
-
-                <div class="input-box">
-                    <label for="PhoneNumber">Phone Number</label>
-                    <input type="text" placeholder="Enter Your Phone Number" name="PhoneNum" value=<?php echo $Phone_Number; ?> required>
                 </div>
 
                 <div class="input-box">

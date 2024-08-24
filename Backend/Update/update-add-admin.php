@@ -65,7 +65,6 @@ $row = mysqli_fetch_assoc($updateresult);
 $Emp_Id = $row['Id'];
 $name = $row['First_Name'];
 $lastname = $row['Last_Name'];
-$image = $row['Image'];
 $Email = $row['Email'];
 $Shift=$row['Shift_Name'];
 $Phone_Number = $row['Phone_Number'];

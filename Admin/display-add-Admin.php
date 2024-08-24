@@ -11,7 +11,7 @@
     <div class="container-fluid">
         <div class="table-uppar">
             <div class="Button-container">
-                <Button type="button" class="btn btn-light" onclick="location.href='../../../Dist/MainDashbord.php'"><i class="fa-solid fa-arrow-left me-2"></i>Go Back</Button>
+                <Button type="button" class="btn btn-light" onclick="location.href='../Dist/MainDashbord.php'"><i class="fa-solid fa-arrow-left me-2"></i>Go Back</Button>
             </div>
             <div class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
