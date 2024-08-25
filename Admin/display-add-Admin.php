@@ -28,7 +28,7 @@
                         <th class="col">Fisrt Name</th>
                         <th class="col">Last Name</th>
                         <!-- <th>Employee Image</th> -->
-                        <th class="col">Email</th>
+                        <!-- <th class="col">Email</th> -->
                         <th class="col">Department</th>
                         <th class="col">Shift</th>
                         <th class="col">Phone Number</th>
@@ -36,6 +36,7 @@
                         <th class="col">Date Of Birth</th>
                         <th class="col">Date Of Joining</th>
                         <th class="col">Gender</th>
+                        <th class="col">User Operation</th>
                         <th class="col">Operations</th>
                     </tr>
                 </thead>
@@ -43,7 +44,7 @@
                 <?php   
                     $i = 1;
                     include('../Backend/Database/connection.php');
-                    $q="SELECT * FROM `tbladmin`";
+                    $q="SELECT * FROM `tbladdadmin`";
                     $result = mysqli_query($conn, $q);
                     if ($result) 
                     {
@@ -67,23 +68,24 @@
                                 <th scope="row">' . $i++ . '</th>
                                     <td>' . $name . '</td>
                                     <td>' . $lastname . '</td>
-                                    <td>' . $email . '</td>
                                     <td>' . $Department . '</td>
                                     <td>' . $Shift  . '</td>
                                     <td>' . $Phone_Number . '</td>
                                     <td>' . $Dob . '</td>
                                     <td>' . $Doj . '</td>
                                     <td>' . $Gender . '</td>
-                                <td>
-                                    <button><a href="../Backend/Update/update-add-admin.php? updateid=' . $admin_Id . '" class="text-success"><i class="fa-solid fa-pen-to-square fa-1x"></i></i></a></button>
-                                    <button><a href="../Backend/Update/delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-info mx-1"><i class="fa-solid fa-info fa-1x"></i></i></a></button>
-                                    <button><a href="../Backend/Update/delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
-                                </td>
+                                    <td>
+                                        <button><a href="assign-username.php? class="text-primary" style="text-decoration:none"><i class="fas fa-solid fa-id-card-clip me-2"></i>UserName</button>
+                                    </td>
+                                    <td>
+                                        <button><a href="../Backend/Update/update-add-admin.php? updateid=' . $admin_Id . '" class="text-success"><i class="fa-solid fa-pen-to-square fa-1x"></i></i></a></button>
+                                        <button><a href="../Backend/Update/delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-info mx-1"><i class="fa-solid fa-info fa-1x"></i></i></a></button>
+                                        <button><a href="../Backend/Update/delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
+                                    </td>
                             </tr>';
                         }
                     }
-                ?>
-                <link rel="stylesheet" href="../Backend/Update/delete-add-admin.php">
+                ?>  
                 </tbody> 
             </table>
         </div>

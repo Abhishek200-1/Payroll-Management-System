@@ -204,7 +204,7 @@ if (!isset($_SESSION['AdminId'])) {
                 </div>
 
                 <div class="card-sec">
-                    <span><i class="fa-solid fa-building icon"></i></span>
+                    <span><i class="fa-solid fa-users icon-s"></i></span>
                     <h4>Users</h4>
                     <div class="per-card">
                         <table>
