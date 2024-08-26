@@ -24,14 +24,40 @@ if (!isset($_SESSION['AdminId'])) {
 </head>
 
 <body>
+    <?php
+    $id = $_SESSION['AdminId'];
+
+    $query = "SELECT `First_Name`, `Last_Name`, `User_Name`, `Phone_Number`, `Email`, `Address`, `Date_Of_Birth`, `Gender`, `adminprofile` FROM `tbladdadmin` WHERE ID = $id";
+
+    $result = mysqli_query($conn, $query);
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $FirstName = $row["First_Name"];
+            $lastname =  $row["Last_Name"];
+            $UserName = $row["User_Name"];
+            $PhoneNumber =  $row["Phone_Number"];
+            $Email =  $row["Email"];
+            $Address =  $row["Address"];
+            $DOB =  $row["Date_Of_Birth"];
+            $Gender =  $row["Gender"];
+            $adminprofile = $row["adminprofile"];
+        }
+    }
+    ?>
     <div class="container-fluid">
         <!-- Side navbar -->
         <nav>
             <ul>
                 <li>
                     <a href="../Admin/Profile.php" class="logo">
-                        <img src="../src/Images/Abhishek.jpg" />
-                        <span class="nav-item">Vishwakarma Abhishek</span>
+                        <?php
+                        if ($adminprofile) {
+                            echo '<img src=" ' . $adminprofile . '" alt="Card Image">';
+                        } else {
+                            echo '<img src="../src/Images/Abhishek.jpg" alt="Card Image">';
+                        }
+                        ?>
+                        <span class="nav-item"><?php echo $lastname . " " . $FirstName; ?></span>
                     </a>
                 </li>
                 <h5>Admin</h5>
@@ -274,8 +300,14 @@ if (!isset($_SESSION['AdminId'])) {
                         </table>
                     </div>
                     <div class="card-body-dis">
-                        <img src="../src/Images/Abhishek.jpg" />
-                        <h4>Abhishek Vishwakarma</h4>
+                        <?php
+                        if ($adminprofile) {
+                            echo '<img src=" ' . $adminprofile . '" alt="Card Image">';
+                        } else {
+                            echo '<img src="../src/Images/Abhishek.jpg" alt="Card Image">';
+                        }
+                        ?>
+                        <h4><?php echo $lastname . " " . $FirstName; ?></h4>
                         <p>Manager</p>
                         <div class="per">
                             <table>
