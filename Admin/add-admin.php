@@ -16,17 +16,15 @@ if (isset($_POST['btn'])) {
     $addAdminQueary = "insert into `tbladdadmin` (First_Name,Last_Name,Email,Department,Shift_Name,Phone_Number,Address,Date_Of_Birth,Date_Of_Joining,Gender) values ('$First_Name','$Last_Name','$Email','$Department','$Shift_Name','$Phone_Number','$Address','$Date_Of_Birth','$Date_Of_Joining','$Gender')";
     $result = mysqli_query($conn, $addAdminQueary);
     if ($result) {
-        echo "<script>alert('Record Inserted Successfully');</script>";
+        // echo "<script>alert('Record Inserted Successfully');</script>";
         echo "<script>
-        Swal.fire({
-  title: 'Good job!',
-  text: 'You clicked the button!',
-  icon: 'success'
-});</script>";
+        Swal ({ title: 'Good job!',
+                text: 'You clicked the button!',
+                icon: 'success'});</script>";
         // header('location:../Admin/Display/display-add-Admin.php');
     } else {
         die(mysqli_error($conn));
-        echo "<script>alert('Record not Inserted');</>";
+        echo "<script>alert('Record not Inserted');</script>";
     }
 
     // $existingUser = "SELECT User_Name from tbladdadmin where user_name='$User_Name'";
