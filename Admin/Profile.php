@@ -1,6 +1,9 @@
 <?php
 session_start();
-// echo $_SESSION["AdminId"];
+
+if (!isset($_SESSION['AdminId'])) {
+    header("Location: ../Dist/index.php");
+} 
 ?>
 
 <?php
