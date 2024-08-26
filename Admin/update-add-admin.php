@@ -148,7 +148,7 @@ include("../Backend/Database/connection.php");
 
                     </div>
                     <div class="button-container">
-                        <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i> Update Employee Data</button>
+                        <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i> Update Admin Data</button>
                     </div>
                 </div>
             </form>

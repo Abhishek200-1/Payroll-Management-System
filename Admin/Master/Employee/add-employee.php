@@ -37,7 +37,7 @@ if (isset($_POST['btn']))
 <body>
 <div class="container">
         <div class="form-image">
-            <img src="../../../src/Images/svg/undraw_shopping_re_3wst.svg" alt="">
+            <img src="../../../src/Images/svg/bussiness man.svg" alt="">
         </div>
         <div class="form">
             <form method="POST">
