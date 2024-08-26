@@ -1,5 +1,5 @@
 <?php
-    include '../Database/connection.php';
+    include '../Backend/Database/connection.php';
     if(isset($_GET['deleteid']))
     {
         $admin_Id=$_GET['deleteid'];
@@ -10,7 +10,7 @@
     if($result)
     {
         //echo "Deleted Successfully";
-        header("location:../../Admin/display-add-admin.php");
+        header("location:display-add-admin.php");
     }
     else
     {

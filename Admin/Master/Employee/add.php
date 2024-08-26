@@ -1,25 +1,34 @@
 <?php
-include("../../../Backend/Database/connection.php");
-if (isset($_POST['btn'])) 
-{
-    $Firstname = $_POST['Fname'];
-    $Lastname = $_POST['Lname'];
+include("../Backend/Database/connection.php");
+if (isset($_POST['btn'])) {
+    $First_Name = $_POST['Fname'];
+    $Last_Name = $_POST['Lname'];
+    // $Admin_Image=$_POST['AdminImage'];
     $Email = $_POST['mail'];
     $Department = $_POST['Department'];
-    $Shift = $_POST['shift'];
-    $Pnumber = $_POST['Phone_Number'];
+    $Shift_Name = $_POST['shift'];
+    $Phone_Number = $_POST['Phone_Number'];
     $Address = $_POST['Address'];
-    $Dateofbirth = $_POST['DOB'];
-    $Dateofjoining = $_POST['DOJ'];
+    $Date_Of_Birth = $_POST['DOB'];
+    $Date_Of_Joining = $_POST['DOJ'];
     $Gender = $_POST['Gender'];
 
-
-    $q = "insert into `tbladdemployee` (First_Name,Last_Name,Email,Department,Shift,Pnumber,Address,Date_of_Birth,Date_of_Joining,Gender) values ('$Firstname','$Lastname','$Email','$Department','$Shift','$Pnumber','$Address','$Dateofbirth','$Dateofjoining','$Gender')";
-    $result = mysqli_query($conn, $q);
+    $addAdminQueary = "insert into `tbladdadmin` (First_Name,Last_Name,Email,Department,Shift_Name,Phone_Number,Address,Date_Of_Birth,Date_Of_Joining,Gender) values ('$First_Name','$Last_Name','$Email','$Department','$Shift_Name','$Phone_Number','$Address','$Date_Of_Birth','$Date_Of_Joining','$Gender')";
+    $result = mysqli_query($conn, $addAdminQueary);
     if ($result) {
         // echo "<script>alert('Record Inserted Successfully');</script>";
-        header('location:../../../Admin/Master/Employee/display-add-employee.php');
+        header('location:../Admin/Display/display-add-Admin.php');
+    } else {
+        die(mysqli_error($conn));
+        echo "<script>alert('Record not Inserted');</script>";
     }
+
+    // $existingUser = "SELECT User_Name from tbladdadmin where user_name='$User_Name'";
+    // if(mysqli_query($conn, $existingUser)) 
+    // {
+    //     echo "<script>alert('User name already exists!');</script>";
+    // }
+
 }
 ?>
 <!DOCTYPE html>
@@ -28,22 +37,21 @@ if (isset($_POST['btn']))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../src/css/admin.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/81aa89284e.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="../src/css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Add-Admin-Page</title>
 </head>
 
 <body>
-<div class="container">
+    <div class="container">
         <div class="form-image">
-            <img src="../../../src/Images/svg/undraw_shopping_re_3wst.svg" alt="">
+            <img src="../src/Images/svg/undraw_shopping_re_3wst.svg" alt="">
         </div>
         <div class="form">
             <form method="POST">
-                <h2>Employee Master Data</h2>
+                <h2>Administrator Master Data</h2>
                 <div class="content">
-                    <p>Form To Add New Employee To System</p>
+                    <p>Form To Add New Administrator To System</p>
                     <div class="content">
                         <div class="input-box">
                             <label for="name">Fisrt Name</label>
@@ -55,14 +63,14 @@ if (isset($_POST['btn']))
                             <input type="text" placeholder="Enter Your Last Name" name="Lname" required>
                         </div>
 
+                        <!-- <div class="input-box">
+                            <label for="name">Admin image</label>
+                            <input type="file" placeholder="Enter Your First Name" name="AdminImage" required>
+                        </div> -->
+
                         <div class="input-box">
                             <label for="Email">Email</label>
                             <input type="text" placeholder="Enter Your Email" name="mail" required>
-                        </div>
-
-                        <div class="input-box">
-                            <label for="PhoneNumber">Phone Number</label>
-                            <input type="text" placeholder="Enter Your Phone Number" name="Phone_Number" required>
                         </div>
 
                         <div class="input-box">
@@ -105,6 +113,11 @@ if (isset($_POST['btn']))
                                 }
                                 ?>
                             </select>
+                        </div>
+
+                        <div class="input-box">
+                            <label for="PhoneNumber">Phone Number</label>
+                            <input type="text" placeholder="Enter Your Phone Number" name="Phone_Number" required>
                         </div>
 
                         <div class="input-box">

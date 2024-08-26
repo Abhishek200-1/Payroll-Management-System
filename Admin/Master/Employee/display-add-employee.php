@@ -20,7 +20,7 @@
         </div>
         <div class="table-body">
             <h4>Employee Master Table</h4>
-            <button class="add btn btn-light" type="submit" onclick="location.href='../Employee/add-employee.php'"><i class="fa-solid fa-plus me-2"></i>Add New Employee</button>
+            <button class="add btn btn-light" type="submit" onclick="location.href='add-employee.php'"><i class="fa-solid fa-plus me-2"></i>Add New Employee</button>
             <table class="col-xs-7 table table-striped table-condensed table-fixed">
                 <thead class="table-info">
                     <tr> 
@@ -77,7 +77,7 @@
                                 <td>
                                     <button><a href="../../../Backend/Update/update-add-employee.php? updateid=' . $Emp_Id . '" class="text-success"><i class="fa-solid fa-pen-to-square fa-1x"></i></i></a></button>
                                     <button><a href="../../../Backend/Update/delete-add-employee.php? deleteid=' . $Emp_Id . '" class="text-info mx-1"><i class="fa-solid fa-info fa-1x"></i></i></a></button>
-                                    <button><a href="../../../Backend/Update/delete-add-employee.php? deleteid=' . $Emp_Id . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
+                                    <button><a href="delete-add-employee.php? deleteid=' . $Emp_Id . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
                                 </td>
                             </tr>';
                         }

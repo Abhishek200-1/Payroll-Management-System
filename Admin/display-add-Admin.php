@@ -66,7 +66,7 @@
                                     <td>
                                         <button><a href="update-add-admin.php? updateid=' . $admin_Id . '" class="text-success"><i class="fa-solid fa-pen-to-square fa-1x"></i></i></a></button>
                                         <button><a href="../Backend/Update/delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-info mx-1"><i class="fa-solid fa-info fa-1x"></i></i></a></button>
-                                        <button><a href="../Backend/Update/delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
+                                        <button><a href="delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
                                     </td>
                             </tr>';
                         }
