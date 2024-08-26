@@ -75,7 +75,7 @@
                                     <td>' . $Doj . '</td>
                                     <td>' . $Gender . '</td>
                                     <td>
-                                        <button><a href="assign-username.php? class="text-primary" style="text-decoration:none"><i class="fas fa-solid fa-id-card-clip me-2"></i>UserName</button>
+                                        <button><a href="assign-username.php? username='.$admin_Id.' class="text-primary" style="text-decoration:none"><i class="fas fa-solid fa-id-card-clip me-2"></i>UserName</button>
                                     </td>
                                     <td>
                                         <button><a href="../Backend/Update/update-add-admin.php? updateid=' . $admin_Id . '" class="text-success"><i class="fa-solid fa-pen-to-square fa-1x"></i></i></a></button>
@@ -92,4 +92,3 @@
     </div>
 </body>
 </html>
-<link rel="stylesheet" href="">
