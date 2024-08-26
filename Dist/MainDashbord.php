@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("../Backend/Database/connection.php");
 
 if (!isset($_SESSION['AdminId'])) {
     header("Location: tblAdminLogin.php");
@@ -40,56 +41,49 @@ if (!isset($_SESSION['AdminId'])) {
                         <span class="nav-item">Dashbord</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="../Admin/display-add-Admin.php">
                         <i class="fas fa-solid fa-user-tie pe-2"></i>
-                        <span class="nav-item">New Admin</span>
+                        <span class="nav-item">Admin</span>
                     </a>
                 </li>
                 <h5>Master</h5>
                 <li>
                     <a href="../Admin/Master/Employee/display-add-employee.php">
                         <i class="fas fa-solid fa-users pe-2"></i>
-                        <span class="nav-item">New Employee</span>
+                        <span class="nav-item">Employee</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="../Admin/Master/User/display-add-users.php">
                         <i class="fas fa-solid fa-users-line pe-2"></i>
                         <span class="nav-item">Users</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="../Admin/Master/Shift/display-add-shift.php">
                         <i class="fas fa-regular fa-calendar pe-2"></i>
                         <span class="nav-item">Shift</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="../Admin/Master/Department/display-add-department.php">
                         <i class="fas fa-solid fa-building"></i>
                         <span class="nav-item">Department</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="../Dist/contact.php">
                         <i class="fas fa-solid fa-comment pe-2"></i>
                         <span class="nav-item">Message</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="../Admin/Master/Location/display-add-location.php">
                         <i class="fas fa-solid fa-location-dot"></i>
                         <span class="nav-item">Location</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="../Admin/Master/Attendance/display-add-attendance.php">
                         <i class="fas fa-solid fa-chart-bar pe-2"></i>
@@ -111,7 +105,6 @@ if (!isset($_SESSION['AdminId'])) {
                 </li>
             </ul>
         </nav>
-
         <section class="main">
             <div class="header--wrapper">
                 <div class="header-title">
@@ -127,8 +120,6 @@ if (!isset($_SESSION['AdminId'])) {
                         <table>
                             <tr>
                                 <?php
-                                include("../Backend/Database/connection.php");
-
                                 $query = "SELECT count(Name) AS department from `tbldepartment`";
                                 $department = mysqli_query($conn, $query);
                                 if ($department) {
@@ -146,7 +137,6 @@ if (!isset($_SESSION['AdminId'])) {
                         </table>
                     </div>
                 </div>
-
                 <div class="card-sec">
                     <span>
                         <i class="fa-solid fa-right-left icon-s"></i>
@@ -156,8 +146,6 @@ if (!isset($_SESSION['AdminId'])) {
                         <table>
                             <tr>
                                 <?php
-                                include("../Backend/Database/connection.php");
-
                                 $query = "SELECT count(Shift_Name) AS shift from `tblshift`";
                                 $shift = mysqli_query($conn, $query);
                                 if ($shift) {
@@ -175,7 +163,6 @@ if (!isset($_SESSION['AdminId'])) {
                         </table>
                     </div>
                 </div>
-
                 <div class="card-sec">
                     <span><i class="fa-solid fa-address-card icon-s"></i></span>
                     <h4>Employees</h4>
@@ -183,8 +170,6 @@ if (!isset($_SESSION['AdminId'])) {
                         <table>
                             <tr>
                                 <?php
-                                include("../Backend/Database/connection.php");
-
                                 $query = "SELECT count(First_Name) AS Fname from `tbladdemployee`";
                                 $shift = mysqli_query($conn, $query);
                                 if ($shift) {
@@ -202,7 +187,6 @@ if (!isset($_SESSION['AdminId'])) {
                         </table>
                     </div>
                 </div>
-
                 <div class="card-sec">
                     <span><i class="fa-solid fa-users icon-s"></i></span>
                     <h4>Users</h4>
@@ -210,8 +194,6 @@ if (!isset($_SESSION['AdminId'])) {
                         <table>
                             <tr>
                                 <?php
-                                include("../Backend/Database/connection.php");
-
                                 $query = "SELECT count(uSER_Name) AS userId from `tblusername`";
                                 $shift = mysqli_query($conn, $query);
                                 if ($shift) {
@@ -249,19 +231,16 @@ if (!isset($_SESSION['AdminId'])) {
                                     <th>ABCD</th>
                                     <th>12</th>
                                 </tr>
-
                                 <tr>
                                     <th>01</th>
                                     <th>ABCD</th>
                                     <th>12</th>
                                 </tr>
-
                                 <tr>
                                     <th>01</th>
                                     <th>ABCD</th>
                                     <th>12</th>
                                 </tr>
-
                                 <tr>
                                     <th>01</th>
                                     <th>ABCD</th>
@@ -270,7 +249,6 @@ if (!isset($_SESSION['AdminId'])) {
                             </tbody>
                         </table>
                     </div>
-
                     <div class="card-body-emp">
                         <h4>Employee's Per Shift</h4>
                         <table class="table-Depart">
@@ -287,7 +265,6 @@ if (!isset($_SESSION['AdminId'])) {
                                     <th>ABCD</th>
                                     <th>12</th>
                                 </tr>
-
                                 <tr>
                                     <th>01</th>
                                     <th>ABCD</th>
@@ -296,7 +273,6 @@ if (!isset($_SESSION['AdminId'])) {
                             </tbody>
                         </table>
                     </div>
-                    <!-- admin  profile start -->
                     <div class="card-body-dis">
                         <img src="../src/Images/Abhishek.jpg" />
                         <h4>Abhishek Vishwakarma</h4>
@@ -314,7 +290,6 @@ if (!isset($_SESSION['AdminId'])) {
                             </table>
                         </div>
                         <button onclick="window.location.href = '../Admin/Profile.php'">Profile</button>
-                        <!-- admin profile end -->
                     </div>
                 </div>
             </section>
@@ -345,7 +320,6 @@ if (!isset($_SESSION['AdminId'])) {
                                 <td>05:00:PM</td>
                                 <td><button>View</button></td>
                             </tr>
-
                             <tr class="active">
                                 <td>02</td>
                                 <td>Vishal Dubey</td>
@@ -356,7 +330,6 @@ if (!isset($_SESSION['AdminId'])) {
                                 <td>05:00:PM</td>
                                 <td><button>View</button></td>
                             </tr>
-
                             <tr>
                                 <td>03</td>
                                 <td>Singh Abhishek</td>
@@ -367,7 +340,6 @@ if (!isset($_SESSION['AdminId'])) {
                                 <td>05:00:PM</td>
                                 <td><button>View</button></td>
                             </tr>
-
                             <tr class="active">
                                 <td>04</td>
                                 <td>Jyoti Dwivedi</td>
