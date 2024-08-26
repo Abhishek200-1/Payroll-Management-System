@@ -29,9 +29,9 @@
                         <a class="nav-link" href="../../Dist/contact.php">Contact</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                <form class="d-flex" action="" method="post">
+                    <input class="form-control me-2" type="search" placeholder="Search" autocomplete="off" required name="SearchAttendance">
+                    <button class="btn btn-outline-dark" name="SearchAttendanceBtn" type="submit">Search</button>
                 </form>
             </div>
         </div>
@@ -55,12 +55,19 @@
                     <th scope="col">Operations</th>
                 </tr>
             </thead>
-
             <tbody class="table-group-divider">
                 <?php
                 include('../../../Backend/Database/connection.php');
-                $q = "SELECT * FROM `tbladdattendance`";
-                $result = mysqli_query($conn, $q);
+
+                $query = "";
+                if (isset($_POST["SearchAttendanceBtn"])) {
+                    $searchText = $_POST["SearchAttendance"];
+
+                    $query = "SELECT Emp_Id, First_Name, Last_Name, In_Time, Out_Time, Created_On, Is_Present, Work_Time FROM `tbladdattendance` WHERE Emp_Id LIKE '{$searchText}%' OR First_Name LIKE '{$searchText}%' OR Last_Name LIKE '{$searchText}%' OR In_Time LIKE '{$searchText}%' OR Out_Time LIKE '{$searchText}%' OR Created_On LIKE '{$searchText}%' OR Is_Present LIKE '{$searchText}%' OR Work_Time LIKE '{$searchText}%' ;";
+                } else {
+                    $query = "SELECT * FROM `tbladdattendance`";
+                }
+                $result = mysqli_query($conn, $query);
                 if ($result) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         $empId = $row['Emp_Id'];
@@ -95,43 +102,42 @@
             </tbody>
         </table>
     </div>
-    <!-- <?php
-            include('../Database/connection.php');
-            if (isset($_POST['btnSearch']))
-                $sql = "select Id,First_Name,Address from `tbladdadmin` where Id=" . $_REQUEST['Search'];
-            $result = mysqli_query($conn, $sql);
-            if ($result) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $id = $row['Id'];
-                    $name = $row['First_Name'];
-                    $lastname = $row['Last_Name'];
-                    $username = $row['User_Name'];
-                    $password = $row['Password'];
-                    $email = $row['Email'];
-                    $Phone_Number = $row['Phone_Number'];
-                    $Address = $row['Address'];
-                    $Dob = $row['Date_Of_Birth'];
-                    $Gender = $row['Gender'];
-                    echo
-                    '<tr>
-                        <th scope="row">' . $id . '</th>
-                            <td>' . $name . '</td>
-                            <td>' . $lastname . '</td>
-                            <td>' . $username . '</td>
-                            <td>' . $password . '</td>
-                            <td>' . $email . '</td>
-                            <td>' . $Phone_Number . '</td>
-                            <td>' . $Address . '</td>
-                            <td>' . $Dob . '</td>
-                            <td>' . $Gender . '</td>
-                            <td>
-                                <button class="btn btn-primary"><a href="update.php? updateid=' . $id . '" class="text-light">Update</a></button>
-                                <button class="btn btn-danger"><a href="delete.php? deleteid=' . $id . '" class="text-light">Delete</a></button>
-                            </td>
-                    </tr>';
-                }
-            }
-            ?> -->
+    <?php
+    // if (isset($_POST['btnSearch']))
+    //     $sql = "select Id,First_Name,Address from `tbladdadmin` where Id=" . $_REQUEST['Search'];
+    // $result = mysqli_query($conn, $sql);
+    // if ($result) {
+    //     while ($row = mysqli_fetch_assoc($result)) {
+    //         $id = $row['Id'];
+    //         $name = $row['First_Name'];
+    //         $lastname = $row['Last_Name'];
+    //         $username = $row['User_Name'];
+    //         $password = $row['Password'];
+    //         $email = $row['Email'];
+    //         $Phone_Number = $row['Phone_Number'];
+    //         $Address = $row['Address'];
+    //         $Dob = $row['Date_Of_Birth'];
+    //         $Gender = $row['Gender'];
+    //         echo
+    //         '<tr>
+    //                     <th scope="row">' . $id . '</th>
+    //                         <td>' . $name . '</td>
+    //                         <td>' . $lastname . '</td>
+    //                         <td>' . $username . '</td>
+    //                         <td>' . $password . '</td>
+    //                         <td>' . $email . '</td>
+    //                         <td>' . $Phone_Number . '</td>
+    //                         <td>' . $Address . '</td>
+    //                         <td>' . $Dob . '</td>
+    //                         <td>' . $Gender . '</td>
+    //                         <td>
+    //                             <button class="btn btn-primary"><a href="update.php? updateid=' . $id . '" class="text-light">Update</a></button>
+    //                             <button class="btn btn-danger"><a href="delete.php? deleteid=' . $id . '" class="text-light">Delete</a></button>
+    //                         </td>
+    //                 </tr>';
+    //     }
+    // }
+    ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="javascript/script.js"></script>
 </body>
