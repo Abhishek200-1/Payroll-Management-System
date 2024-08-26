@@ -1,23 +1,24 @@
+
 <?php
 include("../Backend/Database/connection.php");
-if (isset($_POST['btn'])) {
+    $admin_Id=$_GET['updateid'];
+    if (isset($_POST['btn'])) {
     $First_Name = $_POST['Fname'];
     $Last_Name = $_POST['Lname'];
-    // $Admin_Image=$_POST['AdminImage'];
-    $Email = $_POST['mail'];
+    // $Email = $_POST['mail'];
     $Department = $_POST['Department'];
     $Shift_Name = $_POST['shift'];
     $Phone_Number = $_POST['Phone_Number'];
     $Address = $_POST['Address'];
-    $Date_Of_Birth = $_POST['DOB'];
-    $Date_Of_Joining = $_POST['DOJ'];
-    $Gender = $_POST['Gender'];
+    // $Date_Of_Birth = $_POST['DOB'];
+    // $Date_Of_Joining = $_POST['DOJ'];
+    // $Gender = $_POST['Gender'];
 
-    $addAdminQueary = "insert into `tbladdadmin` (First_Name,Last_Name,Email,Department,Shift_Name,Phone_Number,Address,Date_Of_Birth,Date_Of_Joining,Gender) values ('$First_Name','$Last_Name','$Email','$Department','$Shift_Name','$Phone_Number','$Address','$Date_Of_Birth','$Date_Of_Joining','$Gender')";
+    $addAdminQueary = "update `tbladdadmin` set Id=$admin_Id,First_Name='$First_Name',Last_Name='$Last_Name',Department='$Department',Shift_Name='$Shift_Name',Phone_Number='$Phone_Number',Address='$Address' where Id=$admin_Id";
     $result = mysqli_query($conn, $addAdminQueary);
     if ($result) {
         // echo "<script>alert('Record Inserted Successfully');</script>";
-        header('location:../Admin/Display/display-add-Admin.php');
+        header('location:display-add-Admin.php');
     } else {
         die(mysqli_error($conn));
         echo "<script>alert('Record not Inserted');</script>";
@@ -68,10 +69,10 @@ if (isset($_POST['btn'])) {
                             <input type="file" placeholder="Enter Your First Name" name="AdminImage" required>
                         </div> -->
 
-                        <div class="input-box">
+                        <!-- <div class="input-box">
                             <label for="Email">Email</label>
                             <input type="text" placeholder="Enter Your Email" name="mail" required>
-                        </div>
+                        </div> -->
 
                         <div class="input-box">
                             <label for="depart">Department</label>
@@ -125,7 +126,7 @@ if (isset($_POST['btn'])) {
                             <input type="text" placeholder="Enter Your Address" name="Address" required>
                         </div>
 
-                        <div class="input-box">
+                        <!-- <div class="input-box">
                             <label for="Dob">Date Of Birth</label>
                             <input type="date" placeholder="Enter Your Date Of Birth" name="DOB" required>
                         </div>
@@ -133,9 +134,9 @@ if (isset($_POST['btn'])) {
                         <div class="input-box">
                             <label for="Dob">Date Of Joining</label>
                             <input type="date" placeholder="Enter Your Date Of Joining" name="DOJ" required>
-                        </div>
+                        </div> -->
 
-                        <span class="gender-title">Gender</span>
+                        <!-- <span class="gender-title">Gender</span>
                         <div class="gender-category">
                             <input type="radio" name="Gender" id="Male">
                             <label>Male</label>
@@ -143,11 +144,11 @@ if (isset($_POST['btn'])) {
                             <labe>Female</labe>
                             <input type="radio" name="Gender" id="Other">
                             <label>Other</label>
-                        </div>
+                        </div> -->
 
                     </div>
                     <div class="button-container">
-                        <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i> Add New Employee</button>
+                        <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i> Update Employee Data</button>
                     </div>
                 </div>
             </form>

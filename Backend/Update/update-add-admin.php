@@ -1,38 +1,8 @@
 <?php
-            $pic_upload=0;
             include("../Database/connection.php");
             if (isset($_POST['btn'])) {
                 $Firstname = $_POST['Fname'];
                 $Lastname = $_POST['Lname'];
-                $image = time().$_FILES['Image']['name'];
-                if(move_uploaded_file($_FILES['Image']['tmp_name'],$_SERVER['DOCUMENT_ROOT'].'/Abhishek/Payroll-Management-System/Images/admin_image/'.$image)){
-                    $target_file=$_SERVER['DOCUMENT_ROOT'].'/Abhishek/Payroll-Management-System/Images/admin_image/'.$image;
-                    $imageFileType=strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-                    $picname=basename($_FILES['Image']['name']);
-                    $photo=time().$picname;
-                    if($imageFileType !="jpg" && $imageFileType !="jpeg" && $imageFileType != "png" )
-                    {?>
-                        <script>
-                            alert("please upload image having extension .jpg/.jpeg/.png");
-                        </script>\
-                        <?php
-                    }
-                    else if($_FILES['image']['size']>20000000)
-                    {?>
-                        <script>
-                            alert("please image exceed the size of 2 MB");
-                        </script>\
-                        <?php 
-                    }
-                    else{
-                        $pic_upload=1;
-                    }
-                    if($pic_upload ==1){
-
-                    }
-
-                    
-                }
                 $Email = $_POST['mail'];
                 $Department = $_POST['depart'];
                 $Shift = $_POST['Shift_Name'];

@@ -54,7 +54,7 @@ if (!isset($_SESSION['AdminId'])) {
                         if ($adminprofile) {
                             echo '<img src=" ' . $adminprofile . '" alt="Card Image">';
                         } else {
-                            echo '<img src="../src/Images/Abhishek.jpg" alt="Card Image">';
+                            echo '<img src="../src/Images/avatar.jpg" alt="Card Image">';
                         }
                         ?>
                         <span class="nav-item"><?php echo $lastname . " " . $FirstName; ?></span>
@@ -304,7 +304,7 @@ if (!isset($_SESSION['AdminId'])) {
                         if ($adminprofile) {
                             echo '<img src=" ' . $adminprofile . '" alt="Card Image">';
                         } else {
-                            echo '<img src="../src/Images/Abhishek.jpg" alt="Card Image">';
+                            echo '<img src="../src/Images/avatar.jpg" alt="Card Image">';
                         }
                         ?>
                         <h4><?php echo $lastname . " " . $FirstName; ?></h4>
