@@ -125,7 +125,7 @@ if ($result) {
                 if ($adminprofile) {
                     echo '<img src=" ' . $adminprofile . '" alt="Card Image">';
                 } else {
-                    echo '<img src="../src/Images/Abhishek.jpg" alt="Card Image">';
+                    echo '<img src="../src/Images/avatar.jpg" alt="Card Image">';
                 }
                 ?>
                 <form action="" method="post" enctype="multipart/form-data">
