@@ -1,54 +1,59 @@
-<?php 
-    include("../Backend/Database/connection.php");
-    if(isset($_POST['btn']))
-    {
-        $First_Name=$_POST['Fname'];
-        $Last_Name=$_POST['Lname'];
-        // $Admin_Image=$_POST['AdminImage'];
-        $Email=$_POST['mail'];
-        $Department=$_POST['Department'];
-        $Shift_Name=$_POST['shift'];
-        $Phone_Number=$_POST['Phone_Number'];
-        $Address=$_POST['Address'];
-        $Date_Of_Birth=$_POST['DOB'];
-        $Date_Of_Joining=$_POST['DOJ'];
-        $Gender=$_POST['Gender'];
+<?php
+include("../Backend/Database/connection.php");
+if (isset($_POST['btn'])) {
+    $First_Name = $_POST['Fname'];
+    $Last_Name = $_POST['Lname'];
+    // $Admin_Image=$_POST['AdminImage'];
+    $Email = $_POST['mail'];
+    $Department = $_POST['Department'];
+    $Shift_Name = $_POST['shift'];
+    $Phone_Number = $_POST['Phone_Number'];
+    $Address = $_POST['Address'];
+    $Date_Of_Birth = $_POST['DOB'];
+    $Date_Of_Joining = $_POST['DOJ'];
+    $Gender = $_POST['Gender'];
 
-        $addAdminQueary="insert into `tbladdadmin` (First_Name,Last_Name,Email,Department,Shift_Name,Phone_Number,Address,Date_Of_Birth,Date_Of_Joining,Gender) values ('$First_Name','$Last_Name','$Email','$Department','$Shift_Name','$Phone_Number','$Address','$Date_Of_Birth','$Date_Of_Joining','$Gender')";
-        $result=mysqli_query($conn,$addAdminQueary);
-        if($result)
-        {
-            echo "<script>alert('Record Inserted Successfully');</script>";
-            // header('location:../Admin/Display/display-add-Admin.php');
-        }
-        else
-        {
-            die(mysqli_error($conn));
-            echo "<script>alert('Record not Inserted');</script>";
-        }
-
-        $existingUser = "SELECT User_Name from tbladdadmin where user_name='$User_Name'";
-        if(mysqli_query($conn, $existingUser)) 
-        {
-            echo "<script>alert('User name already exists!');</script>";
-        }
-
+    $addAdminQueary = "insert into `tbladdadmin` (First_Name,Last_Name,Email,Department,Shift_Name,Phone_Number,Address,Date_Of_Birth,Date_Of_Joining,Gender) values ('$First_Name','$Last_Name','$Email','$Department','$Shift_Name','$Phone_Number','$Address','$Date_Of_Birth','$Date_Of_Joining','$Gender')";
+    $result = mysqli_query($conn, $addAdminQueary);
+    if ($result) {
+        echo "<script>alert('Record Inserted Successfully');</script>";
+        echo "<script>
+        Swal.fire({
+  title: 'Good job!',
+  text: 'You clicked the button!',
+  icon: 'success'
+});</script>";
+        // header('location:../Admin/Display/display-add-Admin.php');
+    } else {
+        die(mysqli_error($conn));
+        echo "<script>alert('Record not Inserted');</>";
     }
+
+    // $existingUser = "SELECT User_Name from tbladdadmin where user_name='$User_Name'";
+    // if(mysqli_query($conn, $existingUser)) 
+    // {
+    //     echo "<script>alert('User name already exists!');</script>";
+    // }
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../src/css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Add-Admin-Page</title>
 </head>
+
 <body>
     <div class="container">
         <div class="form-image">
             <img src="../src/Images/svg/undraw_shopping_re_3wst.svg" alt="">
         </div>
-        <div class="form" >
+        <div class="form">
             <form method="POST">
                 <h2>Administrator Master Data</h2>
                 <div class="content">
@@ -145,7 +150,7 @@
                             <input type="radio" name="Gender" id="Other">
                             <label>Other</label>
                         </div>
-                        
+
                     </div>
                     <div class="button-container">
                         <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i> Add New Employee</button>
@@ -155,4 +160,5 @@
         </div>
     </div>
 </body>
+
 </html>

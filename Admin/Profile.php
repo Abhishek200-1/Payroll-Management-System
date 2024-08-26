@@ -20,9 +20,9 @@ if (isset($_POST['uploadImage'])) {
     if (move_uploaded_file($file_tmp, $uploadPath . $file_name)) {
         $sql = "UPDATE `tbladdadmin` SET adminprofile='$profilePicPath' WHERE `id`=" . $_SESSION['AdminId'] . ";";
         if (mysqli_query($conn, $sql)) {
-            echo "Successfully Uploaded";
+            echo "<script>alert('Successfully Uploaded')</script>";
         } else {
-            echo "Error while uploading";
+            echo "<script>alert('Error while uploading')</script>";
         }
     } else {
         echo "Error uploading file. Check if the directory has the correct permissions";
