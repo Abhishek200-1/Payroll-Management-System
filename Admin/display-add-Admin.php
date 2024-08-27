@@ -26,7 +26,7 @@
             <button class="add btn btn-light" type="submit" onclick="location.href='add-admin.php'"><i class="fa-solid fa-plus me-2"></i>Add New Admin In System</button>
             <table class="col-xs-7 table table-striped table-condensed table-fixed">
                 <thead class="table-info">
-                    <tr>
+                    <tr style="padding-right: 20px;">
                         <th class="col">Admin Id</th>
                         <th class="col">Fisrt Name</th>
                         <th class="col">Last Name</th>
@@ -37,7 +37,7 @@
                         <th class="col">Operations</th>
                     </tr>
                 </thead>
-                <tbody class="table-group-divider">
+                <tbody class="table-group-divider" style="padding-right: 20px;">
                     <?php
                     $i = 1;
                     include('../Backend/Database/connection.php');

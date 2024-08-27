@@ -17,7 +17,7 @@ if (isset($_POST['btn'])) {
     $result = mysqli_query($conn, $addAdminQueary);
     if ($result) {
         // echo "<script>alert('Record Inserted Successfully');</script>";
-        header('location:../Admin/Display/display-add-Admin.php');
+        header('location:display-add-Admin.php');
     } else {
         die(mysqli_error($conn));
         echo "<script>alert('Record not Inserted');</script>";
