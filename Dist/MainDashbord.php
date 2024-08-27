@@ -49,7 +49,7 @@ if (!isset($_SESSION['AdminId'])) {
         <nav>
             <ul>
                 <li>
-                    <a href="../Admin/Profile.php" class="logo">
+                    <a href="../Admin/profileadmin.php" class="logo">
                         <?php
                         if ($adminprofile) {
                             echo '<img src=" ' . $adminprofile . '" alt="Card Image">';
