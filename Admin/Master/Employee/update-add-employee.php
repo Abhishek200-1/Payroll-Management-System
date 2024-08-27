@@ -1,3 +1,22 @@
+<?php 
+    include("../../../Backend/Database/connection.php");
+    $Emp_Id=$_GET['updateid'];
+    $query = "SELECT `First_Name`, `Last_Name`, `User_Name`, `Department`, `Shift`, `Pnumber`, `Address`, `Gender` FROM `tbladdemployee` WHERE Emp_Id = $Emp_Id";
+    $result = mysqli_query($conn, $query);
+    if ($result) 
+    {
+        while ($row = mysqli_fetch_assoc($result)) 
+        {
+            $FirstName = $row["First_Name"];
+            $lastname =  $row["Last_Name"];
+            $Shift =  $row["Shift"];
+            $PhoneNumber =  $row["Pnumber"];
+            $Address =  $row["Address"];
+            $Gender =  $row["Gender"];
+        }
+    }
+?>
+
 <?php
 include("../../../Backend/Database/connection.php");
 $Emp_Id=$_GET['updateid'];
@@ -22,9 +41,9 @@ if (isset($_POST['btn']))
         header('location:display-add-employee.php');
     }
     else
-                {
-                    echo "Error found : " . mysqli_error($conn);
-                }
+    {
+        echo "Error found : " . mysqli_error($conn);
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -52,7 +71,7 @@ if (isset($_POST['btn']))
                     <div class="content">
                         <div class="input-box">
                             <label for="name">Fisrt Name</label>
-                            <input type="text" placeholder="Enter Your First Name" name="Fname" required>
+                            <input type="text" placeholder="Enter Your First Name" name="Fname" value=<?php echo $FirstName;?> required>
                         </div>
 
                         <div class="input-box">
@@ -139,7 +158,7 @@ if (isset($_POST['btn']))
 
                     </div>
                     <div class="button-container">
-                        <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i> Add New Employee</button>
+                        <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i>Upadet Employee Data</button>
                     </div>
                 </div>
             </form>
