@@ -1,5 +1,19 @@
+<?php 
+    include("../../../Backend/Database/connection.php");
+    $Id=$_GET['updateid'];
+
+    $sql="SELECT * FROM `tblshift` where Id=$Id";
+    $displaysql=mysqli_query($conn,$sql);
+    $row=mysqli_fetch_assoc($displaysql);
+    $ShiftName=$row['Shift_Name'];
+    $StartTime=$row['Start_Time'];
+    $EndTime=$row['End_Time'];
+
+?>
+
 <?php
             include("../../../Backend/Database/connection.php");
+            $Id=$_GET['updateid'];
             if(isset($_POST['btn']))
         {
             $ShiftName=$_POST['shiftName'];
@@ -8,13 +22,12 @@
 
 
             
-            
-            $q="insert into `tblshift` (Shift_Name,Start_Time,End_Time) values ('$ShiftName','$StartTime','$EndTime')";
+            $q="update `tblshift` set Id=$Id,Shift_Name='$ShiftName',Start_Time='$StartTime',End_Time='$EndTime' where Id=$Id";
             $result=mysqli_query($conn,$q);
             if($result)
             {
                   // echo "<script>alert('Record Inserted Successfully');</script>";
-                  header('location:../Shift/display-add-shift.php');
+                  header('location:display-add-shift.php');
             }
             else
             {
@@ -23,23 +36,6 @@
         }
 
     ?>
-
-<?php
-    include("../../../Database/connection.php");
-    $id=$_GET['updateid'];
-    $sql2="SELECT * FROM `tbladdadmin` where Id=$id";
-    $updateresult=mysqli_query($conn, $sql2);
-    $row=mysqli_fetch_assoc($updateresult);
-    $First_Name=$row['First_Name'];
-    $lastname = $row['Last_Name'];
-    $username = $row['User_Name'];
-    $password = $row['Password'];
-    $email = $row['Email'];
-    $Phone_Number = $row['Phone_Number'];
-    $Address=$row['Address'];
-    $Dob=$row['Date_Of_Birth'];
-    $Gender=$row['Gender'];
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,25 +69,24 @@
                         <div class="content">
                              <div class="input-box">
                                  <label for="name">Shift Name : </label>
-                                 <input type="text" placeholder="Enter Your First Name" name="shiftName" required> 
+                                 <input type="text" placeholder="Enter Your First Name" name="shiftName" value=<?php echo $ShiftName;?> required> 
                             </div>
          
                             <div class="input-box">
                                 <label for="name">Shift Start Time</label>
-                                <input type="time" placeholder="Enter Your First Name" name="startTime" required> 
+                                <input type="time" placeholder="Enter Your First Name" name="startTime" value=<?php echo $StartTime;?> required> 
                             </div>
 
                             <div class="input-box">
                                 <label for="name">Shift End Time</label>
-                                <input type="time" placeholder="Enter Your First Name" name="endTime" required> 
+                                <input type="time" placeholder="Enter Your First Name" name="endTime" value=<?php echo $EndTime;?> required> 
                             </div>
                         </div>
 
                         <div class="alert">
                             <p>By Clicking Add Button, You Are Going To Add New Shift</p>
                         </div>
-                        <button class="btnAddDepartment-add"  name="btn"><i class="fa-solid fa-square-plus"></i><h6>Add New Shift</h6></button>
-                        
+                        <button class="btnAddDepartment-add"  name="btn"><i class="fa-solid fa-square-plus"></i><h6>Update Shift Details</h6></button>
                     </form>
                 </div>
             </section>

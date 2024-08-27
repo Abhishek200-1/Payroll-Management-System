@@ -1,20 +1,16 @@
 <?php 
     include("../../../Backend/Database/connection.php");
     $Emp_Id=$_GET['updateid'];
-    $query = "SELECT `First_Name`, `Last_Name`, `User_Name`, `Department`, `Shift`, `Pnumber`, `Address`, `Gender` FROM `tbladdemployee` WHERE Emp_Id = $Emp_Id";
-    $result = mysqli_query($conn, $query);
-    if ($result) 
-    {
-        while ($row = mysqli_fetch_assoc($result)) 
-        {
-            $FirstName = $row["First_Name"];
-            $lastname =  $row["Last_Name"];
-            $Shift =  $row["Shift"];
-            $PhoneNumber =  $row["Pnumber"];
-            $Address =  $row["Address"];
-            $Gender =  $row["Gender"];
-        }
-    }
+
+    $sql="SELECT * FROM `tbladdemployee` where Emp_Id=$Emp_Id";
+    $displaysql=mysqli_query($conn,$sql);
+    $row=mysqli_fetch_assoc($displaysql);
+    $Firstname=$row['First_Name'];
+    $Lastname=$row['Last_Name'];
+    $Department=$row['Department'];
+    $Shift=$row['Shift'];
+    $Pnumber=$row['Pnumber'];
+    $Address=$row['Address'];
 ?>
 
 <?php
@@ -67,16 +63,16 @@ if (isset($_POST['btn']))
             <form method="POST">
                 <h2>Employee Master Data</h2>
                 <div class="content">
-                    <p>Form To Add New Employee To System</p>
+                    <p>Form To Update Employee Details In System</p>
                     <div class="content">
                         <div class="input-box">
                             <label for="name">Fisrt Name</label>
-                            <input type="text" placeholder="Enter Your First Name" name="Fname" value=<?php echo $FirstName;?> required>
+                            <input type="text" placeholder="Enter Your First Name" name="Fname" value=<?php echo $Firstname;?> required>
                         </div>
 
                         <div class="input-box">
                             <label for="name">Last Name</label>
-                            <input type="text" placeholder="Enter Your Last Name" name="Lname" required>
+                            <input type="text" placeholder="Enter Your Last Name" name="Lname" value=<?php echo $Lastname;?> required>
                         </div>
 
                         <!-- <div class="input-box">
@@ -86,12 +82,12 @@ if (isset($_POST['btn']))
 
                         <div class="input-box">
                             <label for="addresss">Address</label>
-                            <input type="text" placeholder="Enter Your Address" name="Address" required>
+                            <input type="text" placeholder="Enter Your Address" name="Address" value=<?php echo $Address;?> required>
                         </div>
 
                         <div class="input-box">
                             <label for="PhoneNumber">Phone Number</label>
-                            <input type="text" placeholder="Enter Your Phone Number" name="Phone_Number" required>
+                            <input type="text" placeholder="Enter Your Phone Number" name="Phone_Number" value=<?php echo $Pnumber;?> required>
                         </div>
 
                         <div class="input-box">
