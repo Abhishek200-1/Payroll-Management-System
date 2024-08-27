@@ -113,9 +113,6 @@ if ($result) {
                 </div>
                 <div class="button-container">
                     <button type="submit" class="btn" name="btn">Add Admin</button>
-                    <button type="submit" class="btn" name="btn">Add Admin</button>
-                    <button type="submit" class="btn" name="btn">Add Admin</button>
-                    <button type="submit" class="btn" name="btn">Add Admin</button>
                 </div>
             </form>
         </div>

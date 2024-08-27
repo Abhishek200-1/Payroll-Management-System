@@ -105,9 +105,9 @@ if (!isset($_SESSION['AdminId'])) {
                     </a>
                 </li>
                 <li>
-                    <a href="../Admin/Master/Location/display-add-location.php">
-                        <i class="fas fa-solid fa-location-dot"></i>
-                        <span class="nav-item">Location</span>
+                    <a href="../Admin/calculator.html">
+                        <i class="fas fa-solid fa-calculator"></i>
+                        <span class="nav-item">Calculator</span>
                     </a>
                 </li>
                 <li>
