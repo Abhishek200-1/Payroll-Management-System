@@ -63,7 +63,7 @@ if ($result) {
     <script
         src="https://kit.fontawesome.com/81aa89284e.js"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="hey.css" />
+    <link rel="stylesheet" href="../src/css/profileadmin.css" />
 </head>
 
 <body>
@@ -125,10 +125,10 @@ if ($result) {
                                         <span>Other</span>
                                     </div>
                                 </div>
-                                <div class="header-link">
-                                    <a href=""><i class="fa-solid fa-unlock"></i><span>Forgot Password</span></a>
+                            </div>
 
-                                </div>
+                            <div class="header-link">
+                                <a href="forgotPassword.php"><i class="fa-solid fa-unlock"></i><span>Forgot Password</span></a>
                             </div>
                         </form>
                     </div>

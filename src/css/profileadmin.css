@@ -723,6 +723,7 @@ h2:hover{
     color: #fff;
     transition: 0.5s;
     transform: scale(1.05);
+    border: 1px solid #0056b3;
 }
 
 .button-container button i{
