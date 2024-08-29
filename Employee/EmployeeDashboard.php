@@ -42,7 +42,7 @@ if (mysqli_num_rows($result) > 0) {
             <div class="navigation">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="">
                             <span class="icon">
                                 <ion-icon name="person-outline"></ion-icon>
                                 </span>
@@ -87,7 +87,7 @@ if (mysqli_num_rows($result) > 0) {
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="forgotPassword.php">
                                 <span class="icon">
                                     <ion-icon name="lock-closed-outline"></ion-icon>
                                 </span>
@@ -211,7 +211,7 @@ if (mysqli_num_rows($result) > 0) {
                                     <h5>Date Of Joining  : <?php echo $AddressEmp ?></h5>
                                 </div>
                                 <div class="btn-view">
-                                    <button><a href="">View Profile</a></button>
+                                    <button><a href="EmployeeProfile.php">View Profile</a></button>
                                 </div>
                             </div>
                         </div>

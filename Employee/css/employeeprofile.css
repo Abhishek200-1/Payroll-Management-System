@@ -1,0 +1,837 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+}
+
+body {
+    background: rgb(225, 225, 226);
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    width: 70px;
+    /* width: 280px; */
+    background: #fff;
+    overflow: hidden;
+    transition: 1s;
+}
+
+nav:hover {
+    width: 280px;
+    transition: 1s;
+}
+
+.logo {
+    display: flex;
+    margin-top: 15px;
+    padding-left: 10px;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.logo span {
+    font-weight: bold;
+    padding-left: 5px;
+    font-size: 18px;
+    margin-top: -5px;
+    text-transform: uppercase;
+}
+
+a {
+    position: relative;
+    width: 280px;
+    font-size: 15px;
+    color: rgb(85, 83, 83);
+    display: table;
+    padding: 9px;
+}
+
+/* a:hover{
+    background: #eee;
+} */
+
+.container-fluid h5 {
+    position: relative;
+    margin-left: 15px;
+    border-bottom: 1px solid black;
+    margin-top: 25px;
+    color: #414d47;
+}
+
+nav .fas {
+    position: relative;
+    width: 55px;
+    height: 30px;
+    top: 5px;
+    font-size: 15px;
+    text-align: center;
+    margin-left: -5px;
+    border: none;
+    height: 10px;
+}
+
+.nav-item {
+    position: relative;
+    top: 4px;
+    margin-left: 8px;
+}
+
+
+/* a:hover i {
+    color: #4d84e2;
+    transition: 0.5s;
+} */
+
+.logout {
+    position: absolute;
+    bottom: 20px;
+}
+
+.container {
+    display: flex;
+}
+
+.container-fluid {
+    display: flex;
+}
+
+/* Main section */
+
+.main {
+    position: relative;
+    padding: 20px;
+    width: 100%;
+}
+
+.main-top {
+    display: flex;
+    width: 100%;
+}
+
+
+.header--wrapper img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.header--wrapper {
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #2a2185;
+    padding: 10px 2rem;
+    border-radius: 10px;
+}
+
+.header-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-link a{
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 5px 0;
+    margin: 0 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding-left: 50px;
+    background: transparent;
+    color: #2f4f4f;
+}
+
+.header-link a:hover{
+    background-color: #4d84e2;
+}
+
+.header-link i{
+    padding-right: 10px;
+}
+
+.header-link i:hover{
+    background-color: #4d84e2;
+}
+
+.navbar-uppar{
+    display: flex;
+    align-items: center;
+}
+
+.header--wrapper span{
+    margin-left: 5px;
+    color: #FFF;
+}
+
+.header--wrapper h2{
+    color: #f3f3f3;
+}
+
+.header--wrapper .user-info {
+    display: flex;
+    align-items: center;
+    gap: 1;
+}
+
+.saerch-box {
+    background: rgba(237, 237, 237);
+    border-radius: 15px;
+    color: rgba(113, 99, 186, 255);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+}
+
+.saerch-box input {
+    background: transparent;
+    padding: 10px;
+}
+
+.saerch-box i {
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.5 ease-out;
+}
+
+.saerch-box i:hover {
+    transform: scale(1.2);
+}
+
+
+
+.main .users {
+    display: flex;
+    width: 100%;
+}
+
+.users .card {
+    width: 25%;
+    margin: 10px;
+    background: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.users .card img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.users .card h4 {
+    text-transform: uppercase;
+}
+
+.users .card p {
+    font-size: 12px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/*  sec shift start*/
+
+
+
+/* sec shift end */
+
+/* card-sec start */
+
+.users .card-sec {
+    width: 25%;
+    height: 150px;
+    margin: 10px;
+    background: #fff;
+    text-align: left;
+    border-radius: 10px;
+    padding: 10px;
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.users .card-sec:hover {
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    
+}
+
+
+.users .card-sec span i {
+    align-items: center;
+    font-size: 55px;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.users .card-sec .icon {
+    color: #fff;
+    padding: 1.2rem;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    font-size: 45px;
+    background: #4d84e2;
+    display: flex;
+    align-items: center;
+}
+
+.users .card-sec .icon-s {
+    color: #fff;
+    padding: 0.70rem;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    font-size: 45px;
+    background: #4d84e2;
+    display: flex;
+    align-items: center;
+}
+
+.users .card-sec h4 {
+    color: #4d84e2;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+
+.users .card-sec p {
+    font-size: 12px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.users .card-sec button {
+    width: 100%;
+    margin-top: 8px;
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid #4d84e2;
+}
+
+.users .card-sec button:hover {
+    background: #4d84e2;
+    color: #fff;
+    transition: 0.5s;
+}
+
+.users .per-card span {
+    padding: 5px;
+    border-radius: 10px;
+    background: #ddd;
+    display: flex;
+    padding-bottom: -30px;
+    font-size: 18px;
+
+}
+
+.users .per-card {
+    padding-left: 18px;
+    padding-top: 45px;
+}
+
+.users td {
+    font-size: 14px;
+    padding-right: 5px;
+}
+
+
+
+/* card-sec end */
+
+
+
+/* sec details start */
+.details .card-body {
+    width: 32%;
+    max-height: 450px;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin: 10px;
+    background: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.details .card-body h4 {
+    font-size: 17px;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.details .card-body-emp {
+    width: 32%;
+    max-height: 370px;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin: 10px;
+    background: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.details .card-body-emp h4 {
+    font-size: 17px;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.details .card-body-dis {
+    width: 33%;
+    max-height: 250px;
+    margin: 10px;
+    background: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.details .card-body-dis h4 {
+    font-size: 17px;
+    text-align: center;
+    padding-left: 15px;
+}
+
+.details .card-body-dis img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    align-items: center;
+}
+
+
+.users .card-body-dis p {
+    font-size: 12px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    align-items: center;
+}
+
+.users .card-body-dis button {
+    width: 100%;
+    margin-top: 8px;
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid #4d84e2;
+}
+
+.users .card-body-dis button:hover {
+    background: #4d84e2;
+    color: #fff;
+    transition: 0.5s;
+}
+
+
+/* sed details end */
+
+.users table {
+    margin: auto;
+}
+
+.users .per span {
+    padding: 5px;
+    border-radius: 10px;
+    background: rgb(223, 223, 223);
+}
+
+.users td {
+    font-size: 14px;
+    padding-right: 15px;
+}
+
+.users .card button {
+    width: 100%;
+    margin-top: 8px;
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid #4d84e2;
+}
+
+.users .card button:hover {
+    background: #4d84e2;
+    color: #fff;
+    transition: 0.5s;
+}
+
+/* Attendance List */
+
+.attendance {
+    text-transform: capitalize;
+    
+}
+
+.attendance-list {
+    width:100%;
+    padding: 10px 2rem;
+    margin-top: 10px;
+    background: lightcyan;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.container-form{
+    width: 60%;
+    height: 580px;
+    margin-top: -15px;
+    background: transparent;
+ }
+
+ .container-image{
+    width: 26%;
+    max-width: 26%;
+    height: 500px;
+    border-radius: 10px;
+    margin-right: 50px;
+    margin-top: -3%;
+    background: transparent;
+}
+
+ .container-navbar{
+    border: 1px solid black;
+    width: 100px;
+    height: 600px;
+    margin-right: 50px;
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.card img {
+    max-width: 330px;
+    height: 320px;
+    border-radius: 50%;
+    padding: 10px;
+    border: 1px solid #0056b3;
+    align-items: center;
+    justify-content: center;    
+}
+
+
+/* .card img:hover {
+    right: 55%;
+    transform: translate(10%);
+    transition: 0.5S;
+} */
+
+.card-body .input-box{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-bottom: 15px; 
+    margin-bottom: -10px;  
+}
+
+.card-body .input-box input{
+    height: 40px;
+    width: 340px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-text {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.card-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: transparent;
+    color: #333;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    width: 100%;
+    border: 1px solid #0056b3;
+    font-size: 18px;
+}
+
+.card-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    transition: 0.5s;
+    color: #fff;
+}
+    /* ========== Mian Container End ========== */
+
+.content .input-box{
+    border-bottom: 1px solid black;
+}
+
+.content .input-box .option{
+    display: flex;
+    flex-wrap: wrap;
+    width: 95%;
+    padding: 0 10px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+    color:  #2f4f4f;
+}
+
+.content .input-box .option:is(:focus,:valid){
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 2);
+}
+
+h2{
+    font-size: 26px;
+    font-weight: 600;
+    text-align: left;
+    color: #2f4f4f;
+    padding-bottom: 2px;
+    border-bottom: 1px solid silver;
+    margin-left: 5px;
+}
+
+h2:hover{
+    cursor: pointer;
+    color: #0056b3;
+    transition: 0.5s;
+}
+
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.input-box{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    padding-bottom: 15px;
+
+}
+
+.input-box:nth-child(2n){
+    justify-content: end;
+}
+
+.input-box label, .gender-title{
+    width: 95%;
+    color: #2f4f4f;
+    font-weight: bold;
+    margin: 8px 0;
+    font-size: 18px;
+}
+
+.input-box label, .gender-title:hover{
+    cursor: pointer;
+    color: #0056b3;
+    transition: 0.5s;
+}
+
+.gender-title{
+    font-size: 18px;
+}
+
+.gender-details{
+    margin: 8px 0;
+}
+
+.input-box input{
+    height: 40px;
+    width: 95%;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+.input-box input:is(:focus,:valid){
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 2);
+}
+
+.gender-category{
+    color: gray;
+}
+
+.gender-category label{
+    padding: 0 20px 0 5px;
+    font-size: 14px;
+}
+
+.gender-category label, .gender-category input{
+    cursor: pointer;
+}
+
+.button-container{
+    width: 50%;
+    padding-bottom: -15px;
+}
+
+.button-container button{
+    width: 100%;
+    margin-top: 5px;
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid #0056b3;
+    font-size: 20px;
+    display: block;
+}
+
+.button-container button:hover{
+    background: #0056b3;
+    color: #fff;
+    transition: 0.5s;
+    transform: scale(1.05);
+    border: 1px solid #0056b3;
+}
+
+.button-container button i{
+    padding-right: 5px;
+    font-size: 25px;
+}
+
+
+ /* ===================================================== */
+
+.table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 15px;
+    min-width: 100%;
+    overflow: hidden;
+    border-radius: 5px 5px 0 0;
+}
+
+table thead tr {
+    color: #fff;
+    background: #4d84e2;
+    text-align: left;
+    font-weight: bold;
+}
+
+.table th,
+.table td {
+    padding: 12px 15px;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr:nth-of-type(odd) {
+    background: #f3f3f3;
+}
+
+.table tbody tr.active {
+    font-weight: bold;
+    color: #4d84e2;
+}
+
+.table tbody tr:last-of-type {
+    border-bottom: 2px solid #4d84e2;
+}
+
+.table button {
+    padding: 6px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #4d84e2;
+}
+
+.table button:hover {
+    background: #4d84e2;
+    color: #fff;
+    transition: 0.5rem;
+}
+
+/* another */
+
+/* table depart start */
+
+.table-Depart {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 15px;
+    min-width: 100%;
+    overflow: hidden;
+    border-radius: 5px 5px 0 0;
+}
+
+.table-Depart thead tr {
+    color: #fff;
+    background: #4d84e2;
+    text-align: left;
+    font-weight: bold;
+}
+
+.table-Depart th,
+.table-Depart td {
+    padding: 12px 15px;
+}
+
+.table-Depart tbody tr {
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.table-Depart tbody tr:nth-of-type(odd) {
+    background: #f3f3f3;
+}
+
+.table-Depart tbody tr.active {
+    font-weight: bold;
+    color: #4d84e2;
+}
+
+.table tbody tr:last-of-type {
+    border-bottom: 2px solid #4d84e2;
+}
+
+/* table depart end */
