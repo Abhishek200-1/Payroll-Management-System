@@ -3,7 +3,7 @@ session_start();
 include("../Backend/Database/connection.php");
 
 if (!isset($_SESSION['AdminId'])) {
-    header("Location: tblAdminLogin.php");
+    header("Location: index.php");
 }
 
 ?>
@@ -52,13 +52,9 @@ if (!isset($_SESSION['AdminId'])) {
                     <a href="../Admin/profileadmin.php" class="logo">
                         <?php
                         if ($adminprofile) {
-                            echo '<img src=" ' . $adminprofile . '" alt="Card Image">';
+                            echo '<img src=" ' . $adminprofile . '" alt="Profile Image">';
                         } else {
-<<<<<<< HEAD
-                            echo "<img src='../src/Images/avatar.jpg' alt='Card Image'>";
-=======
-                            echo '<img src="../src/Images/avatar.jpg" alt="Card Image">';
->>>>>>> dc07e2e444c3c84dec42f54f2008344735aecc2b
+                            echo "<img src='../src/Images/avatar.jpg' alt='Profile Image'>";
                         }
                         ?>
                         <span class="nav-item"><?php echo $lastname . " " . $FirstName; ?></span>
@@ -306,9 +302,9 @@ if (!isset($_SESSION['AdminId'])) {
                     <div class="card-body-dis">
                         <?php
                         if ($adminprofile) {
-                            echo '<img src=" ' . $adminprofile . '" alt="Card Image">';
+                            echo '<img src=" ' . $adminprofile . '" alt="Profile Image">';
                         } else {
-                            echo '<img src="../src/Images/avatar.jpg" alt="Card Image">';
+                            echo '<img src="../src/Images/avatar.jpg" alt="Profile Image">';
                         }
                         ?>
                         <h4><?php echo $lastname . " " . $FirstName; ?></h4>

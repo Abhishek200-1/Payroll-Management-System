@@ -66,23 +66,6 @@ include("../Backend/Database/connection.php");
                             $Gender = $row['Gender'];
                             echo
                             '<tr>
-<<<<<<< HEAD
-                            <th scope="row">' . $i++ . '</th>
-                                <td>' . $name . '</td>
-                                <td>' . $lastname . '</td>
-                                <td>' . $Phone_Number . '</td>
-                                <td>' . $Dob . '</td>
-                                <td>' . $Gender . '</td>
-                                <td>
-                                    <button><a href="assign-username.php? username=' . $admin_Id . ' class="text-primary" style="text-decoration:none"><i class="fas fa-solid fa-id-card-clip me-2"></i>UserName</button>
-                                </td>
-                                <td>
-                                    <button><a href="../Backend/Update/update-add-admin.php? updateid=' . $admin_Id . '" class="text-success"><i class="fa-solid fa-pen-to-square fa-1x"></i></i></a></button>
-                                    <button><a href="../Backend/Update/delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-info mx-1"><i class="fa-solid fa-info fa-1x"></i></i></a></button>
-                                    <button><a href="../Backend/Update/delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
-                                </td>
-                        </tr>';
-=======
                                 <th scope="row">' . $i++ . '</th>
                                     <td>' . $name . '</td>
                                     <td>' . $lastname . '</td>
@@ -98,7 +81,6 @@ include("../Backend/Database/connection.php");
                                         <button><a href="delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
                                     </td>
                             </tr>';
->>>>>>> dc07e2e444c3c84dec42f54f2008344735aecc2b
                         }
                     }
                     ?>

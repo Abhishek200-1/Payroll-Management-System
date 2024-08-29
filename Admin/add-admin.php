@@ -13,8 +13,8 @@ if (isset($_POST['btn'])) {
     $Date_Of_Joining = $_POST['DOJ'];
     $Gender = $_POST['Gender'];
 
-    $addAdminQueary = "insert into `tbladdadmin` (First_Name,Last_Name,Email,Department,Shift_Name,Phone_Number,Address,Date_Of_Birth,Date_Of_Joining,Gender) values ('$First_Name','$Last_Name','$Email','$Department','$Shift_Name','$Phone_Number','$Address','$Date_Of_Birth','$Date_Of_Joining','$Gender')";
-    $result = mysqli_query($conn, $addAdminQueary);
+    $addAdminQuery = "insert into `tbladdadmin` (First_Name,Last_Name,Email,Department,Shift_Name,Phone_Number,Address,Date_Of_Birth,Date_Of_Joining,Gender) values ('$First_Name','$Last_Name','$Email','$Department','$Shift_Name','$Phone_Number','$Address','$Date_Of_Birth','$Date_Of_Joining','$Gender')";
+    $result = mysqli_query($conn, $addAdminQuery);
     if ($result) {
         // echo "<script>alert('Record Inserted Successfully');</script>";
         header('location:display-add-Admin.php');
@@ -28,7 +28,6 @@ if (isset($_POST['btn'])) {
     // {
     //     echo "<script>alert('User name already exists!');</script>";
     // }
-
 }
 ?>
 <!DOCTYPE html>
@@ -54,25 +53,21 @@ if (isset($_POST['btn'])) {
                     <p>Form To Add New Administrator To System</p>
                     <div class="content">
                         <div class="input-box">
-                            <label for="name">Fisrt Name</label>
+                            <label for="name">First Name</label>
                             <input type="text" placeholder="Enter Your First Name" name="Fname" required>
                         </div>
-
                         <div class="input-box">
                             <label for="name">Last Name</label>
                             <input type="text" placeholder="Enter Your Last Name" name="Lname" required>
                         </div>
-
                         <!-- <div class="input-box">
                             <label for="name">Admin image</label>
                             <input type="file" placeholder="Enter Your First Name" name="AdminImage" required>
                         </div> -->
-
                         <div class="input-box">
                             <label for="Email">Email</label>
                             <input type="text" placeholder="Enter Your Email" name="mail" required>
                         </div>
-
                         <div class="input-box">
                             <label for="depart">Department</label>
                             <!-- <input type="text" placeholder="Enter Your Department" name="depart" required> -->
@@ -93,7 +88,6 @@ if (isset($_POST['btn'])) {
                                 ?>
                             </select>
                         </div>
-
                         <div class="input-box">
                             <label for="addresss">Shift</label>
                             <!-- <input type="text" placeholder="Enter Your Department" name="shift" required> -->
@@ -114,27 +108,22 @@ if (isset($_POST['btn'])) {
                                 ?>
                             </select>
                         </div>
-
                         <div class="input-box">
                             <label for="PhoneNumber">Phone Number</label>
                             <input type="text" placeholder="Enter Your Phone Number" name="Phone_Number" required>
                         </div>
-
                         <div class="input-box">
                             <label for="addresss">Address</label>
                             <input type="text" placeholder="Enter Your Address" name="Address" required>
                         </div>
-
                         <div class="input-box">
                             <label for="Dob">Date Of Birth</label>
                             <input type="date" placeholder="Enter Your Date Of Birth" name="DOB" required>
                         </div>
-
                         <div class="input-box">
                             <label for="Dob">Date Of Joining</label>
                             <input type="date" placeholder="Enter Your Date Of Joining" name="DOJ" required>
                         </div>
-
                         <span class="gender-title">Gender</span>
                         <div class="gender-category">
                             <input type="radio" name="Gender" id="Male">
@@ -144,7 +133,6 @@ if (isset($_POST['btn'])) {
                             <input type="radio" name="Gender" id="Other">
                             <label>Other</label>
                         </div>
-
                     </div>
                     <div class="button-container">
                         <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i> Add New Employee</button>

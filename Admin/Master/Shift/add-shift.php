@@ -1,31 +1,23 @@
 <?php
-            include("../../../Backend/Database/connection.php");
-            if(isset($_POST['btn']))
-        {
-            $ShiftName=$_POST['shiftName'];
-            $StartTime=$_POST['startTime'];
-            $EndTime=$_POST['endTime'];
+include("../../../Backend/Database/connection.php");
+if (isset($_POST['btn'])) {
+    $ShiftName = $_POST['shiftName'];
+    $StartTime = $_POST['startTime'];
+    $EndTime = $_POST['endTime'];
 
-
-            
-            
-            $q="insert into `tblshift` (Shift_Name,Start_Time,End_Time) values ('$ShiftName','$StartTime','$EndTime')";
-            $result=mysqli_query($conn,$q);
-            if($result)
-            {
-                  // echo "<script>alert('Record Inserted Successfully');</script>";
-                  header('location:../Shift/display-add-shift.php');
-            }
-            else
-            {
-                echo "Error found : " . mysqli_error($conn);
-            }
-        }
-
-    ?>
-
+    $q = "insert into `tblshift` (Shift_Name,Start_Time,End_Time) values ('$ShiftName','$StartTime','$EndTime')";
+    $result = mysqli_query($conn, $q);
+    if ($result) {
+        // echo "<script>alert('Record Inserted Successfully');</script>";
+        header('location:../Shift/display-add-shift.php');
+    } else {
+        echo "Error found : " . mysqli_error($conn);
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,7 +38,7 @@
                     </a>
                 </li> -->
             </div>
-            
+
             <section class="attendance">
                 <div class="department-entry">
                     <h3>Shift Master Data</h3>
@@ -54,27 +46,29 @@
                         <h2>Add New Shift</h2>
                         <p>Form To Add New Shift To System</p>
                         <div class="content">
-                             <div class="input-box">
-                                 <label for="name">Shift Name : </label>
-                                 <input type="text" placeholder="Enter Your First Name" name="shiftName" required> 
+                            <div class="input-box">
+                                <label for="name">Shift Name : </label>
+                                <input type="text" placeholder="Enter Your First Name" name="shiftName" required>
                             </div>
-         
+
                             <div class="input-box">
                                 <label for="name">Shift Start Time</label>
-                                <input type="time" placeholder="Enter Your First Name" name="startTime" required> 
+                                <input type="time" placeholder="Enter Your First Name" name="startTime" required>
                             </div>
 
                             <div class="input-box">
                                 <label for="name">Shift End Time</label>
-                                <input type="time" placeholder="Enter Your First Name" name="endTime" required> 
+                                <input type="time" placeholder="Enter Your First Name" name="endTime" required>
                             </div>
                         </div>
 
                         <div class="alert">
                             <p>By Clicking Add Button, You Are Going To Add New Shift</p>
                         </div>
-                        <button class="btnAddDepartment-add"  name="btn"><i class="fa-solid fa-square-plus"></i><h6>Add New Shift</h6></button>
-                        
+                        <button class="btnAddDepartment-add" name="btn"><i class="fa-solid fa-square-plus"></i>
+                            <h6>Add New Shift</h6>
+                        </button>
+
                     </form>
                 </div>
             </section>
