@@ -29,7 +29,9 @@ if (isset($_POST['btnAdmin'])) {
   if (mysqli_num_rows($r) == 1) {
     while ($row = mysqli_fetch_assoc($r)) {
       $employeeId = $row['Emp_Id'];
+      echo $employeeId;
       $_SESSION['EmployeeId'] = $employeeId;
+      echo $_SESSION["EmployeeId"];
     }
     header("location:../Employee/EmployeeDashbord.php");
   } else {

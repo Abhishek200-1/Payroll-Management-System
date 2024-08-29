@@ -47,11 +47,13 @@ include("../Backend/Database/connection.php");
 
                     $i = 1;
                     $query = "";
-                    if (isset($_POST["SearchAdminBtn"])) {
+                    if (isset($_POST["SearchAdminBtn"])) 
+                    {
                         $searchText = $_POST["SearchAdmin"];
 
                         $query = "SELECT Id, First_Name, Last_Name, Email, Phone_Number, Date_Of_Birth, Gender FROM `tbladdadmin` WHERE First_Name LIKE '{$searchText}%' OR Last_Name LIKE '{$searchText}%' OR Email LIKE '{$searchText}%' OR Phone_Number LIKE '{$searchText}%' OR Date_Of_Birth LIKE '{$searchText}%' OR Gender LIKE '{$searchText}%';";
-                    } else {
+                    } else 
+                    {
                         $query = "SELECT Id, First_Name, Last_Name, Email, Phone_Number, Date_Of_Birth, Gender FROM `tbladdadmin`";
                     }
                     $result = mysqli_query($conn, $query);
@@ -66,6 +68,7 @@ include("../Backend/Database/connection.php");
                             $Gender = $row['Gender'];
                             echo
                             '<tr>
+<<<<<<< HEAD
                                 <th scope="row">' . $i++ . '</th>
                                     <td>' . $name . '</td>
                                     <td>' . $lastname . '</td>
@@ -81,6 +84,22 @@ include("../Backend/Database/connection.php");
                                         <button><a href="delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
                                     </td>
                             </tr>';
+=======
+                            <th scope="row">' . $i++ . '</th>
+                                <td>' . $name . '</td>
+                                <td>' . $lastname . '</td>
+                                <td>' . $Phone_Number . '</td>
+                                <td>' . $Dob . '</td>
+                                <td>' . $Gender . '</td>
+                                <td>
+                                    <button><a href="assign-username.php? username=' . $admin_Id . ' class="text-primary" style="text-decoration:none"><i class="fas fa-solid fa-id-card-clip me-2"></i>UserName</button>
+                                </td>
+                                <td>
+                                    <button><a href="../Backend/Update/update-add-admin.php? updateid=' . $admin_Id . '" class="text-success"><i class="fa-solid fa-pen-to-square fa-1x"></i></i></a></button>
+                                    <button><a href="../Backend/Update/delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-info mx-1"><i class="fa-solid fa-info fa-1x"></i></i></a></button>
+                                    <button><a href="../Backend/Update/delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
+                                </td>';
+>>>>>>> 6b7889280fea4248b162c96279472dd637690f69
                         }
                     }
                     ?>
@@ -89,5 +108,4 @@ include("../Backend/Database/connection.php");
         </div>
     </div>
 </body>
-
 </html>
