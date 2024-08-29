@@ -97,11 +97,11 @@ if (isset($_POST['btnAdmin'])) {
           <h2 class="title">Hello! Admin</h2>
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="email" name="MailId" placeholder="Please Enter Your Username" autocomplete="FALSE" required />
+            <input type="email" name="MailId" placeholder="Please Enter Your Username" required />
           </div>
           <div class="input-field">
             <i class="fas fa-lock"></i>
-            <input type="password" name="Passkey" placeholder="Please Enter Your Password" autocomplete="FALSE" />
+            <input type="password" name="Passkey" placeholder="Please Enter Your Password" required/>
           </div>
           <input type="submit" class="btn" name="btnAdmin" value="Sign in" />
           <p class="social-text">Or Sign up with social platforms</p>

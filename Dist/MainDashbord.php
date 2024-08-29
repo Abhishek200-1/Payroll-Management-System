@@ -2,7 +2,8 @@
 session_start();
 include("../Backend/Database/connection.php");
 
-if (!isset($_SESSION['AdminId'])) {
+if (!isset($_SESSION['AdminId'])) 
+{
     header("Location: index.php");
 }
 

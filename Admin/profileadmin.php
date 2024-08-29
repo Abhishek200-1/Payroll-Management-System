@@ -125,10 +125,9 @@ if ($result) {
                                         <span>Other</span>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="header-link">
-                                <a href="forgotPassword.php"><i class="fa-solid fa-unlock"></i><span>Forgot Password</span></a>
+                                <div class="header-link">
+                                        <a href="forgotPassword.php"><i class="fa-solid fa-unlock"></i><span>Forgot Password</span></a>
+                                </div>
                             </div>
                         </form>
                     </div>

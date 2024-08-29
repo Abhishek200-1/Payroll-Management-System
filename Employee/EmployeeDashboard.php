@@ -114,7 +114,7 @@ if (mysqli_num_rows($result) > 0) {
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="Logout.php">
                                 <span class="icon">
                                     <ion-icon name="log-out-outline"></ion-icon>
                                 </span>
