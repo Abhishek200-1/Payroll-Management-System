@@ -33,7 +33,7 @@ if (isset($_POST['btnAdmin'])) {
       $_SESSION['EmployeeId'] = $employeeId;
       echo $_SESSION["EmployeeId"];
     }
-    header("location:../Employee/EmployeeDashbord.php");
+    header("location:../Employee/EmployeeDashboard.php");
   } else {
     echo "<script>alert('Invalid Username And Password');</script>";
     echo "Error found : " . mysqli_error($conn);

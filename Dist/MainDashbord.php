@@ -54,12 +54,7 @@ if (!isset($_SESSION['AdminId'])) {
                         if ($adminprofile) {
                             echo '<img src=" ' . $adminprofile . '" alt="Profile Image">';
                         } else {
-<<<<<<< HEAD
                             echo "<img src='../src/Images/avatar.jpg' alt='Profile Image'>";
-=======
-                            echo "<img src='../src/Images/avatar.jpg' alt='Card Image'>";
-                            echo '<img src="../src/Images/avatar.jpg" alt="Card Image">';
->>>>>>> 6b7889280fea4248b162c96279472dd637690f69
                         }
                         ?>
                         <span class="nav-item"><?php echo $lastname . " " . $FirstName; ?></span>

@@ -2,6 +2,24 @@
 session_start();
 include("../Backend/Database/connection.php");
 ?>
+
+<?php
+$empId = $_SESSION["EmployeeId"];
+
+$query = "SELECT * FROM `tbladdemployee` WHERE Emp_Id='$empId'";
+$result = mysqli_query($conn, $query);
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $firstName = $row["First_Name"];
+        $lastname = $row["Last_Name"];
+        $Emp_Id = $row["Emp_Id"];
+        $EmailId = $row["Email"];
+        $Number = $row["Pnumber"];
+        $AddressEmp = $row["Date_Of_Joining"];
+    }
+} 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,25 +37,16 @@ include("../Backend/Database/connection.php");
 </head>
 
 <body>
-    <?php
-    $empId = $_SESSION["EmployeeId"];
-
-    $query = "SELECT First_Name, Last_Name, Image, Email, Department, Shift, Pnumber, Address, Date_Of_Birth, Date_Of_Joining, Gender FROM `tbladdemployee` WHERE Emp_Id=$empId";
-
-    $result = mysqli_query($conn, $query);
-    if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) {
-    ?>
-            <!-- =============== Navigation ================ -->
-            <div class="container">
-                <div class="navigation">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <span class="icon">
-                                    <ion-icon name="person-outline"></ion-icon>
+        <!-- =============== Navigation ================ -->
+        <div class="container">
+            <div class="navigation">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="icon">
+                                <ion-icon name="person-outline"></ion-icon>
                                 </span>
-                                <span class="title"><?php echo $row["First_Name"] . " " . $row["Last_Name"] ?></span>
+                                <span class="title"><?php echo $firstName . " " . $lastname; ?></span>
                             </a>
                         </li>
 
@@ -185,12 +194,25 @@ include("../Backend/Database/connection.php");
                     <div class="cardBox-profile">
                         <div class="card-profile">
                             <div>
-                                <div class="image-profile"><img src="../Employee/image/avatar.jpg" alt=""></div>
-                                <div class="cardName-profile">Vishal Jaykumar Dubey</div>
+                                <div class="image-profile">
+                                    <a href=""><img src="../Employee/image/avatar.jpg" alt=""></a>
+                                </div>
+                                <div class="cardName-profile"><?php echo $firstName . " " . $lastname; ?></div>
                             </div>
 
-                            <div class="iconBx">
-                                <ion-icon name="cash-outline"></ion-icon>
+                            <div class="Details-pro">
+                                <div class="name">
+                                    <h3>Accountant Department</h3>
+                                </div>
+                                <div class="basic-details">
+                                    <h5>Employee Id : <?php echo $Emp_Id ?></h5>
+                                    <h5>Email : <?php echo $EmailId ?></h5>
+                                    <h5>Phone : +91-<?php echo $Number ?></h5>
+                                    <h5>Date Of Joining  : <?php echo $AddressEmp ?></h5>
+                                </div>
+                                <div class="btn-view">
+                                    <button><a href="">View Profile</a></button>
+                                </div>
                             </div>
                         </div>
 
@@ -221,23 +243,17 @@ include("../Backend/Database/connection.php");
                                   </div>
                                   <div class="days">
                                     <!-- lets add days using js -->
-                                  </div>
                                 </div>
-                              </div>
+                            </div>
+                        </div>
                     </div>
-
-                    
                 </div>
             </div>
-            <!-- =========== Scripts =========  -->
-            <script src="../Employee/javascript/main.js"></script>
-            <!-- ====== ionicons ======= -->
-            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <?php
-        }
-    }
-    ?>
+    <!-- =========== Scripts =========  -->
+    <script src="../Employee/javascript/main.js"></script>
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
