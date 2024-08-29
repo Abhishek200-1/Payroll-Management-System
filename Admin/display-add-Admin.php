@@ -31,7 +31,7 @@ include("../Backend/Database/connection.php");
             <button class="add btn btn-light" type="submit" onclick="location.href='add-admin.php'"><i class="fa-solid fa-plus me-2"></i>Add New Admin In System</button>
             <table class="col-xs-7 table table-striped table-condensed table-fixed">
                 <thead class="table-info">
-                    <tr>
+                    <tr style="padding-right: 20px;">
                         <th class="col">Admin Id</th>
                         <th class="col">Fisrt Name</th>
                         <th class="col">Last Name</th>
@@ -42,7 +42,7 @@ include("../Backend/Database/connection.php");
                         <th class="col">Operations</th>
                     </tr>
                 </thead>
-                <tbody class="table-group-divider">
+                <tbody class="table-group-divider" style="padding-right: 20px;">
                     <?php
 
                     $i = 1;
@@ -66,6 +66,7 @@ include("../Backend/Database/connection.php");
                             $Gender = $row['Gender'];
                             echo
                             '<tr>
+<<<<<<< HEAD
                             <th scope="row">' . $i++ . '</th>
                                 <td>' . $name . '</td>
                                 <td>' . $lastname . '</td>
@@ -81,6 +82,23 @@ include("../Backend/Database/connection.php");
                                     <button><a href="../Backend/Update/delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
                                 </td>
                         </tr>';
+=======
+                                <th scope="row">' . $i++ . '</th>
+                                    <td>' . $name . '</td>
+                                    <td>' . $lastname . '</td>
+                                    <td>' . $Phone_Number . '</td>
+                                    <td>' . $Dob . '</td>
+                                    <td>' . $Gender . '</td>
+                                    <td>
+                                        <button><a href="assign-username.php? updateid=' . $admin_Id . ' class="text-primary" style="text-decoration:none"><i class="fas fa-solid fa-id-card-clip me-2"></i>UserName</button>
+                                    </td>
+                                    <td>
+                                        <button><a href="update-add-admin.php? updateid=' . $admin_Id . '" class="text-success"><i class="fa-solid fa-pen-to-square fa-1x"></i></i></a></button>
+                                        <button><a href="../Backend/Update/delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-info mx-1"><i class="fa-solid fa-info fa-1x"></i></i></a></button>
+                                        <button><a href="delete-add-admin.php? deleteid=' . $admin_Id . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
+                                    </td>
+                            </tr>';
+>>>>>>> dc07e2e444c3c84dec42f54f2008344735aecc2b
                         }
                     }
                     ?>

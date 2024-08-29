@@ -1,5 +1,5 @@
 <?php
-    include '../Database/connection.php';
+    include '../../../Backend/Database/connection.php';
     if(isset($_GET['deleteid']))
     {
         $Emp_Id=$_GET['deleteid'];
@@ -10,7 +10,7 @@
     if($result)
     {
         //echo "Deleted Successfully";
-        header("location:../../Admin/Master/Employee/display-add-employee.php");
+        header("location:display-add-employee.php");
     }
     else
     {

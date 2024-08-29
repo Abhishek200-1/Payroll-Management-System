@@ -57,7 +57,7 @@
         $query = "UPDATE `tbladdadmin` SET `password`='$password' WHERE `email`='$email'";
         if (mysqli_query($conn, $query)) {
             echo "<script>alert('Password updated successfully!')</script>";
-            header("location:../Dist/AdminDashbord.php");
+            header("location:profileadmin.php");
         }
     }
     ?>

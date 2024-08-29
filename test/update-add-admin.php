@@ -1,12 +1,11 @@
 <?php
             include("../Database/connection.php");
-            $Emp_Id = $_GET['updateid'];
             if (isset($_POST['btn'])) {
                 $Firstname = $_POST['Fname'];
                 $Lastname = $_POST['Lname'];
                 $Email = $_POST['mail'];
                 $Department = $_POST['depart'];
-                $Shift = $_POST['shift'];
+                $Shift = $_POST['Shift_Name'];
                 $Pnumber = $_POST['PhoneNum'];
                 $Address = $_POST['address'];
                 $Dateofbirth = $_POST['DOB'];
@@ -14,15 +13,11 @@
                //  $Gender = $_POST['gender'];
 
 
-                $q = "update `tbladdemployee` set Emp_Id=$Emp_Id,First_Name='$Firstname',Last_Name='$Lastname',Email='$Email',Department='$Department',Shift='$Shift',Pnumber='$Pnumber',Address='$Address',Date_Of_Birth='$Dateofbirth',Date_Of_Joining='$Dateofjoining'";
+                $q = "insert into `tbladdadmin` (First_Name,Last_Name,Image,Email,Department,Shift,Pnumber,Address,Date_of_birth,Date_of_joining,Gender) values ('$Firstname','$Lastname','$image','$Email','$Department','$Shift','$Pnumber','$Address','$Dateofbirth','$Dateofjoining','$Gender')";
                 $result = mysqli_query($conn, $q);
                 if ($result) {
-                    echo "<script>alert('Record Inserted Successfully');</script>";
-                    // header('location:../../Admin/Master/Employee/display-add-employee.php');
-                }
-                else
-                {
-                    echo "Error found : " . mysqli_error($conn);
+                    // echo "<script>alert('Record Inserted Successfully');</script>";
+                    header('location:../../Admin/Master/Employee/display-add-employee.php');
                 }
             }
         ?>
@@ -31,17 +26,18 @@
 <!-- Php code view data in table -->
 <?php
 include("../Database/connection.php");
+$admin_Id = $_GET['updateid'];
 
-$sql2 = "SELECT * FROM `tbladdemployee` where Emp_Id=$Emp_Id";
+$sql2 = "SELECT * FROM `tbladdadmin` where Id=$admin_Id";
 $updateresult = mysqli_query($conn, $sql2);
 $row = mysqli_fetch_assoc($updateresult);
 
-$Emp_Id = $row['Emp_Id'];
+$Emp_Id = $row['Id'];
 $name = $row['First_Name'];
 $lastname = $row['Last_Name'];
 $Email = $row['Email'];
-$Shift = $row['Shift'];
-$Phone_Number = $row['Pnumber'];
+$Shift=$row['Shift_Name'];
+$Phone_Number = $row['Phone_Number'];
 $Address = $row['Address'];
 $Department = $row['Department'];
 $Dob = $row['Date_Of_Birth'];
@@ -61,9 +57,9 @@ $Doj = $row['Date_Of_Joining'];
 <body>
     <div class="container">
         <form action="" method="POST">
-            <h2>Employee Master Data</h2>
+            <h2>Admin Master Data</h2>
             <div class="content">
-                <p>Form To Update Employee Details In System</p>
+                <p>Form To Update Admin Details In System</p>
                 <div class="content">
                     <div class="input-box">
                         <label for="name">Fisrt Name</label>
@@ -75,19 +71,14 @@ $Doj = $row['Date_Of_Joining'];
                     <input type="text" placeholder="Enter Your Last Name" name="Lname" value=<?php echo $lastname; ?> required>
                 </div>
 
-                <!-- <div class="input-box">
+                <div class="input-box">
                     <label for="name">Employee image</label>
                     <input type="file" placeholder="Enter Your First Name" data-parsley-trigger="keyup" name="Image" class="form-control" required />
-                </div> -->
+                </div>
 
                 <div class="input-box">
                     <label for="Email">Email</label>
                     <input type="text" placeholder="Enter Your Email" name="mail" value=<?php echo $Email; ?> required>
-                </div>
-
-                <div class="input-box">
-                    <label for="PhoneNumber">Phone Number</label>
-                    <input type="text" placeholder="Enter Your Phone Number" name="PhoneNum" value=<?php echo $Phone_Number; ?> required>
                 </div>
 
                 <div class="input-box">
@@ -116,7 +107,7 @@ $Doj = $row['Date_Of_Joining'];
                 <div class="input-box">
                     <label for="addresss">Shift</label>
                     <input type="text" placeholder="Enter Your Department" name="shift" value=<?php echo $Shift; ?> required>
-                    <select class="option" name="shift">
+                    <select class="option" name="Shift_Name">
                         <option value="default">Select Shift</option>
                             <?php
                                 include("../Backend/Database/connection.php");
@@ -134,6 +125,11 @@ $Doj = $row['Date_Of_Joining'];
                                 }
                             ?>
                     </select>
+                </div>
+
+                <div class="input-box">
+                    <label for="PhoneNumber">Phone Number</label>
+                    <input type="text" placeholder="Enter Your Phone Number" name="PhoneNum" value=<?php echo $Phone_Number; ?> required>
                 </div>
 
                 <div class="input-box">
@@ -162,7 +158,7 @@ $Doj = $row['Date_Of_Joining'];
                 </div> -->
             </div>
             <div class="button-container">
-                <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i>Update Employee Details</button>
+                <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i>Update Admin Details</button>
             </div>
             </div>
         </form>

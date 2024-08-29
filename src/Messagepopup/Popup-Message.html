@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Popup-Message.css">
+</head>
+<body>
+    <div class="container">
+         <button type="submit" class="btn" onclick="openpopup()">SUBMIT</button>
+         <div class="popup" id="popup">
+            <img src="tick .jpg" >
+            <h2>Registered Successfully</h2>
+            <p>Your Employee Registartion succesfully submitted. Thanks</p>
+            <button type="button" onclick="closepopup()">ok</button>
+
+         </div>
+    </div>
+
+    <script>
+        let popup=document.getElementById("popup");
+
+        function openpopup(){
+                popup.classList.add("open-popup");
+        }
+        function closepopup(){
+                popup.classList.remove("open-popup");
+        }
+
+    </script>
+</body>
+</html>

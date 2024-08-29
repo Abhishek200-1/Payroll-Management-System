@@ -4,77 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../src/css/display-table-only.css">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/81aa89284e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../../src/css/department.css">
 </head>
-<a href="../add-department.php"></a>
 
 <body>
     <div class="container-fluid">
-        <section class="main">
-            <div class="main-top">
-                <h1>Department</h1>
-                <li><a href="">
-                        <i class="fas fa-solid fa-sign-out-alt pe-2"></i>
-                        <h6>Logout</h6>
-                    </a>
-                </li>
+        <div class="table-uppar">
+            <div class="Button-container">
+                <Button type="button" class="btn btn-light" onclick="location.href='../../../Dist/MainDashbord.php'"><i class="fa-solid fa-arrow-left me-2"></i>Go Back</Button>
             </div>
-
-            <section class="attendance-depart">
-                <div class="department-list">
-                    <h4>Data Tables Department</h4>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Id</th>
-                                <th>Department Name</th>
-                                <th>Operations</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $i = 1;
-                            include('../../../Backend/Database/connection.php');
-                            $q = "SELECT * FROM `tbldepartment`";
-                            $result = mysqli_query($conn, $q);
-                            if ($result) {
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    $DepartmentId = $row['Id'];
-                                    $DepartmentName = $row['Name'];
-                                    echo
-                                    '<tr>
-                                            <th>' . $i++ . '</th>
-                                                <td>' . $DepartmentId . '</td>
-                                                <td>' . $DepartmentName . '</td>
-                                            <td>
-                                                <button><i class="fa-solid fa-pen-to-square"></i></button>
-                                                <button><i class="fa-solid fa-trash"></i></button>
-                                            </td>
-                                        </tr>';
-                                }
-                            }
-                            ?>
-                            <!-- <tr>
-                                <td>01</td>
-                                <td>ACD</td>
-                                <td>Accounting Department</td>
-                                <td>
-                                    <button><i class="fa-solid fa-pen-to-square"></i></button>
-                                    <button><i class="fa-solid fa-trash"></i></button>
-                                </td>
-                            </tr> -->
-                        </tbody>
-                    </table>
-                    <button class="btnAddDepartment" onclick="location.href='../add-department.php'"><i class="fa-solid fa-square-plus"></i>
-                        <h6>Add New Department</h6>
-                    </button>
-                </div>
-            </section>
-        </section>
+            <div class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </div>
+        </div>
+        <link rel="stylesheet" href="">
+        <div class="table-body">
+            <h4>Admin Master Table</h4>
+            <button class="add btn btn-light" type="submit" onclick="location.href='add-department.php'"><i class="fa-solid fa-plus me-2"></i>   Add New Department</button>
+            <table class="col-xs-7 table table-striped table-condensed table-fixed">
+                <thead class="table-info">
+                    <tr>
+                        <th class="col">#</th>
+                        <th class="col">Id</th>
+                        <th class="col">Department Name</th>
+                        <th class="col">Operations</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <?php
+                    $i = 1;
+                    include('../../../Backend/Database/connection.php');
+                    $q = "SELECT * FROM `tbldepartment`";
+                    $result = mysqli_query($conn, $q);
+                    if ($result) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $DepartmentId = $row['Id'];
+                            $DepartmentName = $row['Name'];
+                            echo
+                            '<tr>
+                                <th scope="row">' . $i++ . '</th>
+                                    <td>' . $DepartmentId . '</td>
+                                    <td>' . $DepartmentName . '</td>
+                                    <td>
+                                        <button><a href="update-add-admin.php? updateid=' . $DepartmentId . '" class="text-success"><i class="fa-solid fa-pen-to-square fa-1x"></i></i></a></button>
+                                        <button><a href="delete-department.php? deleteid=' . $DepartmentId . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
+                                    </td>
+                            </tr>';
+                        }
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 

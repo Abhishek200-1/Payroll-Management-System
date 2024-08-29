@@ -1,69 +1,97 @@
+<!-- =========== Code to View Data Start========== -->
+<?php 
+    include("../Backend/Database/connection.php");
+    $admin_Id=$_GET['updateid'];
+
+    $sql="SELECT * FROM `tbladdadmin` where Id=$admin_Id";
+    $displaysql=mysqli_query($conn,$sql);
+    $row=mysqli_fetch_assoc($displaysql);
+    $Firstname=$row['First_Name'];
+    $Lastname=$row['Last_Name'];
+    $Department=$row['Department'];
+    $Shift=$row['Shift_Name'];
+    $Pnumber=$row['Phone_Number'];
+    $Address=$row['Address'];
+?>
+<!-- =========== Code to View Data End ========== -->
+
+<!-- =========== Code to Update Data Start ========== -->
 <?php
-include("../../../Backend/Database/connection.php");
-if (isset($_POST['btn'])) 
-{
-    $Firstname = $_POST['Fname'];
-    $Lastname = $_POST['Lname'];
-    $Email = $_POST['mail'];
+include("../Backend/Database/connection.php");
+    $admin_Id=$_GET['updateid'];
+    if (isset($_POST['btn'])) {
+    $First_Name = $_POST['Fname'];
+    $Last_Name = $_POST['Lname'];
+    // $Email = $_POST['mail'];
     $Department = $_POST['Department'];
-    $Shift = $_POST['shift'];
-    $Pnumber = $_POST['Phone_Number'];
+    $Shift_Name = $_POST['shift'];
+    $Phone_Number = $_POST['Phone_Number'];
     $Address = $_POST['Address'];
-    $Dateofbirth = $_POST['DOB'];
-    $Dateofjoining = $_POST['DOJ'];
-    $Gender = $_POST['Gender'];
+    // $Date_Of_Birth = $_POST['DOB'];
+    // $Date_Of_Joining = $_POST['DOJ'];
+    // $Gender = $_POST['Gender'];
 
-
-    $q = "insert into `tbladdemployee` (First_Name,Last_Name,Email,Department,Shift,Pnumber,Address,Date_of_Birth,Date_of_Joining,Gender) values ('$Firstname','$Lastname','$Email','$Department','$Shift','$Pnumber','$Address','$Dateofbirth','$Dateofjoining','$Gender')";
-    $result = mysqli_query($conn, $q);
+    $addAdminQueary = "update `tbladdadmin` set Id=$admin_Id,First_Name='$First_Name',Last_Name='$Last_Name',Department='$Department',Shift_Name='$Shift_Name',Phone_Number='$Phone_Number',Address='$Address' where Id=$admin_Id";
+    $result = mysqli_query($conn, $addAdminQueary);
     if ($result) {
         // echo "<script>alert('Record Inserted Successfully');</script>";
-        header('location:../../../Admin/Master/Employee/display-add-employee.php');
+        header('location:display-add-Admin.php');
+    } else {
+        die(mysqli_error($conn));
+        echo "<script>alert('Record not Inserted');</script>";
     }
+
+    // $existingUser = "SELECT User_Name from tbladdadmin where user_name='$User_Name'";
+    // if(mysqli_query($conn, $existingUser)) 
+    // {
+    //     echo "<script>alert('User name already exists!');</script>";
+    // }
+
 }
 ?>
+<!-- =========== Code to Update Data end ========== -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../src/css/admin.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/81aa89284e.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="../src/css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Add-Admin-Page</title>
 </head>
 
 <body>
-<div class="container">
+    <div class="container">
         <div class="form-image">
-            <img src="../../../src/Images/svg/bussiness man.svg" alt="">
+            <img src="../src/Images/svg/undraw_shopping_re_3wst.svg" alt="">
         </div>
         <div class="form">
             <form method="POST">
-                <h2>Employee Master Data</h2>
+                <h2>Administrator Master Data</h2>
                 <div class="content">
-                    <p>Form To Add New Employee To System</p>
+                    <p>Form To Update Administrator Data To System</p>
                     <div class="content">
                         <div class="input-box">
                             <label for="name">Fisrt Name</label>
-                            <input type="text" placeholder="Enter Your First Name" name="Fname" required>
+                            <input type="text" placeholder="Enter Your First Name" name="Fname" value=<?php echo $Firstname;?> required>
                         </div>
 
                         <div class="input-box">
                             <label for="name">Last Name</label>
-                            <input type="text" placeholder="Enter Your Last Name" name="Lname" required>
+                            <input type="text" placeholder="Enter Your Last Name" name="Lname" value=<?php echo $Lastname;?> required>
                         </div>
 
-                        <div class="input-box">
+                        <!-- <div class="input-box">
+                            <label for="name">Admin image</label>
+                            <input type="file" placeholder="Enter Your First Name" name="AdminImage" required>
+                        </div> -->
+
+                        <!-- <div class="input-box">
                             <label for="Email">Email</label>
                             <input type="text" placeholder="Enter Your Email" name="mail" required>
-                        </div>
-
-                        <div class="input-box">
-                            <label for="PhoneNumber">Phone Number</label>
-                            <input type="text" placeholder="Enter Your Phone Number" name="Phone_Number" required>
-                        </div>
+                        </div> -->
 
                         <div class="input-box">
                             <label for="depart">Department</label>
@@ -108,11 +136,16 @@ if (isset($_POST['btn']))
                         </div>
 
                         <div class="input-box">
-                            <label for="addresss">Address</label>
-                            <input type="text" placeholder="Enter Your Address" name="Address" required>
+                            <label for="PhoneNumber">Phone Number</label>
+                            <input type="text" placeholder="Enter Your Phone Number" name="Phone_Number" value=<?php echo $Pnumber;?> required>
                         </div>
 
                         <div class="input-box">
+                            <label for="addresss">Address</label>
+                            <input type="text" placeholder="Enter Your Address" name="Address" value=<?php echo $Address;?> required>
+                        </div>
+
+                        <!-- <div class="input-box">
                             <label for="Dob">Date Of Birth</label>
                             <input type="date" placeholder="Enter Your Date Of Birth" name="DOB" required>
                         </div>
@@ -120,9 +153,9 @@ if (isset($_POST['btn']))
                         <div class="input-box">
                             <label for="Dob">Date Of Joining</label>
                             <input type="date" placeholder="Enter Your Date Of Joining" name="DOJ" required>
-                        </div>
+                        </div> -->
 
-                        <span class="gender-title">Gender</span>
+                        <!-- <span class="gender-title">Gender</span>
                         <div class="gender-category">
                             <input type="radio" name="Gender" id="Male">
                             <label>Male</label>
@@ -130,11 +163,11 @@ if (isset($_POST['btn']))
                             <labe>Female</labe>
                             <input type="radio" name="Gender" id="Other">
                             <label>Other</label>
-                        </div>
+                        </div> -->
 
                     </div>
                     <div class="button-container">
-                        <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i> Add New Employee</button>
+                        <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i> Update Admin Data</button>
                     </div>
                 </div>
             </form>

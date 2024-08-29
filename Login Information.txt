@@ -9,7 +9,7 @@
 
 **Admin Login Details**
 
-Username: hello@gmail.com
+Username: admin@123
 Password: 12345
 
 

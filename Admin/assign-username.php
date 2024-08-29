@@ -1,25 +1,34 @@
 <?php
             include("../Backend/Database/connection.php");
-            if (isset($_POST['btn'])) {
-                $Username = $_POST['Username'];
-                $Password = $_POST['Password'];
+            $admin_Id=$_GET['updateid'];
+            if (isset($_POST['btn'])) 
+            {
+                // $First_Name = $_POST['Fname'];
+                // $Last_Name = $_POST['Lname'];
                 // $Email = $_POST['mail'];
-                // $Department = $_POST['depart'];
-                // $Shift = $_POST['Shift_Name'];
-                // $Pnumber = $_POST['PhoneNum'];
-                // $Address = $_POST['address'];
-                // $Dateofbirth = $_POST['DOB'];
-                // $Dateofjoining = $_POST['DOJ'];
-               //  $Gender = $_POST['gender'];
-
-
-                $q = "update `tbladdadmin` set Id=$admin_Id,User_Name='$Username',Password='$Password'";
-                $result = mysqli_query($conn, $q);
-                if ($result) {
+                // $Department = $_POST['Department'];
+                // $Shift_Name = $_POST['shift'];
+                // $Phone_Number = $_POST['Phone_Number'];
+                // $Address = $_POST['Address'];
+                // $Date_Of_Birth = $_POST['DOB'];
+                // $Date_Of_Joining = $_POST['DOJ'];
+                // $Gender = $_POST['Gender'];
+                $Username=$_POST['Username'];
+                $Password=$_POST['Password'];
+            
+                $addAdminQueary = "update `tbladdadmin` set Id=$admin_Id,User_Name='$Username',Password=$Password where Id=$admin_Id";
+                $result = mysqli_query($conn, $addAdminQueary);
+                if ($result) 
+                {
                     // echo "<script>alert('Record Inserted Successfully');</script>";
-                    header('location:display-add-admin.php');
+                    header('location:display-add-Admin.php');
+                } else 
+                {
+                    die(mysqli_error($conn));
+                    echo "<script>alert('Record not Inserted');</script>";
                 }
-            }
+        
+            }        
         ?>
  
 <!DOCTYPE html>
@@ -48,36 +57,7 @@
                         <label for="name">Password</label>
                         <input type="password" placeholder="Enter Your Last Name" name="Password" required>
                     </div>
-
-                <!-- <div class="input-box">
-                    <label for="PhoneNumber">Phone Number</label>
-                    <input type="text" placeholder="Enter Your Phone Number" name="PhoneNum" value=<?php echo $Phone_Number; ?> required>
                 </div>
-
-                <div class="input-box">
-                    <label for="addresss">Address</label>
-                    <input type="text" placeholder="Enter Your Address" name="address" value=<?php echo $Address; ?> required>
-                </div>
-
-                <div class="input-box">
-                    <label for="Dob">Date Of Birth</label>
-                    <input type="date" placeholder="Enter Your Date Of Birth" name="DOB" value=<?php echo $Dob; ?> required>
-                </div>
-
-                <div class="input-box">
-                    <label for="Dob">Date Of Joining</label>
-                    <input type="date" placeholder="Enter Your Date Of Birth" name="DOJ" value=<?php echo $Doj; ?> required>
-                </div> -->
-
-                <!-- <span class="gender-title">Gender</span>
-                <div class="gender-category">
-                    <input type="radio" name="gender" id="Male">
-                    <label>Male</label>
-                    <input type="radio" name="gender" id="Female">
-                    <labe>Female</labe>
-                    <input type="radio" name="gender" id="Other">
-                    <label>Other</label>
-                </div> -->
             </div>
             <div class="button-container">
                 <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i>AssiGN Username</button>

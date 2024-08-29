@@ -49,12 +49,16 @@ if (!isset($_SESSION['AdminId'])) {
         <nav>
             <ul>
                 <li>
-                    <a href="../Admin/Profile.php" class="logo">
+                    <a href="../Admin/profileadmin.php" class="logo">
                         <?php
                         if ($adminprofile) {
                             echo '<img src=" ' . $adminprofile . '" alt="Card Image">';
                         } else {
+<<<<<<< HEAD
                             echo "<img src='../src/Images/avatar.jpg' alt='Card Image'>";
+=======
+                            echo '<img src="../src/Images/avatar.jpg" alt="Card Image">';
+>>>>>>> dc07e2e444c3c84dec42f54f2008344735aecc2b
                         }
                         ?>
                         <span class="nav-item"><?php echo $lastname . " " . $FirstName; ?></span>
@@ -105,9 +109,9 @@ if (!isset($_SESSION['AdminId'])) {
                     </a>
                 </li>
                 <li>
-                    <a href="../Admin/Master/Location/display-add-location.php">
-                        <i class="fas fa-solid fa-location-dot"></i>
-                        <span class="nav-item">Location</span>
+                    <a href="../Admin/calculator.html">
+                        <i class="fas fa-solid fa-calculator"></i>
+                        <span class="nav-item">Calculator</span>
                     </a>
                 </li>
                 <li>
