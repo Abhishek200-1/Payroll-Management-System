@@ -70,7 +70,8 @@
                 ];
 
                 // Loop through employees and generate rows
-                foreach ($employees as $employee) {
+                foreach ($employees as $employee) 
+                {
                     echo "<tr>";
                     echo "<td>{$employee['id']}</td>";
                     echo "<td>{$employee['name']}</td>";
