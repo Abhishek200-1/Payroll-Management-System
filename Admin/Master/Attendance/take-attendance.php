@@ -1,0 +1,80 @@
+<?php
+include("../../../Backend/Database/connection.php");
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="attendance.css">
+    <title>PayRoll Management System</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="table-uppar">
+            <div class="Button-container">
+                <button type="button" class="btn btn-light" onclick="location.href='display-add-attendance.php'"><i class="fa-solid fa-arrow-left me-2"></i>Go Back</button>
+            </div>
+            <form action="" method="post">
+                <div class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" required autocomplete="off" name="SearchAdmin">
+                    <button class="btn btn-outline-light" name="SearchAdminBtn" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+        <form method="POST" action="save_attendance.php">
+            <div class="table-body">
+                <h4>Attendance Master Table</h4>
+                <!-- <button class="add btn btn-light" 'type="submit"' onclick="location.href='mark-attendance.php'"><i class="fa-solid fa-clipboard-user me-2"></i>Take Attendance</button>
+                <button class="add btn btn-light" 'type="submit"' onclick="location.href='view_attendance.php'"><i class="fa-regular fa-calendar-days me-2"></i>Monthly Attendance Report</button>
+                <button class="add btn btn-light" 'type="submit"' onclick="location.href='calculate_salary.php'"><i class="fa-solid fa-calculator me-2"></i>Calculate Salary</button>
+                <button class="add btn btn-light" 'type="submit"' onclick="location.href='salary_report.php'"><i class="fa-solid fa-file-invoice me-2"></i>Salary Report</button> -->
+                <div class="form-floating mb-3 ps-3 mt-2" style="margin-left: 620px;">
+                    <input type="date" class="form-control ps-3" id="floatingInput" name="attendance_date" required value="<?php echo date('Y-m-d'); ?>">
+                    <label class="ms-3" for="attendance_date">Select Attendance Date</label>
+                </div>
+                <table class="col-xs-7 table table-striped table-condensed table-fixed">
+                    <thead class="table-info">
+                        <tr>
+                            <th class="col">Emp Id</th>
+                            <th class="col">Fisrt Name</th>
+                            <th class="col">Last Name</th>
+                            <th class="col">Department</th>
+                            <th class="col">Present</th>
+                            <th class="col">Leave</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <?php
+                        $result = $conn->query("SELECT * FROM `tbladdemployee` WHERE status='active'");
+                        while ($row = $result->fetch_assoc()) {
+                            echo
+                            "<tr>
+                                <td>{$row['Emp_Id']}</td>
+                                <td>{$row['First_Name']}</td>
+                                <td>{$row['Last_Name']}</td>
+                                <td>{$row['Department']}</td>
+                                <td><input type='checkbox' name='attendance[{$row['Emp_Id']}]' value='present'></td>
+                                <td>
+                                    <select name='leave[{$row['Emp_Id']}]'>
+                                        <option value=''>No Leave</option>
+                                        <option value='leave'>Leave</option>
+                                    </select>
+                                </td>
+                            </tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <button class="addattendance btn btn-light" type="submit"><i class="fa-solid fa-floppy-disk me-2"></i>Save Attendance</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

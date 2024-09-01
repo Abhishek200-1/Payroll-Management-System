@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="button-container">
-                <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i>AssiGN Username</button>
+                <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i>Assign Username</button>
             </div>
             </div>
         </form>
