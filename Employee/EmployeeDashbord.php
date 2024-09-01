@@ -17,19 +17,14 @@ include("../Backend/Database/connection.php");
 <body>
     <?php
     $empId = $_SESSION["EmployeeId"];
-    echo "$empId </br>";
 
     $query = "SELECT `First_Name`, `Last_Name`, `Image`, `Email`, `Department`, `Shift`, `Pnumber`, `Address`, `Date_Of_Birth`, `Date_Of_Joining`, `Gender` FROM `tbladdemployee` WHERE Emp_Id='$empId'";
-    echo $query;
     $result = mysqli_query($conn, $query);
-
-    print_r($result);
 
     if ($result) {
         while ($row = mysqli_fetch_assoc($result)) {
             $firstName = $row["First_Name"];
             $lastname = $row["Last_Name"];
-            echo $firstName . " " . $lastname;
         }
     }
 
@@ -142,7 +137,7 @@ include("../Backend/Database/connection.php");
             </div>
 
             <!-- ======================= Cards ================== -->
-            <!-- <div class="cardBox">
+            <div class="cardBox">
                 <div class="card">
                     <div>
                         <div class="numbers">26</div>
@@ -186,7 +181,7 @@ include("../Backend/Database/connection.php");
                         <ion-icon name="cash-outline"></ion-icon>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
     <!-- =========== Scripts =========  -->
