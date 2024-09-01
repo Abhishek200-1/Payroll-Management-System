@@ -98,7 +98,7 @@
                             <label for="Dob">Date Of Joining</label>
                             <input type="date" placeholder="Enter Your Date Of Birth" name="DOJ" required>
                         </div>
-
+                        
                         <span class="gender-title">Gender</span>
                         <div class="gender-category">
                             <input type="radio" name="Gender" id="Male">

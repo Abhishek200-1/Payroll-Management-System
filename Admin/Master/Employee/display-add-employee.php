@@ -80,7 +80,7 @@
                                     <td>' . $Gender . '</td>
                                 <td>
                                     <button><a href="update-add-employee.php? updateid=' . $Emp_Id . '" class="text-success"><i class="fa-solid fa-pen-to-square fa-1x"></i></i></a></button>
-                                    <button><a href="../../../Backend/Update/delete-add-employee.php? deleteid=' . $Emp_Id . '" class="text-info mx-1"><i class="fa-solid fa-info fa-1x"></i></i></a></button>
+                                    <button><a href="../../../Employee/EmployeeProfile.php? display=' . $Emp_Id . '" class="text-info mx-1"><i class="fa-solid fa-info fa-1x"></i></i></a></button>
                                     <button><a href="delete-add-employee.php? deleteid=' . $Emp_Id . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
                                 </td>
                             </tr>';
@@ -88,6 +88,7 @@
                     }
                     ?>
                 </tbody>
+                <link rel="stylesheet" href="">
             </table>
             <link rel="stylesheet" href="">
         </div>

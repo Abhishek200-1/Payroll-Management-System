@@ -1,27 +1,33 @@
 <?php
-include("../../../Backend/Database/connection.php");
-if (isset($_POST['btn'])) 
-{
-    $Firstname = $_POST['Fname'];
-    $Lastname = $_POST['Lname'];
+include("../../Backend/Database/connection.php");
+if (isset($_POST['btn'])) {
+    $First_Name = $_POST['Fname'];
+    $Last_Name = $_POST['Lname'];
+    // $Admin_Image=$_POST['AdminImage'];
     $Email = $_POST['mail'];
     $Department = $_POST['Department'];
-    $Shift = $_POST['shift'];
-    $Pnumber = $_POST['Phone_Number'];
+    $Shift_Name = $_POST['shift'];
+    $Phone_Number = $_POST['Phone_Number'];
     $Address = $_POST['Address'];
-    $Dateofbirth = $_POST['DOB'];
-    $Dateofjoining = $_POST['DOJ'];
+    $Date_Of_Birth = $_POST['DOB'];
+    $Date_Of_Joining = $_POST['DOJ'];
     $Gender = $_POST['Gender'];
-    $salary = $_POST['salary'];
-    $status = $_POST['status'];
 
-
-    $q = "insert into `tbladdemployee` (First_Name,Last_Name,Email,Department,Shift,Pnumber,Address,Date_of_Birth,Date_of_Joining,Gender,salary, status) values ('$Firstname','$Lastname','$Email','$Department','$Shift','$Pnumber','$Address','$Dateofbirth','$Dateofjoining','$Gender','$salary', '$status')";
-    $result = mysqli_query($conn, $q);
+    $addAdminQuery = "insert into `tbladdadmin` (First_Name,Last_Name,Email,Department,Shift_Name,Phone_Number,Address,Date_Of_Birth,Date_Of_Joining,Gender) values ('$First_Name','$Last_Name','$Email','$Department','$Shift_Name','$Phone_Number','$Address','$Date_Of_Birth','$Date_Of_Joining','$Gender')";
+    $result = mysqli_query($conn, $addAdminQuery);
     if ($result) {
         // echo "<script>alert('Record Inserted Successfully');</script>";
-        header('location:../../../Admin/Master/Employee/display-add-employee.php');
+        header('location:display-add-Admin.php');
+    } else {
+        die(mysqli_error($conn));
+        echo "<script>alert('Record not Inserted');</script>";
     }
+
+    // $existingUser = "SELECT User_Name from tbladdadmin where user_name='$User_Name'";
+    // if(mysqli_query($conn, $existingUser)) 
+    // {
+    //     echo "<script>alert('User name already exists!');</script>";
+    // }
 }
 ?>
 <!DOCTYPE html>
@@ -30,43 +36,38 @@ if (isset($_POST['btn']))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="employee.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/81aa89284e.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="test.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Add-Admin-Page</title>
 </head>
 
 <body>
-<div class="container">
+    <div class="container">
         <div class="form-image">
-            <img src="../../../src/Images/svg/bussiness man.svg" alt="">
+            <img src="../../src/Images/svg/undraw_shopping_re_3wst.svg" alt="">
         </div>
         <div class="form">
             <form method="POST">
-                <h2>Employee Master Data</h2>
+                <h2>Administrator Master Data</h2>
                 <div class="content">
-                    <p>Form To Add New Employee To System</p>
+                    <p>Form To Add New Administrator To System</p>
                     <div class="content">
                         <div class="input-box">
-                            <label for="name">Fisrt Name</label>
+                            <label for="name">First Name</label>
                             <input type="text" placeholder="Enter Your First Name" name="Fname" required>
                         </div>
-
                         <div class="input-box">
                             <label for="name">Last Name</label>
                             <input type="text" placeholder="Enter Your Last Name" name="Lname" required>
                         </div>
-
+                        <!-- <div class="input-box">
+                            <label for="name">Admin image</label>
+                            <input type="file" placeholder="Enter Your First Name" name="AdminImage" required>
+                        </div> -->
                         <div class="input-box">
                             <label for="Email">Email</label>
                             <input type="text" placeholder="Enter Your Email" name="mail" required>
                         </div>
-
-                        <div class="input-box">
-                            <label for="PhoneNumber">Phone Number</label>
-                            <input type="text" placeholder="Enter Your Phone Number" name="Phone_Number" required>
-                        </div>
-
                         <div class="input-box">
                             <label for="depart">Department</label>
                             <!-- <input type="text" placeholder="Enter Your Department" name="depart" required> -->
@@ -87,7 +88,6 @@ if (isset($_POST['btn']))
                                 ?>
                             </select>
                         </div>
-
                         <div class="input-box">
                             <label for="addresss">Shift</label>
                             <!-- <input type="text" placeholder="Enter Your Department" name="shift" required> -->
@@ -108,27 +108,26 @@ if (isset($_POST['btn']))
                                 ?>
                             </select>
                         </div>
-
+                        <div class="input-box">
+                            <label for="PhoneNumber">Phone Number</label>
+                            <input type="text" placeholder="Enter Your Phone Number" name="Phone_Number" required>
+                        </div>
                         <div class="input-box">
                             <label for="addresss">Address</label>
                             <input type="text" placeholder="Enter Your Address" name="Address" required>
                         </div>
-
                         <div class="input-box">
                             <label for="Dob">Date Of Birth</label>
                             <input type="date" placeholder="Enter Your Date Of Birth" name="DOB" required>
                         </div>
-
                         <div class="input-box">
                             <label for="Dob">Date Of Joining</label>
                             <input type="date" placeholder="Enter Your Date Of Joining" name="DOJ" required>
                         </div>
-
                         <div class="input-box">
                             <label for="Dob">Base Salary</label>
-                            <input type="text" placeholder="Enter Your Date Of Joining" name="Base_salary" required>
+                            <input type="text" placeholder="Enter Your Date Of Joining" name="DOJ" required>
                         </div>
-                        
                         <div class="input-box">
                             <label for="Dob">Status</label>
                             <select class="option" name="status">
@@ -136,7 +135,6 @@ if (isset($_POST['btn']))
                                 <option value="inactive" <?php echo (isset($status) && $status == 'inactive') ? 'selected' : ''; ?>>Inactive</option>
                             </select>
                         </div>
-
                         <span class="gender-title">Gender</span>
                         <div class="gender-category">
                             <input type="radio" name="Gender" id="Male">
@@ -144,9 +142,9 @@ if (isset($_POST['btn']))
                             <input type="radio" name="Gender" id="Female">
                             <labe>Female</labe>
                             <input type="radio" name="Gender" id="Other">
-                            <label>Other</label>
+                            <label>Other</label>                        
                         </div>
-                        <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i> Add New Employee</button>
+                        <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i> Add New Employee</button>    
                     </div>
                 </div>
             </form>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-// echo $_SESSION["AdminId"];
+// echo $_SESSION["EmployeeId"];
 ?>
 
 <?php
@@ -9,7 +9,7 @@ include('../Backend/Database/connection.php');
 if (isset($_POST['uploadImage'])) {
     $file_name = $_FILES['profilePicture']['name'];
     $file_tmp = $_FILES['profilePicture']['tmp_name'];
-    $uploadPath = '../Images/admin_image/';
+    $uploadPath = '../Images/employee_image/';
 
     // echo $file_name . " " . $file_tmp;
 
@@ -18,7 +18,7 @@ if (isset($_POST['uploadImage'])) {
     // echo "profilePicture path : " . $profilePicPath;
 
     if (move_uploaded_file($file_tmp, $uploadPath . $file_name)) {
-        $sql = "UPDATE `tbladdadmin` SET adminprofile='$profilePicPath' WHERE `id`=" . $_SESSION['AdminId'] . ";";
+        $sql = "UPDATE `tbladdemployee` SET employeeprofile='$profilePicPath' WHERE `Emp_Id`=" . $_SESSION['EmployeeId'] . ";";
         if (mysqli_query($conn, $sql)) {
             echo "<script>alert('Successfully Uploaded')</script>";
         } else {
@@ -29,9 +29,9 @@ if (isset($_POST['uploadImage'])) {
     }
 }
 
-$id = $_SESSION['AdminId'];
+$empId = $_SESSION['EmployeeId'];
 
-$query = "SELECT `First_Name`, `Last_Name`, `User_Name`, `Phone_Number`, `Email`, `Address`, `Date_Of_Birth`, `Gender`, `adminprofile` FROM `tbladdadmin` WHERE ID = $id";
+$query = "SELECT `First_Name`, `Last_Name`, `User_Name`, `Phone_Number`, `Email`, `Address`, `Date_Of_Birth`, `Gender`, `adminprofile` FROM `tbladdemployee` WHERE Emp_Id = $empId";
 
 $result = mysqli_query($conn, $query);
 if ($result) {
@@ -44,12 +44,12 @@ if ($result) {
         $Address =  $row["Address"];
         $DOB =  $row["Date_Of_Birth"];
         $Gender =  $row["Gender"];
-        $adminprofile = $row["adminprofile"];
+        $employeeprofile = $row["employeeprofile"];
     }
 }
 
 
-?>
+?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,7 +63,7 @@ if ($result) {
     <script
         src="https://kit.fontawesome.com/81aa89284e.js"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../src/css/profileadmin.css" />
+    <link rel="stylesheet" href="./css/employeeprofile.css" />
 </head>
 
 <body>
@@ -71,7 +71,7 @@ if ($result) {
         <section class="main">
             <div class="header--wrapper">
                 <div class="title">
-                    <span>Administrator</span>
+                    <span>Employee</span>
                     <h2>Profile Setting</h2>
                 </div>    
             </div>
@@ -84,7 +84,7 @@ if ($result) {
                             <div class="content">
                                 <div class="input-box">
                                     <label for="name">Empployee Id</label>
-                                    <input type="text" placeholder="Enter Your First Name" name="Fname" value=<?php echo $id; ?> required>
+                                    <input type="text" placeholder="Enter Your First Name" name="Fname" value=<?php echo $empId; ?> required>
                                 </div>
                                 <div class="input-box">
                                     <label for="name">First Name</label>
@@ -125,9 +125,11 @@ if ($result) {
                                         <span>Other</span>
                                     </div>
                                 </div>
+
                                 <div class="header-link">
-                                        <a href="forgotPassword.php"><i class="fa-solid fa-unlock"></i><span>Forgot Password</span></a>
+                                    <a href="forgotPassword.php"><i class="fa-solid fa-unlock"></i><span>Forgot Password</span></a>
                                 </div>
+
                             </div>
                         </form>
                     </div>
@@ -135,15 +137,15 @@ if ($result) {
                     <div class="container-image">
                         <div class="card">
                             <?php
-                            if ($adminprofile) {
-                                echo '<img src=" ' . $adminprofile . '" alt="Card Image">';
+                            if ($employeeprofile) {
+                                echo '<img src=" ' . $employeeprofile . '" alt="Card Image">';
                             } else {
                                 echo '<img src="../src/Images/avatar.jpg" alt="Card Image">';
                             }
                             ?>
                             <form action="" method="post" enctype="multipart/form-data">
                                 <div class="card-body">
-                                    <h2 class="card-title">Admin Image</h2>
+                                    <h2 class="card-title">Employee Image</h2>
                                     <div class="input-box">
                                         <input type="file" placeholder="Enter Your First Name" data-parsley-trigger="keyup" name="profilePicture" class="form-control" required />
                                     </div>
