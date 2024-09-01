@@ -17,19 +17,20 @@
             <div class="Button-container">
                 <Button type="button" class="btn btn-light" onclick="location.href='../../../Dist/MainDashbord.php'"><i class="fa-solid fa-arrow-left me-2"></i>Go Back</Button>
             </div>
-            <div class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Search</button>
-            </div>
+            <form action="" method="post">
+                <div class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" required autocomplete="off" name="searchShift">
+                    <button class="btn btn-outline-light" name="searchShiftBtn" type="submit">Search</button>
+                </div>
+            </form>
         </div>
         <link rel="stylesheet" href="">
         <div class="table-body">
             <h4>Admin Master Table</h4>
-            <button class="add btn btn-light" type="submit" onclick="location.href='add-shift.php'"><i class="fa-solid fa-plus me-2"></i>   Add New Department</button>
+            <button class="add btn btn-light" type="submit" onclick="location.href='add-shift.php'"><i class="fa-solid fa-plus me-2"></i>Add New Shift</button>
             <table class="col-xs-7 table table-striped table-condensed table-fixed">
                 <thead class="table-info">
                     <tr>
-                        <th class="col">Sr. No</th>
                         <th class="col">Id</th>
                         <th class="col">Shift Name</th>
                         <th class="col">Shift Start Time</th>
@@ -39,33 +40,35 @@
                 </thead>
                 <tbody class="table-group-divider">
                     <?php
-                        $i = 1;
-                        include("../../../Backend/Database/connection.php");
-                        $q="SELECT * FROM `tblshift`";
-                        $result = mysqli_query($conn, $q);
-                        if ($result)
-                            {
-                                while ($row = mysqli_fetch_assoc($result)) 
-                                {
-                                    $Id=$row['Id'];
-                                    $ShiftName = $row['Shift_Name'];
-                                    $ShiftStartTime = $row['Start_Time'];
-                                    $ShiftEndTime = $row['End_Time'];
-                                    echo
-                                    '<tr>
-                                        <th>' . $i++ . '</th>
-                                        <th>' . $Id . '</th>
-                                        <td>' . $ShiftName . '</td>
-                                        <td>' . $ShiftStartTime . '</td>
-                                        <td>' . $ShiftEndTime . '</td>
-                                        <td>
-                                            <button><a href="update-shift.php? updateid=' . $Id . '" class="text-success"><i class="fa-solid fa-pen-to-square fa-2x"></i></i></a></button>
-                                            <button><a href="delete-add-shift.php? deleteid=' . $Id . '" class="text-danger"><i class="fa-solid fa-trash fa-2x"></i></button>
-                                        </td>
-                                    </tr>';
-                                }
-                            }
-                        ?>
+                    include("../../../Backend/Database/connection.php");
+                    $query = "";
+                    if (isset($_POST["searchShiftBtn"])) {
+                        $searchText = $_POST["searchShift"];
+                        $query = "SELECT Id, Shift_Name, Start_Time, End_Time FROM `tblshift` WHERE Id LIKE '{$searchText}%' OR Shift_Name LIKE '{$searchText}%' OR Start_Time LIKE '{$searchText}%' OR End_Time LIKE '{$searchText}%'";
+                    } else {
+                        $query = "SELECT Id, Shift_Name, Start_Time, End_Time FROM `tblshift`";
+                    }
+                    $result = mysqli_query($conn, $query);
+                    if ($result) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $Id = $row['Id'];
+                            $ShiftName = $row['Shift_Name'];
+                            $ShiftStartTime = $row['Start_Time'];
+                            $ShiftEndTime = $row['End_Time'];
+                            echo
+                            '<tr>
+                                <th>' . $Id . '</th>
+                                <td>' . $ShiftName . '</td>
+                                <td>' . $ShiftStartTime . '</td>
+                                <td>' . $ShiftEndTime . '</td>
+                                <td>
+                                    <button><a href="update-shift.php? updateId=' . $Id . '" class="text-success"><i class="fa-solid fa-pen-to-square fa-2x"></i></i></a></button>
+                                    <button><a href="delete-add-shift.php? deleteId=' . $Id . '" class="text-danger"><i class="fa-solid fa-trash fa-2x"></i></button>
+                                </td>
+                            </tr>';
+                        }
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>

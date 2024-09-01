@@ -1,25 +1,22 @@
 <?php
 session_start();
 include("../Backend/Database/connection.php");
-?>
 
-<?php
 $empId = $_SESSION["EmployeeId"];
+echo $empId;
 
-$query = "SELECT * FROM `tbladdemployee` WHERE Emp_Id='$empId'";
+$query = "SELECT `First_Name`, `Last_Name`, `Image`, `Email`, `Department`, `Shift`, `Pnumber`, `Address`, `Date_Of_Birth`, `Date_Of_Joining`, `Gender`,`employeeprofile` FROM `tbladdemployee` WHERE Emp_Id='$empId'";
+echo $query;
 $result = mysqli_query($conn, $query);
 
-if (mysqli_num_rows($result) > 0) {
+if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
         $firstName = $row["First_Name"];
         $lastname = $row["Last_Name"];
-        $Emp_Id = $row["Emp_Id"];
-        $EmailId = $row["Email"];
-        $Number = $row["Pnumber"];
-        $AddressEmp = $row["Date_Of_Joining"];
         $employeeprofile = $row["employeeprofile"];
     }
 }
+echo $employeeprofile;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,21 +25,19 @@ if (mysqli_num_rows($result) > 0) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <title>Employee Dashboard </title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="../Employee/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
+
     <!-- =============== Navigation ================ -->
     <div class="container">
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="">
+                    <a href="#">
                         <span class="icon">
                             <ion-icon name="person-outline"></ion-icon>
                         </span>
@@ -82,7 +77,7 @@ if (mysqli_num_rows($result) > 0) {
                     </a>
                 </li>
                 <li>
-                    <a href="forgotPassword.php">
+                    <a href="#">
                         <span class="icon">
                             <ion-icon name="lock-closed-outline"></ion-icon>
                         </span>
@@ -106,7 +101,7 @@ if (mysqli_num_rows($result) > 0) {
                     </a>
                 </li>
                 <li>
-                    <a href="Logout.php">
+                    <a href="#">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -128,7 +123,7 @@ if (mysqli_num_rows($result) > 0) {
                     </label>
                 </div>
                 <div class="user">
-                    <img src='<?php echo ($employeeprofile) ?  $employeeprofile :  "../Employee/image/avatar.jpg"; ?>' alt="Profile Picture">
+                    <img src="../src/Images/Abhishek.jpg" alt="">
                 </div>
             </div>
             <!-- ======================= Cards ================== -->
@@ -170,60 +165,6 @@ if (mysqli_num_rows($result) > 0) {
                     </div>
                 </div>
             </div>
-            <div class="cardBox-profile">
-                <div class="card-profile">
-                    <div>
-                        <div class="image-profile">
-                            <a href=""> <img src='<?php echo ($employeeprofile) ?  $employeeprofile :  "../Employee/image/avatar.jpg"; ?>' alt="Profile Picture"></a>
-                        </div>
-                        <div class="cardName-profile"><?php echo $firstName . " " . $lastname; ?></div>
-                    </div>
-                    <div class="Details-pro">
-                        <div class="name">
-                            <h3>Accountant Department</h3>
-                        </div>
-                        <div class="basic-details">
-                            <h5>Employee Id : <?php echo $Emp_Id ?></h5>
-                            <h5>Email : <?php echo $EmailId ?></h5>
-                            <h5>Phone : +91-<?php echo $Number ?></h5>
-                            <h5>Date Of Joining : <?php echo $AddressEmp ?></h5>
-                        </div>
-                        <div class="btn-view">
-                            <button><a href="EmployeeProfile.php">View Profile</a></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-profile-cal">
-                    <div class="calendar">
-                        <div class="header">
-                            <div class="month"></div>
-                            <div class="btns">
-                                <div class="btn today-btn">
-                                    <i class="fas fa-calendar-day"></i>
-                                </div>
-                                <div class="btn prev-btn">
-                                    <i class="fas fa-chevron-left"></i>
-                                </div>
-                                <div class="btn next-btn">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="weekdays">
-                            <div class="day">Sun</div>
-                            <div class="day">Mon</div>
-                            <div class="day">Tue</div>
-                            <div class="day">Wed</div>
-                            <div class="day">Thu</div>
-                            <div class="day">Fri</div>
-                            <div class="day">Sat</div>
-                        </div>
-                        <div class="days">
-                            <!-- lets add days using js -->
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <!-- =========== Scripts =========  -->
@@ -231,6 +172,7 @@ if (mysqli_num_rows($result) > 0) {
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 
 </html>
