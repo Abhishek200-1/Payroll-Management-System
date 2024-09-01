@@ -15,7 +15,7 @@ include("../../../Backend/Database/connection.php");
     <div class="container-fluid">
         <div class="table-uppar">
             <div class="Button-container">
-                <Button type="button" class="btn btn-light" onclick="location.href='../Dist/MainDashbord.php'"><i class="fa-solid fa-arrow-left me-2"></i>Go Back</Button>
+                <Button type="button" class="btn btn-light" onclick="location.href='../../../Dist/MainDashbord.php'"><i class="fa-solid fa-arrow-left me-2"></i>Go Back</Button>
             </div>
             <form action="" method="post">
                 <div class="d-flex" role="search">
@@ -26,7 +26,7 @@ include("../../../Backend/Database/connection.php");
         </div>
         <div class="table-body">
             <h4>Attendance Master Table</h4>
-            <button class="add btn btn-light" type="submit" onclick="location.href='mark-attendance.php'"><i class="fa-solid fa-clipboard-user me-2"></i>Take Attendance</button>
+            <button class="add btn btn-light" type="submit" onclick="location.href='testmark-attendance.php'"><i class="fa-solid fa-clipboard-user me-2"></i>Take Attendance</button>
             <button class="add btn btn-light" type="submit" onclick="location.href='view_attendance.php'"><i class="fa-regular fa-calendar-days me-2"></i>Monthly Attendance Report</button>
             <button class="add btn btn-light" type="submit" onclick="location.href='calculate_salary.php'"><i class="fa-solid fa-calculator me-2"></i>Calculate Salary</button>
             <button class="add btn btn-light" type="submit" onclick="location.href='salary_report.php'"><i class="fa-solid fa-file-invoice me-2"></i>Salary Report</button>

@@ -26,11 +26,11 @@ while ($row = $result->fetch_assoc()) {
 
     if ($conn->query($sql) !== TRUE) {
         echo "Error: " . $conn->error . "<br>";
+       
     }
 }
 
-echo "Attendance has been recorded successfully.";
+echo "<script>alert('Attendance has been recorded successfully.');</script>";
+// header('location:display-add-attendance.php');
 $conn->close();
 ?>
-<br>
-<a href="mark-attendance.php">Back to Attendance</a>
