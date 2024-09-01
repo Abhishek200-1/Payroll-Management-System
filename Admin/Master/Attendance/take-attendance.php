@@ -20,7 +20,7 @@ include("../../../Backend/Database/connection.php");
             <div class="Button-container">
                 <button type="button" class="btn btn-light" onclick="location.href='display-add-attendance.php'"><i class="fa-solid fa-arrow-left me-2"></i>Go Back</button>
             </div>
-            <form action="" method="post">
+            <form>
                 <div class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" required autocomplete="off" name="SearchAdmin">
                     <button class="btn btn-outline-light" name="SearchAdminBtn" type="submit">Search</button>
@@ -29,20 +29,16 @@ include("../../../Backend/Database/connection.php");
         </div>
         <form method="POST" action="save_attendance.php">
             <div class="table-body">
-                <h4>Attendance Master Table</h4>
-                <!-- <button class="add btn btn-light" 'type="submit"' onclick="location.href='mark-attendance.php'"><i class="fa-solid fa-clipboard-user me-2"></i>Take Attendance</button>
-                <button class="add btn btn-light" 'type="submit"' onclick="location.href='view_attendance.php'"><i class="fa-regular fa-calendar-days me-2"></i>Monthly Attendance Report</button>
-                <button class="add btn btn-light" 'type="submit"' onclick="location.href='calculate_salary.php'"><i class="fa-solid fa-calculator me-2"></i>Calculate Salary</button>
-                <button class="add btn btn-light" 'type="submit"' onclick="location.href='salary_report.php'"><i class="fa-solid fa-file-invoice me-2"></i>Salary Report</button> -->
+                <h4>Take Today's Attendance</h4>
                 <div class="form-floating mb-3 ps-3 mt-2" style="margin-left: 620px;">
-                    <input type="date" class="form-control ps-3" id="floatingInput" name="attendance_date" required value="<?php echo date('Y-m-d'); ?>">
+                    <input type="date" class="form-control ps-3" id="floatingInput" name="attendance_date" min='<?php echo date('d/m H:i'); ?>' required value="<?php echo date('Y-m-d'); ?>">
                     <label class="ms-3" for="attendance_date">Select Attendance Date</label>
                 </div>
                 <table class="col-xs-7 table table-striped table-condensed table-fixed">
                     <thead class="table-info">
                         <tr>
                             <th class="col">Emp Id</th>
-                            <th class="col">Fisrt Name</th>
+                            <th class="col">First Name</th>
                             <th class="col">Last Name</th>
                             <th class="col">Department</th>
                             <th class="col">Present</th>

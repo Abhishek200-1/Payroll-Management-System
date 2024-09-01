@@ -11,16 +11,21 @@ $result = $conn->query("SELECT * FROM tbladdemployee WHERE status='active'");
 while ($row = $result->fetch_assoc()) {
     $employee_id = $row['Emp_Id'];
 
-    if (isset($leave_data[$employee_id]) && $leave_data[$employee_id] == 'leave') {
+    if (isset($leave_data[$employee_id]) && $leave_data[$employee_id] == 'leave') 
+    {
         $status = 'leave';
-    } elseif (isset($attendance_data[$employee_id])) {
+    } 
+    elseif (isset($attendance_data[$employee_id])) 
+    {
         $status = 'present';
-    } else {
+    } 
+    else 
+    {
         $status = 'absent';
     }
 
     // Insert or update attendance record
-    $sql = "INSERT INTO tblattandance (employee_id, attendance_date, status) 
+    $sql = "INSERT INTO attendance (employee_id, attendance_date, status) 
             VALUES ($employee_id, '$attendance_date', '$status')
             ON DUPLICATE KEY UPDATE status='$status'";
 

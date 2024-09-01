@@ -1,0 +1,36 @@
+html, body{
+    font-weight: 400 !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.primary-color{
+    color: #4e51fd;
+}
+
+.btn-sz-primary{
+    width: 100%;
+    color: #fff !important;
+    background-color: #4e51fd;
+}
+
+.btn-sz-primary:hover{
+    background-color: #3c3ff8;
+}
+
+
+
+.main-text{
+    font-size: 25px;
+    line-height: 1.4;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+.main-input{
+    width: 80%;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 10px !important;
+    border-bottom: 2px solid #4e51fd !important;
+    padding-top: -15px;
+}

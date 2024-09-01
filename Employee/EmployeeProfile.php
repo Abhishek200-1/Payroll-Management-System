@@ -36,15 +36,15 @@ if (isset($_GET["displayId"])) {
     $empId = $_SESSION['EmployeeId'];
 }
 
-$query = "SELECT `First_Name`, `Last_Name`, `User_Name`, `Phone_Number`, `Email`, `Address`, `Date_Of_Birth`, `Gender`, `employeeprofile` FROM `tbladdemployee` WHERE Emp_Id = $empId";
+$query = "SELECT * FROM `tbladdemployee` WHERE Emp_Id = $empId";
 
 $result = mysqli_query($conn, $query);
 if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
         $FirstName = $row["First_Name"];
         $lastname =  $row["Last_Name"];
-        $UserName = $row["User_Name"];
-        $PhoneNumber =  $row["Phone_Number"];
+        $UserName = $row["Email"];
+        $PhoneNumber =  $row["Pnumber"];
         $Email =  $row["Email"];
         $Address =  $row["Address"];
         $DOB =  $row["Date_Of_Birth"];

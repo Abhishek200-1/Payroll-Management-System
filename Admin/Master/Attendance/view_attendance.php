@@ -23,7 +23,7 @@
 
         $sql = "SELECT e.Emp_Id, e.First_Name, e.Department, a.attendance_date, a.status 
                 FROM tbladdemployee e 
-                LEFT JOIN tblattandance a ON e.Emp_Id = a.employee_id 
+                LEFT JOIN attendance a ON e.Emp_Id = a.employee_id 
                 WHERE YEAR(a.attendance_date) = '$year' AND MONTH(a.attendance_date) = '$month_number'";
 
         $result = $conn->query($sql);

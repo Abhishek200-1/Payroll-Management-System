@@ -2,8 +2,8 @@
 include('../../../Backend/Database/connection.php');
 
 // Constants for salary components (these can be adjusted)
-define('HRA_PERCENTAGE', 0.20); // 20% HRA
-define('DA_PERCENTAGE', 0.10); // 10% DA
+define('HRA_PERCENTAGE', 0.10); // 10% HRA
+define('DA_PERCENTAGE', 0.05); // 5% DA
 define('PF_PERCENTAGE', 0.05); // 5% PF
 
 // Function to calculate salary components and net salary
@@ -25,7 +25,7 @@ function calculateMonthlySalary($employee_id, $month_year) {
             SUM(CASE WHEN status = 'present' THEN 1 ELSE 0 END) as present_days,
             SUM(CASE WHEN status = 'absent' THEN 1 ELSE 0 END) as absent_days,
             SUM(CASE WHEN status = 'leave' THEN 1 ELSE 0 END) as leave_days
-        FROM tblattandance
+        FROM attendance
         WHERE employee_id = $employee_id 
         AND DATE_FORMAT(attendance_date, '%Y-%m') = '$month_year'";
     
