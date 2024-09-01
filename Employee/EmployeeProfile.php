@@ -29,9 +29,14 @@ if (isset($_POST['uploadImage'])) {
     }
 }
 
-$empId = $_SESSION['EmployeeId'];
+$empId;
+if (isset($_GET["displayId"])) {
+    $empId = $_GET["displayId"];
+} else {
+    $empId = $_SESSION['EmployeeId'];
+}
 
-$query = "SELECT `First_Name`, `Last_Name`, `User_Name`, `Phone_Number`, `Email`, `Address`, `Date_Of_Birth`, `Gender`, `adminprofile` FROM `tbladdemployee` WHERE Emp_Id = $empId";
+$query = "SELECT `First_Name`, `Last_Name`, `User_Name`, `Phone_Number`, `Email`, `Address`, `Date_Of_Birth`, `Gender`, `employeeprofile` FROM `tbladdemployee` WHERE Emp_Id = $empId";
 
 $result = mysqli_query($conn, $query);
 if ($result) {
@@ -48,8 +53,7 @@ if ($result) {
     }
 }
 
-
-?> 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,9 +77,8 @@ if ($result) {
                 <div class="title">
                     <span>Employee</span>
                     <h2>Profile Setting</h2>
-                </div>    
+                </div>
             </div>
-            
             <section class="attendance">
                 <div class="attendance-list">
                     <div class="container-form">
@@ -125,15 +128,12 @@ if ($result) {
                                         <span>Other</span>
                                     </div>
                                 </div>
-
                                 <div class="header-link">
                                     <a href="forgotPassword.php"><i class="fa-solid fa-unlock"></i><span>Forgot Password</span></a>
                                 </div>
-
                             </div>
                         </form>
                     </div>
-
                     <div class="container-image">
                         <div class="card">
                             <?php
@@ -151,14 +151,11 @@ if ($result) {
                                     </div>
                                     <!-- <p class="card-text">This is a brief description of the content inside the card. It can be a few lines long.</p> -->
                                     <button type="submit" name="uploadImage" class="card-button">Save Image</button>
-                                </div>    
+                                </div>
                             </form>
                         </div>
                     </div>
-
                 </div>
-
-                
             </section>
         </section>
     </div>

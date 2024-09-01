@@ -1,6 +1,22 @@
 <?php
 session_start();
 include("../Backend/Database/connection.php");
+
+$empId = $_SESSION["EmployeeId"];
+echo $empId;
+
+$query = "SELECT `First_Name`, `Last_Name`, `Image`, `Email`, `Department`, `Shift`, `Pnumber`, `Address`, `Date_Of_Birth`, `Date_Of_Joining`, `Gender`,`employeeprofile` FROM `tbladdemployee` WHERE Emp_Id='$empId'";
+echo $query;
+$result = mysqli_query($conn, $query);
+
+if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $firstName = $row["First_Name"];
+        $lastname = $row["Last_Name"];
+        $employeeprofile = $row["employeeprofile"];
+    }
+}
+echo $employeeprofile;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,20 +31,7 @@ include("../Backend/Database/connection.php");
 </head>
 
 <body>
-    <?php
-    $empId = $_SESSION["EmployeeId"];
 
-    $query = "SELECT `First_Name`, `Last_Name`, `Image`, `Email`, `Department`, `Shift`, `Pnumber`, `Address`, `Date_Of_Birth`, `Date_Of_Joining`, `Gender` FROM `tbladdemployee` WHERE Emp_Id='$empId'";
-    $result = mysqli_query($conn, $query);
-
-    if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $firstName = $row["First_Name"];
-            $lastname = $row["Last_Name"];
-        }
-    }
-
-    ?>
     <!-- =============== Navigation ================ -->
     <div class="container">
         <div class="navigation">
@@ -41,7 +44,6 @@ include("../Backend/Database/connection.php");
                         <span class="title"><?php echo $firstName . " " . $lastname; ?></span>
                     </a>
                 </li>
-
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -50,7 +52,6 @@ include("../Backend/Database/connection.php");
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -59,7 +60,6 @@ include("../Backend/Database/connection.php");
                         <span class="title">Views Attendance</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -68,7 +68,6 @@ include("../Backend/Database/connection.php");
                         <span class="title">Send Messages</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -77,7 +76,6 @@ include("../Backend/Database/connection.php");
                         <span class="title">Settings</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -86,7 +84,6 @@ include("../Backend/Database/connection.php");
                         <span class="title">Change Password</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -95,7 +92,6 @@ include("../Backend/Database/connection.php");
                         <span class="title">Help</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -104,7 +100,6 @@ include("../Backend/Database/connection.php");
                         <span class="title">Print Pay Slip</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -113,29 +108,24 @@ include("../Backend/Database/connection.php");
                         <span class="title">Sign Out</span>
                     </a>
                 </li>
-
             </ul>
         </div>
-
         <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-
                 <div class="search">
                     <label>
                         <input type="text" placeholder="Search here">
                         <ion-icon name="search-outline"></ion-icon>
                     </label>
                 </div>
-
                 <div class="user">
                     <img src="../src/Images/Abhishek.jpg" alt="">
                 </div>
             </div>
-
             <!-- ======================= Cards ================== -->
             <div class="cardBox">
                 <div class="card">
@@ -143,40 +133,33 @@ include("../Backend/Database/connection.php");
                         <div class="numbers">26</div>
                         <div class="cardName">Working Days</div>
                     </div>
-
                     <div class="iconBx">
                         <ion-icon name="calendar"></ion-icon>
                     </div>
                 </div>
-
                 <div class="card">
                     <div>
                         <div class="numbers">4</div>
                         <div class="cardName">Total Absent</div>
                     </div>
-
                     <div class="iconBx">
                         <ion-icon name="today"></ion-icon>
                     </div>
                 </div>
-
                 <div class="card">
                     <div>
                         <div class="numbers">25</div>
                         <div class="cardName">Department Messages</div>
                     </div>
-
                     <div class="iconBx">
                         <ion-icon name="chatbubbles-outline"></ion-icon>
                     </div>
                 </div>
-
                 <div class="card">
                     <div>
                         <div class="numbers">$15000</div>
                         <div class="cardName">Earning</div>
                     </div>
-
                     <div class="iconBx">
                         <ion-icon name="cash-outline"></ion-icon>
                     </div>

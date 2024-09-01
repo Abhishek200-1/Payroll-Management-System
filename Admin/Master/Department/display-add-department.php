@@ -16,19 +16,21 @@
             <div class="Button-container">
                 <Button type="button" class="btn btn-light" onclick="location.href='../../../Dist/MainDashbord.php'"><i class="fa-solid fa-arrow-left me-2"></i>Go Back</Button>
             </div>
-            <div class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light" type="submit">Search</button>
-            </div>
+            <form action="" method="post">
+                <div class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" required autocomplete="off" name="SearchDepart">
+                    <button class="btn btn-outline-light" name="SearchDepartBtn" type="submit">Search</button>
+                </div>
+            </form>
         </div>
         <link rel="stylesheet" href="">
         <div class="table-body">
             <h4>Admin Master Table</h4>
-            <button class="add btn btn-light" type="submit" onclick="location.href='add-department.php'"><i class="fa-solid fa-plus me-2"></i>   Add New Department</button>
+            <button class="add btn btn-light" type="submit" onclick="location.href='add-department.php'"><i class="fa-solid fa-plus me-2"></i> Add New Department</button>
             <table class="col-xs-7 table table-striped table-condensed table-fixed">
                 <thead class="table-info">
                     <tr>
-                        <th class="col">#</th>
+                        <th class="col">Sr. No.</th>
                         <th class="col">Id</th>
                         <th class="col">Department Name</th>
                         <th class="col">Operations</th>
@@ -36,10 +38,16 @@
                 </thead>
                 <tbody class="table-group-divider">
                     <?php
-                    $i = 1;
                     include('../../../Backend/Database/connection.php');
-                    $q = "SELECT * FROM `tbldepartment`";
-                    $result = mysqli_query($conn, $q);
+                    $i = 1;
+                    $query = "";
+                    if (isset($_POST["SearchDepartBtn"])) {
+                        $searchText = $_POST["SearchDepart"];
+                        $query = "SELECT Id, Name FROM `tbldepartment` WHERE Id LIKE '{$searchText}%' OR Name LIKE '{$searchText}%' OR Id LIKE '{$searchText}%'";
+                    } else {
+                        $query = "SELECT Id, Name FROM `tbldepartment`";
+                    }
+                    $result = mysqli_query($conn, $query);
                     if ($result) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             $DepartmentId = $row['Id'];

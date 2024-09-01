@@ -49,7 +49,6 @@
                     $query = "";
                     if (isset($_POST["SearchEmployeeBtn"])) {
                         $searchText = $_POST["SearchEmployee"];
-
                         $query = "SELECT Emp_Id, First_Name, Last_Name, Email, Department, Shift, Pnumber, Date_Of_Birth, Date_Of_Joining, Gender FROM `tbladdemployee` WHERE Emp_Id LIKE '{$searchText}%' OR First_Name LIKE '{$searchText}%' OR Last_Name LIKE '{$searchText}%' OR Email LIKE '{$searchText}%' OR Department LIKE '{$searchText}%' OR Shift LIKE '{$searchText}%' OR Pnumber LIKE '{$searchText}%' OR Date_Of_Birth LIKE '{$searchText}%' OR Date_Of_Joining LIKE '{$searchText}%' OR Gender LIKE '{$searchText}%';";
                     } else {
                         $query = "SELECT Emp_Id, First_Name, Last_Name, Email, Department, Shift, Pnumber, Date_Of_Birth, Date_Of_Joining, Gender FROM `tbladdemployee`";
@@ -79,9 +78,9 @@
                                     <td>' . $Doj . '</td>
                                     <td>' . $Gender . '</td>
                                 <td>
-                                    <button><a href="update-add-employee.php? updateid=' . $Emp_Id . '" class="text-success"><i class="fa-solid fa-pen-to-square fa-1x"></i></i></a></button>
-                                    <button><a href="../../../Employee/EmployeeProfile.php? display=' . $Emp_Id . '" class="text-info mx-1"><i class="fa-solid fa-info fa-1x"></i></i></a></button>
-                                    <button><a href="delete-add-employee.php? deleteid=' . $Emp_Id . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
+                                    <button><a href="update-add-employee.php?updateid=' . $Emp_Id . '" class="text-success"><i class="fa-solid fa-pen-to-square fa-1x"></i></i></a></button>
+                                    <button><a href="../../../Employee/EmployeeProfile.php?displayId=' . $Emp_Id . '" class="text-info mx-1"><i class="fa-solid fa-info fa-1x"></i></i></a></button>
+                                    <button><a href="delete-add-employee.php?deleteid=' . $Emp_Id . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
                                 </td>
                             </tr>';
                         }
