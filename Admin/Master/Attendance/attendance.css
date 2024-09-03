@@ -30,11 +30,65 @@ body {
     gap: 1050px;
 }
 
+.table-uppar-second{
+    max-width: 100%;
+    max-height: 80px;
+    background-color:  #999;
+    padding: 15px 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.table-uppar-second label{
+    width: auto;
+    color: #fff;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.table-uppar-second select{
+    width: 150px;
+    color: #2f4f4f;
+    height: 40px;
+    background: transparent;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding-left: 20px;
+    margin-right: 20px;
+}
+
+.table-uppar-second select:hover{
+    cursor: pointer;
+    background: #cbd5e1;
+    color: #232931;
+    transition: 0.5s;
+}
+
+.table-uppar-second input{
+    width: 200px;
+    height: 40px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    background: transparent;
+    color: #fff;
+}
+
+.table-uppar-second input:hover{
+    cursor: pointer;
+    background: #cbd5e1;
+    color: #232931;
+    transition: 0.5s;
+}
+
+
 h4 {
     font-size: 25px;
     margin-left: 15px;
     margin-top: 10px;
-    padding-right: 330px;
+    padding-right: 190px;
 }
 
 .add {
@@ -91,4 +145,24 @@ h4 {
     background: #4d84e2;
     color: #fff;
     transition: 0.5rem;
+}
+
+.Indications{
+    height: 50px;
+    margin-left: 1250px;
+}
+
+.Indications h5{
+    font-size: 20px;
+    color: yellow;
+    margin-top: -50px;
+    padding-left: 20px;
+    text-transform: uppercase;
+}
+
+.Indications p{
+    font-size: 15px;
+    margin-top: -2px;
+    line-height: 10px;
+    color: rgb(196, 45, 45);
 }

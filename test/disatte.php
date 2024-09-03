@@ -26,9 +26,19 @@ include("../../../Backend/Database/connection.php");
                 </div>
             </form>
         </div>
-        <div class="table-uppar-second">
-        <form method="GET" action="">
-                <label for="month"><i class="fa-solid fa-calendar-days me-2"></i>Select Month :</label>
+        <div style="Padding: 15px; margin: 15px;">
+            <form method="GET" action="">
+                <label for="year">Select Year:</label>
+                <select name="year" id="year">
+                    <?php
+                    $currentYear = date("Y");
+                    for ($y = $currentYear; $y >= $currentYear - 10; $y--) {
+                        echo '<option value="' . $y . '">' . $y . '</option>';
+                    }
+                    ?>
+                </select>
+
+                <label for="month">Select Month:</label>
                 <select name="month" id="month">
                     <?php
                     for ($m = 1; $m <= 12; $m++) {
@@ -38,30 +48,91 @@ include("../../../Backend/Database/connection.php");
                     ?>
                 </select>
 
-                <label for="year"><i class="fa-solid fa-calendar-days me-2"></i>Select Year :</label>
-                <select name="year" id="year">
-                    <?php
-                    $currentYear = date("Y");
-                    for ($y = $currentYear; $y >= $currentYear - 10; $y--) {
-                        echo '<option value="' . $y . '">' . $y . '</option>';
-                    }
-                    ?>
-                </select>
                 <input type="submit" value="Show Attendance">
             </form>
-            <div class="Indications">
-                    <h5>---Indications---</h5>
-                    <p>** T.W.T. -> Total Working Time</p> 
-                    <p>** T.P.D. -> Total Present Days</p>
-
-            </div>
         </div>
         <div class="table-body">
-            <h4>Employee's Attendance Master Table</h4>
+            <h4>Attendance Master Table</h4>
             <button class="add btn btn-light" type="submit" onclick="location.href='take-attendance.php'"><i class="fa-solid fa-clipboard-user me-2"></i>Take Attendance</button>
             <button class="add btn btn-light" type="submit" onclick="location.href='view_attendance.php'"><i class="fa-regular fa-calendar-days me-2"></i>Monthly Attendance Report</button>
             <button class="add btn btn-light" type="submit" onclick="location.href='calculate_salary.php'"><i class="fa-solid fa-calculator me-2"></i>Calculate Salary</button>
             <button class="add btn btn-light" type="submit" onclick="location.href='salary_report.php'"><i class="fa-solid fa-file-invoice me-2"></i>Salary Report</button>
+            <!-- <table class="col-xs-7 table table-striped table-condensed table-fixed">
+                <thead class="table-info">
+                    <tr>
+                        <th class="col">Emp Id</th>
+                        <th class="col">Employee Name</th>
+                        <?php
+                        // Generate day headers for the selected month
+                        $month = 8; // August
+                        $year = 2024;
+                        $days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+
+                        for ($day = 1; $day <= $days_in_month; $day++) {
+                            echo "<th>$day</th>";
+                        }
+                        ?>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <?php
+                    include('../../../Backend/Database/connection.php');
+                    $i = 1;
+                    $query = "";
+                    if (isset($_POST["SearchEmployeeBtn"])) {
+                        $searchText = $_POST["SearchEmployee"];
+
+                        $query = "SELECT Emp_Id, First_Name, Last_Name, Department, Shift, Pnumber, Date_Of_Joining, salary FROM `tbladdemployee` WHERE Emp_Id LIKE '{$searchText}%' OR First_Name LIKE '{$searchText}%' OR Last_Name LIKE '{$searchText}%' OR Department LIKE '{$searchText}%' OR Shift LIKE '{$searchText}%' OR Pnumber LIKE '{$searchText}%'  OR Date_Of_Joining LIKE '{$searchText}%' OR salary LIKE '{$searchText}%';";
+                    } else {
+                        $query = "SELECT Emp_Id, First_Name, Last_Name, Department, Shift, Pnumber, Date_Of_Joining, salary FROM `tbladdemployee`";
+                    }
+                    $result = mysqli_query($conn, $query);
+                    if (mysqli_num_rows($result)) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $Emp_Id = $row['Emp_Id'];
+                            $name = $row['First_Name'];
+                            $lastname = $row['Last_Name'];
+                            echo
+                            '<tr>
+                                <th scope="row">' . $i++ . '</th>
+                                <td>' . $name . ' '  . $lastname .  '</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                                <td>P</td>
+                            </tr>';
+                        }
+                    }
+                    ?>
+                </tbody>
+            </table> -->
             <?php
             include("../../../Backend/Database/connection.php");
 
@@ -113,30 +184,30 @@ include("../../../Backend/Database/connection.php");
                 }
             }
             ?>
-            <table class="col-xs-7 table table-striped table-condensed table-fixed table-bordered " cellspacing="0">
-                <thead class="table-info">
+            <table class="col-xs-7 table table-striped table-condensed table-fixed">
+                <thead class="table-info">';
                     <tr>
                         <th class="col">Emp Id</th>
-                        <th class="col">Employee Name</th>
+                        <th class="col">Emp Name</th>
                         <th class="col">T.W.T.</th>
                         <?php
                         for ($day = 1; $day <= $daysInMonth; $day++) {
                             echo '<th>' . $day . '</th>';
                         }
                         ?>
-                        <th class="col">T.P.D.</th>
+                        <th class="col">Total Present Days</th>
                     </tr>
                 </thead>
                 <?php
                 foreach ($attendanceData as $empData) {
                     echo '<tr>
-                            <td align="center">' . $empData['Emp_Id'] . '</td>
+                            <td>' . $empData['Emp_Id'] . '</td>
                             <td>' . $empData['First_Name'] . " " . $empData['Last_Name'] . '</td>
-                            <td align="center">' . $empData['Total_Work_Time'] . '</td>';
+                            <td>' . $empData['Total_Work_Time'] . '</td>';
                     for ($day = 1; $day <= $daysInMonth; $day++) {
                         echo '<td>' . $empData['Days'][$day] . '</td>';
                     }
-                    echo '<td align="center">' . $empData['Total_Present'] . '</td>'; // Output total present days
+                    echo '<td>' . $empData['Total_Present'] . '</td>'; // Output total present days
                     echo '</tr>';
                 }
                 echo '</table>';
@@ -144,6 +215,7 @@ include("../../../Backend/Database/connection.php");
                 ?>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="javascript/script.js"></script>
 </body>

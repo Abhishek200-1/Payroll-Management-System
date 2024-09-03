@@ -27,8 +27,21 @@ include("../../../Backend/Database/connection.php");
             </form>
         </div>
         <div class="table-uppar-second">
-        <form method="GET" action="">
-                <label for="month"><i class="fa-solid fa-calendar-days me-2"></i>Select Month :</label>
+            <p>hello</p>
+        </div>
+        <div>
+            <form method="GET" action="">
+                <label for="year">Select Year:</label>
+                <select name="year" id="year">
+                    <?php
+                    $currentYear = date("Y");
+                    for ($y = $currentYear; $y >= $currentYear - 10; $y--) {
+                        echo '<option value="' . $y . '">' . $y . '</option>';
+                    }
+                    ?>
+                </select>
+
+                <label for="month">Select Month:</label>
                 <select name="month" id="month">
                     <?php
                     for ($m = 1; $m <= 12; $m++) {
@@ -38,26 +51,11 @@ include("../../../Backend/Database/connection.php");
                     ?>
                 </select>
 
-                <label for="year"><i class="fa-solid fa-calendar-days me-2"></i>Select Year :</label>
-                <select name="year" id="year">
-                    <?php
-                    $currentYear = date("Y");
-                    for ($y = $currentYear; $y >= $currentYear - 10; $y--) {
-                        echo '<option value="' . $y . '">' . $y . '</option>';
-                    }
-                    ?>
-                </select>
                 <input type="submit" value="Show Attendance">
             </form>
-            <div class="Indications">
-                    <h5>---Indications---</h5>
-                    <p>** T.W.T. -> Total Working Time</p> 
-                    <p>** T.P.D. -> Total Present Days</p>
-
-            </div>
         </div>
         <div class="table-body">
-            <h4>Employee's Attendance Master Table</h4>
+            <h4>Attendance Master Table</h4>
             <button class="add btn btn-light" type="submit" onclick="location.href='take-attendance.php'"><i class="fa-solid fa-clipboard-user me-2"></i>Take Attendance</button>
             <button class="add btn btn-light" type="submit" onclick="location.href='view_attendance.php'"><i class="fa-regular fa-calendar-days me-2"></i>Monthly Attendance Report</button>
             <button class="add btn btn-light" type="submit" onclick="location.href='calculate_salary.php'"><i class="fa-solid fa-calculator me-2"></i>Calculate Salary</button>
@@ -113,7 +111,7 @@ include("../../../Backend/Database/connection.php");
                 }
             }
             ?>
-            <table class="col-xs-7 table table-striped table-condensed table-fixed table-bordered " cellspacing="0">
+            <table class="col-xs-7 table table-striped table-condensed table-fixed table-bordered">
                 <thead class="table-info">
                     <tr>
                         <th class="col">Emp Id</th>
@@ -130,13 +128,13 @@ include("../../../Backend/Database/connection.php");
                 <?php
                 foreach ($attendanceData as $empData) {
                     echo '<tr>
-                            <td align="center">' . $empData['Emp_Id'] . '</td>
+                            <td>' . $empData['Emp_Id'] . '</td>
                             <td>' . $empData['First_Name'] . " " . $empData['Last_Name'] . '</td>
-                            <td align="center">' . $empData['Total_Work_Time'] . '</td>';
+                            <td>' . $empData['Total_Work_Time'] . '</td>';
                     for ($day = 1; $day <= $daysInMonth; $day++) {
                         echo '<td>' . $empData['Days'][$day] . '</td>';
                     }
-                    echo '<td align="center">' . $empData['Total_Present'] . '</td>'; // Output total present days
+                    echo '<td>' . $empData['Total_Present'] . '</td>'; // Output total present days
                     echo '</tr>';
                 }
                 echo '</table>';
