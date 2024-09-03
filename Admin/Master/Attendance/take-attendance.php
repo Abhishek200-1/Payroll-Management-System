@@ -31,7 +31,7 @@ include("../../../Backend/Database/connection.php");
             <div class="table-body">
                 <h4>Take Today's Attendance</h4>
                 <div class="form-floating mb-3 ps-3 mt-2" style="margin-left: 620px;">
-                    <input type="date" class="form-control ps-3" id="floatingInput" name="attendance_date" min='<?php echo date('d/m H:i'); ?>' required value="<?php echo date('Y-m-d'); ?>">
+                    <input type="date" class="form-control ps-3" id="attendance_date" name="attendance_date" min="<?php echo date('Y-m-d'); ?>" required value="<?php echo date('Y-m-d'); ?>">
                     <label class="ms-3" for="attendance_date">Select Attendance Date</label>
                 </div>
                 <table class="col-xs-7 table table-striped table-condensed table-fixed">

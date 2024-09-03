@@ -2,10 +2,12 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Salary Report</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <h1>Salary Report</h1>
 
@@ -27,7 +29,19 @@
 
         if ($result->num_rows > 0) {
             echo "<table border='1'>";
-            echo "<tr><th>Employee ID</th><th>Name</th><th>Base Salary</th><th>HRA</th><th>DA</th><th>PF</th><th>Present Days</th><th>Absent Days</th><th>Leave Days</th><th>Total Salary</th><th>Net Salary</th></tr>";
+            echo "<tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Base Salary</th>
+                <th>HRA</th>
+                <th>DA</th>
+                <th>PF</th>
+                <th>Present Days</th>
+                <th>Absent Days</th>
+                <th>Leave Days</th>
+                <th>Total Salary</th>
+                <th>Net Salary</th>
+            </tr>";
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>
                         <td>{$row['employee_id']}</td>
@@ -51,4 +65,5 @@
     ?>
 
 </body>
+
 </html>
