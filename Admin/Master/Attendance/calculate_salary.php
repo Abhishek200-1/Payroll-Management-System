@@ -20,8 +20,7 @@ function calculateMonthlySalary($employee_id, $month_year) {
     $days_in_month = date('t', strtotime($month_year . '-01'));
 
     // Get attendance summary for the month
-    $attendance_query = "
-        SELECT 
+    $attendance_query = "SELECT 
             SUM(CASE WHEN status = 'present' THEN 1 ELSE 0 END) as present_days,
             SUM(CASE WHEN status = 'absent' THEN 1 ELSE 0 END) as absent_days,
             SUM(CASE WHEN status = 'leave' THEN 1 ELSE 0 END) as leave_days
