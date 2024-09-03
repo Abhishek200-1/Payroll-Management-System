@@ -38,17 +38,12 @@ include("../../../Backend/Database/connection.php");
                         <th class="col">Emp Id</th>
                         <th class="col">Fisrt Name</th>
                         <th class="col">Last Name</th>
-                        <?php
-                            // Generate day headers for the selected month
-                            $month = 8; // August
-                            $year = 2024;
-                            $days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year);
-
-                            for ($day = 1; $day <= $days_in_month; $day++) 
-                            {
-                                echo "<th>$day</th>";
-                            }
-                        ?>
+                        <th class="col">Department</th>
+                        <th class="col">Shift</th>
+                        <th class="col">Phone Number</th>
+                        <th class="col">Date Of Joining</th>
+                        <th class="col">Base Salary</th>
+                        <th class="col">Operations</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
@@ -64,49 +59,30 @@ include("../../../Backend/Database/connection.php");
                         $query = "SELECT Emp_Id, First_Name, Last_Name, Department, Shift, Pnumber, Date_Of_Joining, salary FROM `tbladdemployee`";
                     }
                     $result = mysqli_query($conn, $query);
-                    if (mysqli_num_rows($result)) 
-                    {
-                        while ($row = mysqli_fetch_assoc($result)) 
-                        {
+                    if (mysqli_num_rows($result)) {
+                        while ($row = mysqli_fetch_assoc($result)) {
                             $Emp_Id = $row['Emp_Id'];
                             $name = $row['First_Name'];
                             $lastname = $row['Last_Name'];
-                            echo 
-                            '<tr>
+                            $Department = $row['Department'];
+                            $Shift = $row['Shift'];
+                            $Pnumber = $row['Pnumber'];
+                            $Doj = $row['Date_Of_Joining'];
+                            $Salary = $row['salary'];
+                            echo '<tr>
                                 <th scope="row">' . $i++ . '</th>
-                                <td>' . $name . '</td>
-                                <td>' . $lastname . '</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
-                                <td>P</td>
+                                    <td>' . $name . '</td>
+                                    <td>' . $lastname . '</td>
+                                    <td>' . $Department . '</td>
+                                    <td>' . $Shift  . '</td>
+                                    <td>' . $Pnumber . '</td>
+                                    <td>' . $Doj . '</td>
+                                    <td>' . $Salary . '</td>
+                                <td>
+                                    <button><a href="update-add-employee.php? updateid=' . $Emp_Id . '" class="text-success"><i class="fa-solid fa-pen-to-square fa-1x"></i></i></a></button>
+                                    <button><a href="../../../Employee/EmployeeProfile.php? display=' . $Emp_Id . '" class="text-info mx-1"><i class="fa-solid fa-info fa-1x"></i></i></a></button>
+                                    <button><a href="delete-add-employee.php? deleteid=' . $Emp_Id . '" class="text-danger"><i class="fa-solid fa-trash fa-1x"></i></i></a></button>
+                                </td>
                             </tr>';
                         }
                     }
@@ -115,7 +91,7 @@ include("../../../Backend/Database/connection.php");
             </table>
         </div>
     </div>
-    <!-- <div style="Padding: 15px; margin: 15px;">
+    <!-- <div style="padding: 15px; margin: 15px;">
         <form method="GET" action="">
             <label for="year">Select Year:</label>
             <select name="year" id="year">

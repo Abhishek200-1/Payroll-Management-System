@@ -17,6 +17,7 @@ if (isset($_POST['btn'])) {
     $result = mysqli_query($conn, $addAdminQuery);
     if ($result) {
         header('location:display-add-Admin.php');
+        echo "<script>alert('Record Inserted Successfully');</script>";
     } else {
         die(mysqli_error($conn));
         echo "<script>alert('Record not Inserted');</script>";
@@ -29,35 +30,13 @@ if (isset($_POST['btn'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include CSS -->
     <link rel="stylesheet" href="../src/css/admin.css">
+    <!-- Include SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- Include SweetAlert2 JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Add-Admin-Page</title>
-    <style>
-        /* CSS for invalid input animation */
-        .invalid {
-            border: 2px solid red;
-            animation: shake 0.3s;
-        }
-
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-            100% { transform: translateX(0); }
-        }
-
-        .error-message {
-            color: red;
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
 </head>
 
 <body>
@@ -154,43 +133,7 @@ if (isset($_POST['btn'])) {
         </div>
     </div>
 
-    <script>
-        function validateForm() {
-            var isValid = true;
-            var inputs = document.querySelectorAll('input[required], select[required]');
-            inputs.forEach(function(input) {
-                if (input.value === "" || input.value === "default") {
-                    input.classList.add('invalid');
-                    input.nextElementSibling.style.display = 'block'; // Show error message
-                    isValid = false;
-                } else {
-                    input.classList.remove('invalid');
-                    input.nextElementSibling.style.display = 'none'; // Hide error message
-                }
-
-                // Specific validation for phone number format (10 digits)
-                if (input.name === "Phone_Number") {
-                    var phonePattern = /^\d{10}$/;
-                    if (!phonePattern.test(input.value)) {
-                        input.classList.add('invalid');
-                        input.nextElementSibling.style.display = 'block'; // Show error message
-                        isValid = false;
-                    }
-                }
-
-                // Specific validation for email format
-                if (input.name === "mail") {
-                    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-                    if (!emailPattern.test(input.value)) {
-                        input.classList.add('invalid');
-                        input.nextElementSibling.style.display = 'block'; // Show error message
-                        isValid = false;
-                    }
-                }
-            });
-            return isValid;
-        }
-    </script>
+    <script src="../src/Javascript/adminformvalidations.js"></script>
 </body>
 
 </html>
