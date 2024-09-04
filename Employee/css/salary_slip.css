@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e9ecef; 
+    padding: 20px;
+}
+.salary-slip {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+    border: 2px solid #000; 
+}
+
+.watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px; 
+    height: 400px; 
+    transform: translate(-50%, -50%) rotate(-30deg); 
+    opacity: 0.2; 
+    background: url('../../../src/Images/default.png') no-repeat center center;
+    background-size: contain;
+    z-index: 1; 
+}
+
+.salary-slip h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007bff; 
+    font-family: 'Arial', sans-serif; 
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.employee-details p {
+    margin: 5px 0;
+}
+.employee-details .col-md-6 {
+    border-right: 1px solid #ddd;
+    padding-right: 20px;
+}
+.employee-details .col-md-6:last-child {
+    border-right: none;
+}
+.salary-details {
+    margin-top: 20px;
+}
+.salary-details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.salary-details th,
+.salary-details td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.salary-details th {
+    background-color: #f8f9fa;
+}
+.salary-details .net-salary {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.authorized-signatory {
+    margin-top: 20px;
+    text-align: center;
+}
+.authorized-signatory img {
+    max-width: 200px;
+    height: auto;
+}
+.authorized-signatory p {
+    margin-top: -15px;
+    font-weight: bold;
+}
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: -18px;
+}
+.logo img {
+    max-width: 150px;
+}
+.stamp {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    color: #000;
+    text-align: center;
+    background: url('../image/Red\ and\ White\ Minimalist\ Christmas\ Circle\ Sticker.png') no-repeat center center;
+    background-size: cover;
+}
+.stamp-text {
+    line-height: 1.2;
+    color: transparent; 
+}

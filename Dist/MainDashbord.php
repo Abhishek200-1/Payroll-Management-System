@@ -100,9 +100,9 @@ if (!isset($_SESSION['AdminId']))
                     </a>
                 </li>
                 <li>
-                    <a href="../Dist/contact.php">
+                    <a href="../Dist/admin_message.php">
                         <i class="fas fa-solid fa-comment pe-2"></i>
-                        <span class="nav-item">Message</span>
+                        <span class="nav-item">Send Message</span>
                     </a>
                 </li>
                 <li>

@@ -66,11 +66,11 @@ if (mysqli_num_rows($result) > 0) {
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="employee_messages.php">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
-                        <span class="title">Send Messages</span>
+                        <span class="title">Administrator Messages</span>
                     </a>
                 </li>
                 <li>
@@ -98,7 +98,7 @@ if (mysqli_num_rows($result) > 0) {
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="salary_slip.html">
                         <span class="icon">
                             <ion-icon name="document-outline"></ion-icon>
                         </span>
