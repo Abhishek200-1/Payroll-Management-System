@@ -27,7 +27,7 @@ include("../../../Backend/Database/connection.php");
             </form>
         </div>
         <div class="table-uppar-second">
-        <form method="GET" action="">
+            <form method="GET" action="">
                 <label for="month"><i class="fa-solid fa-calendar-days me-2"></i>Select Month :</label>
                 <select name="month" id="month">
                     <?php
@@ -50,9 +50,9 @@ include("../../../Backend/Database/connection.php");
                 <input type="submit" value="Show Attendance">
             </form>
             <div class="Indications">
-                    <h5>---Indications---</h5>
-                    <p>** T.W.T. -> Total Working Time</p> 
-                    <p>** T.P.D. -> Total Present Days</p>
+                <h5>---Indications---</h5>
+                <p>** T.W.T. -> Total Working Time</p>
+                <p>** T.P.D. -> Total Present Days</p>
             </div>
         </div>
         <div class="table-body">
@@ -61,38 +61,34 @@ include("../../../Backend/Database/connection.php");
             <button class="add btn btn-light" type="submit" onclick="location.href='view_attendance.php'"><i class="fa-regular fa-calendar-days me-2"></i>Monthly Attendance Report</button>
             <button class="add btn btn-light" type="submit" onclick="location.href='calculate_salary.php'"><i class="fa-solid fa-calculator me-2"></i>Calculate Salary</button>
             <button class="add btn btn-light" type="submit" onclick="location.href='salary_report.php'"><i class="fa-solid fa-file-invoice me-2"></i>Salary Report</button>
-            <?php
-            include("../../../Backend/Database/connection.php");
 
+            <?php
             $year = isset($_GET['year']) ? (int)$_GET['year'] : date("Y");
             $month = isset($_GET['month']) ? (int)$_GET['month'] : date("n");
             $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+
             if (isset($_POST['SearchAttendanceBtn'])) {
                 $searchInput = $_POST['SearchAttendance'];
 
-                $query = "SELECT e.Emp_Id, e.First_Name, e.Last_Name,SEC_TO_TIME(SUM(TIME_TO_SEC(a.Work_Time))) AS Total_Work_Time,DAY(a.Date) AS Day, a.Is_Present
-            FROM tbladdemployee e
-            LEFT JOIN tbladdattendance a 
-            ON e.Emp_Id = a.Emp_Id AND YEAR(a.Date) = $year AND MONTH(a.Date) = $month
-            WHERE e.First_Name LIKE '%$searchInput%' OR e.Last_Name LIKE '%$searchInput%'
-            GROUP BY e.Emp_Id, Day
-            ORDER BY e.Emp_Id, Day
-        ";
-            } 
-            else 
-            {
-                $query = "SELECT e.Emp_Id, e.First_Name, e.Last_Name,SEC_TO_TIME(SUM(TIME_TO_SEC(a.Work_Time))) AS Total_Work_Time,DAY(a.Date) AS Day, a.Is_Present
-            FROM tbladdemployee e
-            LEFT JOIN tbladdattendance a 
-            ON e.Emp_Id = a.Emp_Id AND YEAR(a.Date) = $year AND MONTH(a.Date) = $month
-            GROUP BY e.Emp_Id, Day
-            ORDER BY e.Emp_Id, Day
-        ";
+                $query = "SELECT e.Emp_Id, e.First_Name, e.Last_Name, SEC_TO_TIME(SUM(TIME_TO_SEC(a.Work_Time))) AS Total_Work_Time, DAY(a.Date) AS Day, a.Is_Present
+                          FROM tbladdemployee e
+                          LEFT JOIN tbladdattendance a 
+                          ON e.Emp_Id = a.Emp_Id AND YEAR(a.Date) = $year AND MONTH(a.Date) = $month
+                          WHERE e.First_Name LIKE '%$searchInput%' OR e.Last_Name LIKE '%$searchInput%'
+                          GROUP BY e.Emp_Id, Day
+                          ORDER BY e.Emp_Id, Day";
+            } else {
+                $query = "SELECT e.Emp_Id, e.First_Name, e.Last_Name, SEC_TO_TIME(SUM(TIME_TO_SEC(a.Work_Time))) AS Total_Work_Time, DAY(a.Date) AS Day, a.Is_Present
+                          FROM tbladdemployee e
+                          LEFT JOIN tbladdattendance a 
+                          ON e.Emp_Id = a.Emp_Id AND YEAR(a.Date) = $year AND MONTH(a.Date) = $month
+                          GROUP BY e.Emp_Id, Day
+                          ORDER BY e.Emp_Id, Day";
             }
+
             $result = mysqli_query($conn, $query);
             $attendanceData = [];
-            while ($row = mysqli_fetch_assoc($result)) 
-            {
+            while ($row = mysqli_fetch_assoc($result)) {
                 $empId = $row['Emp_Id'];
                 $day = $row['Day'];
                 if (!isset($attendanceData[$empId])) {
@@ -115,7 +111,7 @@ include("../../../Backend/Database/connection.php");
                 }
             }
             ?>
-            <table class="col-xs-7 table table-striped table-condensed table-fixed table-bordered " cellspacing="0">
+            <table class="col-xs-7 table table-striped table-condensed table-fixed table-bordered" cellspacing="0">
                 <thead class="table-info">
                     <tr>
                         <th class="col">Emp Id</th>
@@ -130,36 +126,70 @@ include("../../../Backend/Database/connection.php");
                     </tr>
                 </thead>
                 <?php
-                    foreach ($attendanceData as $empData) 
-                    {
-                        echo 
-                            '<tr>
-                                <td align="center">' . $empData['Emp_Id'] . '</td>
-                                <td>' . $empData['First_Name'] . " " . $empData['Last_Name'] . '</td>
-                                <td align="center">' . $empData['Total_Work_Time'] . '</td>';
-                                for ($day = 1; $day <= $daysInMonth; $day++) 
-                                {
-                                    $status = $empData['Days'][$day];
-                                    $backgroundColor = '';
-                                    if ($status == 'P') 
-                                    {
-                                        $backgroundColor = 'style="color: #28a745;"';
-                                    } 
-                                    elseif ($status == 'A') 
-                                    {
-                                        $backgroundColor = 'style="color: #dc3545;"'; 
-                                    }
-                                    echo '<td ' . $backgroundColor . '>' . $status . '</td>';
-                                }
-                                echo '<td align="center">' . $empData['Total_Present'] . '</td>';
-                                echo 
-                            '</tr>';
-                    }   echo '</table>'; mysqli_close($conn);
-                ?>
+                foreach ($attendanceData as $empData) {
+                    echo '<tr>
+                            <td align="center">' . $empData['Emp_Id'] . '</td>
+                            <td>' . $empData['First_Name'] . " " . $empData['Last_Name'] . '</td>
+                            <td align="center">' . $empData['Total_Work_Time'] . '</td>';
+                    for ($day = 1; $day <= $daysInMonth; $day++) {
+                        $status = $empData['Days'][$day];
+                        $backgroundColor = '';
+                        if ($status == 'P') {
+                            $backgroundColor = 'style="color: #28a745;"';
+                        } elseif ($status == 'A') {
+                            $backgroundColor = 'style="color: #dc3545;"';
+                        }
+                        echo '<td ' . $backgroundColor . '>' . $status . '</td>';
+                    }
+                    echo '<td align="center">' . $empData['Total_Present'] . '</td>';
+                    echo '</tr>';
+                }
+                echo '</table>';
+
+                // Salary Calculation
+                if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['CalculateSalaryBtn'])) {
+                    $salaryQuery = "SELECT e.Emp_Id, e.First_Name, e.Last_Name, e.Base_Salary, e.HRA, e.DA, e.PF,
+                                    COUNT(a.Is_Present) AS Total_Present_Days
+                                    FROM tbladdemployee e
+                                    LEFT JOIN tbladdattendance a 
+                                    ON e.Emp_Id = a.Emp_Id AND YEAR(a.Date) = $year AND MONTH(a.Date) = $month AND a.Is_Present = 'present'
+                                    GROUP BY e.Emp_Id";
+
+                    $salaryResult = mysqli_query($conn, $salaryQuery);
+
+                    while ($salaryRow = mysqli_fetch_assoc($salaryResult)) {
+                        $empId = $salaryRow['Emp_Id'];
+                        $baseSalary = $salaryRow['Base_Salary'];
+                        $hra = $salaryRow['HRA'];
+                        $da = $salaryRow['DA'];
+                        $pf = $salaryRow['PF'];
+                        $totalPresentDays = $salaryRow['Total_Present_Days'];
+
+                        $perDaySalary = $baseSalary / $daysInMonth;
+                        $grossSalary = $perDaySalary * $totalPresentDays;
+                        $totalHRA = ($hra / 100) * $grossSalary;
+                        $totalDA = ($da / 100) * $grossSalary;
+                        $totalPF = ($pf / 100) * $grossSalary;
+
+                        $netSalary = $grossSalary + $totalHRA + $totalDA - $totalPF;
+
+                        $insertSalaryQuery = "INSERT INTO salaries (Emp_Id, Year, Month, Base_Salary, Gross_Salary, HRA, DA, PF, Net_Salary, Total_Present_Days)
+                                              VALUES ('$empId', '$year', '$month', '$baseSalary', '$grossSalary', '$totalHRA', '$totalDA', '$totalPF', '$netSalary', '$totalPresentDays')
+                                              ON DUPLICATE KEY UPDATE
+                                              Gross_Salary='$grossSalary', HRA='$totalHRA', DA='$totalDA', PF='$totalPF', Net_Salary='$netSalary', Total_Present_Days='$totalPresentDays'";
+
+                        mysqli_query($conn, $insertSalaryQuery);
+                    }
+
+                    echo "<div class='alert alert-success'>Salaries calculated and updated successfully!</div>";
+                }
+            ?>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="javascript/script.js"></script>
 </body>
 
 </html>
+
+<?php
+mysqli_close($conn);
+?>
