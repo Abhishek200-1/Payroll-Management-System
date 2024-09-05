@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../../src/css/display-table-only.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Document</title>
+    <link rel="icon" type="image/png" href="../../../../Employee/image/favicon.png">
+    <title>display-shift</title>
 </head>
 
 <body>

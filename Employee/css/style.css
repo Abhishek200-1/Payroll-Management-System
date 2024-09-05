@@ -259,6 +259,7 @@ body {
 .cardBox .card:hover {
   background: var(--blue);
   filter: drop-shadow(1px 1px 20px rgb(39, 75, 87));
+  transition: 0.5s;
 }
 .cardBox .card:hover .numbers,
 .cardBox .card:hover .cardName,
@@ -376,6 +377,7 @@ body {
 
 .cardBox-profile .card-profile:hover {
   background: var(--blue);
+  transition: 0.5s;
 }
 .cardBox-profile .card-profile:hover .numbers,
 .cardBox-profile .card-profile:hover .cardName,

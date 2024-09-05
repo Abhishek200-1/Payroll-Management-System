@@ -36,6 +36,7 @@ if (isset($_POST['btn'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <!-- Include SweetAlert2 JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" type="image/png" href="../../../Employee/image/favicon.png">
     <title>Add-Admin-Page</title>
 </head>
 

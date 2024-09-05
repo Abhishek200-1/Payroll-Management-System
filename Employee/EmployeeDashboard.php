@@ -31,6 +31,7 @@ if (mysqli_num_rows($result) > 0) {
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+        <link rel="icon" type="image/png" href="image/favicon.png">
     <title>Employee Dashboard</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="../Employee/css/style.css">

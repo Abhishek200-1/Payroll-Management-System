@@ -22,6 +22,7 @@ if (!isset($_SESSION['AdminId']))
         src="https://kit.fontawesome.com/81aa89284e.js"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../src/css/dashbord.css" />
+    <link rel="icon" type="image/png" href="../Employee/image/favicon.png">
 </head>
 
 <body>

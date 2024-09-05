@@ -15,6 +15,7 @@ $result = mysqli_query($conn, $query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Department Messages</title>
     <link rel="stylesheet" href="css/employee_message.css">
+    <link rel="icon" type="image/png" href="image/favicon.png">
 </head>
 <body>
     <div class="container">
