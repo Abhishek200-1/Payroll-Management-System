@@ -7,7 +7,7 @@
     <script src="https://kit.fontawesome.com/81aa89284e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../src/css/style-admin-display.css">
-    <link rel="icon" type="image/png" href="../../../../Employee/image/favicon.png">
+    <link rel="icon" type="image/png" href="../../../Employee/image/favicon.png">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg justify-content-center fs-5 mb-5" style="background-color:#00ff5573;">

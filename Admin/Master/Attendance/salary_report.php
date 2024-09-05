@@ -6,7 +6,7 @@
 <head>
     <title>Salary Report</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="../../../../Employee/image/favicon.png">
+    <link rel="icon" type="image/png" href="../../../Employee/image/favicon.png">
 </head>
 
 <body>

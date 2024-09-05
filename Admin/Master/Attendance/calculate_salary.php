@@ -89,6 +89,7 @@ $conn->close();
 <head>
     <title>Calculate Salary</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="../../../Employee/image/favicon.png">
 </head>
 <body>
     <h1>Calculate Salary</h1>

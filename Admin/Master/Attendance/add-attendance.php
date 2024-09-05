@@ -8,7 +8,7 @@
     <!-- <link rel="stylesheet" href="../src/css/sytle-add-employee.css"> -->
     <link rel="stylesheet" href="../../../src/css/sytle-add-employee.css">
     <script src="https://kit.fontawesome.com/81aa89284e.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/png" href="../../../../Employee/image/favicon.png">
+    <link rel="icon" type="image/png" href="../../../Employee/image/favicon.png">
 </head>
 
 <body>

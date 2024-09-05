@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login-cum registration form</title>
+    <title>about</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="bootstrap-4.6.2-dist/js/bootstrap.min.js">
+    <link rel="icon" type="image/png" href="../Employee/image/favicon.png">
+
 </head>
 <body>
 <header>

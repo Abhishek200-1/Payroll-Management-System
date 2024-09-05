@@ -46,7 +46,7 @@ include("../Backend/Database/connection.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../src/css/admin.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="icon" type="image/png" href="../../../../Employee/image/favicon.png">
+    <link rel="icon" type="image/png" href="../Employee/image/favicon.png">
     <title>Update Admin Page</title>
 </head>
 

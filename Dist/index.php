@@ -54,7 +54,8 @@ if (isset($_POST['btnAdmin'])) {
     src="https://kit.fontawesome.com/81aa89284e.js"
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../src/css/style-login-selector.css" />
-  <title>Sign in & Sign up Form</title>
+  <link rel="icon" type="image/png" href="../Employee/image/favicon.png">
+  <title>select-login-as-roll</title>
 </head>
 
 <body>
