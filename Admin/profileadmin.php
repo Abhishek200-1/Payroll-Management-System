@@ -83,7 +83,7 @@ if ($result) {
                             <!-- <h2><i class="fa-solid fa-gear"></i> Profile setting</h2> -->
                             <div class="content">
                                 <div class="input-box">
-                                    <label for="name">Empployee Id</label>
+                                    <label for="name">Admin Id</label>
                                     <input type="text" placeholder="Enter Your First Name" name="Fname" value=<?php echo $id; ?> required>
                                 </div>
                                 <div class="input-box">
