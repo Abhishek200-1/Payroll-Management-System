@@ -69,11 +69,11 @@
                             $Phone_Number = $row['Pnumber'];
                             echo
                             '<tr>
-                                <th scope="row">' . $i++ . '</th>
+                                <th scope="row" align="center">' . $i++ . '</th>
                                 <td>' . $name . '</td>
                                 <td>' . $lastname . '</td>
-                                <td>' . $departName . '</td>
-                                <td>' . $departName . '</td>
+                                <td>' . $Department . '</td>
+                                <td>' . $Shift . '</td>
                                 <td>
                                     <button><a href="../User/add-users.php? class="text-primary" style="text-decoration:none"><i class="fas fa-solid fa-id-card-clip me-2"></i>Add Username</button>
                                 </td>

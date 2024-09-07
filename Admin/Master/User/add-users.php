@@ -39,11 +39,11 @@
         <section class="main">
             <div class="main-top">
                 <!-- <h1>Department</h1> -->
-                <li><a href="">
+                <!-- <li><a href="">
                     <i class="fas fa-solid fa-sign-out-alt pe-2"></i>
                     <h6>Logout</h6>
                     </a>
-                </li>
+                </li> -->
             </div>
             
             <section class="attendance">
