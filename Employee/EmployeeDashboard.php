@@ -31,7 +31,7 @@ if (mysqli_num_rows($result) > 0) {
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-        <link rel="icon" type="image/png" href="image/favicon.png">
+    <link rel="icon" type="image/png" href="image/favicon.png">
     <title>Employee Dashboard</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="../Employee/css/style.css">
@@ -136,8 +136,18 @@ if (mysqli_num_rows($result) > 0) {
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">26</div>
-                        <div class="cardName">Working Days</div>
+                        <?php
+                        $query = "SELECT count(Emp_Id) AS days from `tbladdattendance` WHERE Emp_Id=$empId AND Is_Present='present';";
+                        $department = mysqli_query($conn, $query);
+                        if ($department) {
+                            while ($row = mysqli_fetch_assoc($department)) {
+                        ?>
+                                <div class="numbers"><?php echo $row["days"] ?></div>
+                                <div class="cardName">Working Days</div>
+                        <?php
+                            }
+                        }
+                        ?>
                     </div>
                     <div class="iconBx">
                         <ion-icon name="calendar"></ion-icon>
@@ -145,8 +155,18 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
                 <div class="card">
                     <div>
-                        <div class="numbers">4</div>
-                        <div class="cardName">Total Absent</div>
+                        <?php
+                        $query = "SELECT count(Emp_Id) AS days from `tbladdattendance` WHERE Emp_Id=$empId AND Is_Present='absent' OR Is_Present='leave';";
+                        $department = mysqli_query($conn, $query);
+                        if ($department) {
+                            while ($row = mysqli_fetch_assoc($department)) {
+                        ?>
+                                <div class="numbers"><?php echo $row["days"] ?></div>
+                                <div class="cardName">Total Absent</div>
+                        <?php
+                            }
+                        }
+                        ?>
                     </div>
                     <div class="iconBx">
                         <ion-icon name="today"></ion-icon>
@@ -154,8 +174,19 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
                 <div class="card">
                     <div>
-                        <div class="numbers">25</div>
-                        <div class="cardName">Department Messages</div>
+                        <?php
+                        $query = "SELECT count(id) AS messages from `department_messages`;";
+                        // $query = "SELECT count(id) AS messages from `department_messages` WHERE Emp_Id=$empId;";
+                        $department = mysqli_query($conn, $query);
+                        if ($department) {
+                            while ($row = mysqli_fetch_assoc($department)) {
+                        ?>
+                                <div class="numbers"><?php echo $row["messages"] ?></div>
+                                <div class="cardName">Department Messages</div>
+                        <?php
+                            }
+                        }
+                        ?>
                     </div>
                     <div class="iconBx">
                         <ion-icon name="chatbubbles-outline"></ion-icon>
@@ -163,8 +194,18 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
                 <div class="card">
                     <div>
-                        <div class="numbers">$15000</div>
-                        <div class="cardName">Earning</div>
+                        <?php
+                        $query = "SELECT sum(net_salary) AS earning from `salaries` WHERE employee_id=$empId;";
+                        $department = mysqli_query($conn, $query);
+                        if ($department) {
+                            while ($row = mysqli_fetch_assoc($department)) {
+                        ?>
+                                <div class="numbers">$ <?php echo $row["earning"] ?></div>
+                                <div class="cardName">Earning</div>
+                        <?php
+                            }
+                        }
+                        ?>
                     </div>
                     <div class="iconBx">
                         <ion-icon name="cash-outline"></ion-icon>

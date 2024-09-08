@@ -1,29 +1,32 @@
 <?php
-            include("../../../Backend/Database/connection.php");
-            if(isset($_POST['btn']))
-        {
-            $User_Name=$_POST['userId'];
-            $Password=$_POST['password'];
+include("../../../Backend/Database/connection.php");
+$emp_id = $_GET["emp_id"];
+$fetchEmpData = "SELECT Email FROM tbladdemployee WHERE Emp_Id = $emp_id;";
+$empResult = mysqli_query($conn, $fetchEmpData);
 
-            
-            
-            $q="insert into `tblusername` (User_Name,Password) values ('$User_Name','$Password')";
-            $result=mysqli_query($conn,$q);
-            if($result)
-            {
-                  // echo "<script>alert('Record Inserted Successfully');</script>";
-                  header('location:../User/display-add-users.php');
-            }
-            else
-            {
-                echo "Error found : " . mysqli_error($conn);
-            }
-        }
+if ($empResult) {
+    $row = mysqli_fetch_assoc($empResult);
+    $email = $row["Email"];
+}
 
-    ?>
+if (isset($_POST['addUserBtn'])) {
+    $User_Name = $_POST['userId'];
+    $Password = $_POST['password'];
+    $q = "insert into `tblusername` (User_Name,Password) values ('$User_Name','$Password')";
+    $result = mysqli_query($conn, $q);
+    if ($result) {
+        echo "<script>alert('Record Inserted Successfully');</script>";
+        header('location:../User/display-add-users.php');
+    } else {
+        echo "Error found : " . mysqli_error($conn);
+    }
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,7 +48,7 @@
                     </a>
                 </li> -->
             </div>
-            
+
             <section class="attendance">
                 <div class="department-entry">
                     <h3>Users Master Data</h3>
@@ -53,14 +56,14 @@
                         <h2>Add New User</h2>
                         <p>Form To Add New Username To User</p>
                         <div class="content">
-                             <div class="input-box">
-                                 <label for="name">Username</label>
-                                 <input type="text" placeholder="Enter Your  UserName" name="userId" required> 
+                            <div class="input-box">
+                                <label for="name">Username</label>
+                                <input type="text" placeholder="Enter Your  UserName" value="<?php echo $email; ?>" name="userId" required>
                             </div>
-         
+
                             <div class="input-box">
                                 <label for="name">Password</label>
-                                <input type="password" placeholder="Enter Your Password" name="password" required> 
+                                <input type="password" placeholder="Enter Your Password" name="password" required>
                             </div>
                         </div>
 
@@ -68,8 +71,10 @@
                             <p>By Clicking Add Button, You Are Going To Assugn New Username To Employee</p>
                         </div>
 
-                        <button class="btnAddDepartment-add" name="btn"><i class="fa-solid fa-square-plus"></i><h6>Assign Username</h6></button>
-                        
+                        <button class="btnAddDepartment-add" name="addUserBtn"><i class="fa-solid fa-square-plus"></i>
+                            <h6>Assign Username</h6>
+                        </button>
+
                     </form>
                 </div>
             </section>

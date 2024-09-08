@@ -2,8 +2,7 @@
 session_start();
 include("../Backend/Database/connection.php");
 
-if (!isset($_SESSION['AdminId'])) 
-{
+if (!isset($_SESSION['AdminId'])) {
     header("Location: index.php");
 }
 
@@ -222,13 +221,13 @@ if (!isset($_SESSION['AdminId']))
                         <table>
                             <tr>
                                 <?php
-                                $query = "SELECT count(uSER_Name) AS userId from `tblusername`";
+                                $query = "SELECT count(Emp_Id) AS users from `tbladdemployee` WHERE status='active'";
                                 $shift = mysqli_query($conn, $query);
                                 if ($shift) {
                                     while ($row = mysqli_fetch_assoc($shift)) {
                                 ?>
                                         <td>
-                                            <span><?php echo $row['userId']; ?></span>
+                                            <span><?php echo $row['users']; ?></span>
                                         </td>
                                 <?php
                                     }
@@ -254,26 +253,29 @@ if (!isset($_SESSION['AdminId']))
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th>01</th>
-                                    <th>ABCD</th>
-                                    <th>12</th>
-                                </tr>
-                                <tr>
-                                    <th>01</th>
-                                    <th>ABCD</th>
-                                    <th>12</th>
-                                </tr>
-                                <tr>
-                                    <th>01</th>
-                                    <th>ABCD</th>
-                                    <th>12</th>
-                                </tr>
-                                <tr>
-                                    <th>01</th>
-                                    <th>ABCD</th>
-                                    <th>12</th>
-                                </tr>
+                                <?php
+                                $query = "SELECT Department, count(Emp_Id) AS employeesCount from `tbladdemployee` GROUP BY Department";
+                                $shift = mysqli_query($conn, $query);
+                                if ($shift) {
+                                    $i = 1;
+                                    while ($row = mysqli_fetch_assoc($shift)) {
+                                ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo $i; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['Department']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['employeesCount']; ?>
+                                            </td>
+                                        </tr>
+                                <?php
+                                        $i++;
+                                    }
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -288,16 +290,29 @@ if (!isset($_SESSION['AdminId']))
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th>01</th>
-                                    <th>ABCD</th>
-                                    <th>12</th>
-                                </tr>
-                                <tr>
-                                    <th>01</th>
-                                    <th>ABCD</th>
-                                    <th>12</th>
-                                </tr>
+                                <?php
+                                $query = "SELECT s.Shift_Name, count(e.Emp_Id) AS employeesCount FROM `tbladdemployee` e JOIN `tblshift` s WHERE s.id = e.Shift GROUP BY Shift";
+                                $shift = mysqli_query($conn, $query);
+                                if ($shift) {
+                                    $i = 1;
+                                    while ($row = mysqli_fetch_assoc($shift)) {
+                                ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo $i; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['Shift_Name']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $row['employeesCount']; ?>
+                                            </td>
+                                        </tr>
+                                <?php
+                                        $i++;
+                                    }
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -323,7 +338,7 @@ if (!isset($_SESSION['AdminId']))
                                 </tr>
                             </table>
                         </div>
-                        <button onclick="window.location.href = '../Admin/Profile.php'">Profile</button>
+                        <button onclick="window.location.href = '../Admin/profileadmin.php'">Profile</button>
                     </div>
                 </div>
             </section>

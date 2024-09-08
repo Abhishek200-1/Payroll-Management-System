@@ -75,7 +75,7 @@
                                 <td>' . $Department . '</td>
                                 <td>' . $Shift . '</td>
                                 <td>
-                                    <button><a href="../User/add-users.php? class="text-primary" style="text-decoration:none"><i class="fas fa-solid fa-id-card-clip me-2"></i>Add Username</button>
+                                    <button><a href="../User/add-users.php?emp_id=' . $Emp_Id . '" class="text-primary" style="text-decoration:none"><i class="fas fa-solid fa-id-card-clip me-2"></i>Add Username</button>
                                 </td>
                                 <td>
                                     <button><a href="../../../Backend/Update/update-add-employee.php? updateid=' . $Emp_Id . '" class="text-success"><i class="fa-solid fa-pen-to-square fa-1x"></i></i></a></button>
