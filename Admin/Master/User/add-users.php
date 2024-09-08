@@ -1,6 +1,7 @@
 <?php
 include("../../../Backend/Database/connection.php");
-$emp_id = $_GET["emp_id"];
+
+$emp_id = $_GET["emp_id"]; // Assuming Emp_Id is passed as a query parameter
 $fetchEmpData = "SELECT Email FROM tbladdemployee WHERE Emp_Id = $emp_id;";
 $empResult = mysqli_query($conn, $fetchEmpData);
 
@@ -12,8 +13,11 @@ if ($empResult) {
 if (isset($_POST['addUserBtn'])) {
     $User_Name = $_POST['userId'];
     $Password = $_POST['password'];
-    $q = "insert into `tblusername` (User_Name,Password) values ('$User_Name','$Password')";
+    
+    // Insert Emp_Id along with User_Name and Password
+    $q = "INSERT INTO `tblusername` (User_Name, Password, Employee_Id) VALUES ('$User_Name', '$Password', '$emp_id')";
     $result = mysqli_query($conn, $q);
+    
     if ($result) {
         echo "<script>alert('Record Inserted Successfully');</script>";
         header('location:../User/display-add-users.php');
@@ -21,7 +25,6 @@ if (isset($_POST['addUserBtn'])) {
         echo "Error found : " . mysqli_error($conn);
     }
 }
-
 ?>
 
 <!DOCTYPE html>

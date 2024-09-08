@@ -51,7 +51,7 @@ if (mysqli_num_rows($result) > 0) {
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="EmployeeDashboard.php">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -59,7 +59,7 @@ if (mysqli_num_rows($result) > 0) {
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="employeeattendance.php">
                         <span class="icon">
                             <ion-icon name="calendar-outline"></ion-icon>
                         </span>
@@ -75,7 +75,7 @@ if (mysqli_num_rows($result) > 0) {
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="EmployeeProfile.php">
                         <span class="icon">
                             <ion-icon name="settings-outline"></ion-icon>
                         </span>
