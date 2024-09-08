@@ -16,10 +16,9 @@ if (isset($_POST['btn']))
     $status = $_POST['status'];
 
 
-    $q = "insert into `tbladdemployee` (First_Name,Last_Name,Email,Department,Shift,Pnumber,Address,Date_of_Birth,Date_of_Joining,Gender,salary, status) values ('$Firstname','$Lastname','$Email','$Department','$Shift','$Pnumber','$Address','$Dateofbirth','$Dateofjoining','$Gender','$salary', '$status')";
+    $q = "INSERT into `tbladdemployee` (First_Name,Last_Name,Email,Department,Shift,Pnumber,Address,Date_of_Birth,Date_of_Joining,Gender,salary, status) values ('$Firstname','$Lastname','$Email','$Department','$Shift','$Pnumber','$Address','$Dateofbirth','$Dateofjoining','$Gender','$salary', '$status')";
     $result = mysqli_query($conn, $q);
     if ($result) {
-        // echo "<script>alert('Record Inserted Successfully');</script>";
         header('location:../../../Admin/Master/Employee/display-add-employee.php');
     }
 }
@@ -50,27 +49,26 @@ if (isset($_POST['btn']))
                     <div class="content">
                         <div class="input-box">
                             <label for="name">Fisrt Name</label>
-                            <input type="text" placeholder="Enter Your First Name" name="Fname" required>
+                            <input type="text" placeholder="Enter First Name" name="Fname" required>
                         </div>
 
                         <div class="input-box">
                             <label for="name">Last Name</label>
-                            <input type="text" placeholder="Enter Your Last Name" name="Lname" required>
+                            <input type="text" placeholder="Enter Last Name" name="Lname" required>
                         </div>
 
                         <div class="input-box">
                             <label for="Email">Email</label>
-                            <input type="text" placeholder="Enter Your Email" name="mail" required>
+                            <input type="text" placeholder="Enter Email" name="mail" required>
                         </div>
 
                         <div class="input-box">
                             <label for="PhoneNumber">Phone Number</label>
-                            <input type="text" placeholder="Enter Your Phone Number" name="Phone_Number" required>
+                            <input type="text" placeholder="Enter Phone Number" name="Phone_Number" required>
                         </div>
 
                         <div class="input-box">
                             <label for="depart">Department</label>
-                            <!-- <input type="text" placeholder="Enter Your Department" name="depart" required> -->
                             <select class="option" name="Department">
                                 <option value="default">Select Department</option>
                                 <?php
@@ -91,7 +89,6 @@ if (isset($_POST['btn']))
 
                         <div class="input-box">
                             <label for="addresss">Shift</label>
-                            <!-- <input type="text" placeholder="Enter Your Department" name="shift" required> -->
                             <select class="option" name="shift">
                                 <option value="default">Select Shift</option>
                                 <?php
@@ -112,22 +109,22 @@ if (isset($_POST['btn']))
 
                         <div class="input-box">
                             <label for="addresss">Address</label>
-                            <input type="text" placeholder="Enter Your Address" name="Address" required>
+                            <input type="text" placeholder="Enter Address" name="Address" required>
                         </div>
 
                         <div class="input-box">
                             <label for="Dob">Date Of Birth</label>
-                            <input type="date" placeholder="Enter Your Date Of Birth" name="DOB" required>
+                            <input type="date" placeholder="Enter Date Of Birth" name="DOB" required>
                         </div>
 
                         <div class="input-box">
                             <label for="Dob">Date Of Joining</label>
-                            <input type="date" placeholder="Enter Your Date Of Joining" name="DOJ" required>
+                            <input type="date" placeholder="Enter Date Of Joining" name="DOJ" required>
                         </div>
 
                         <div class="input-box">
                             <label for="Dob">Base Salary</label>
-                            <input type="text" placeholder="Enter Your Date Of Joining" name="Base_salary" required>
+                            <input type="text" placeholder="Enter Salary" name="salary" required>
                         </div>
                         
                         <div class="input-box">
