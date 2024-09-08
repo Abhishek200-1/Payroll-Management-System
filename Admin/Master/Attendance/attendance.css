@@ -103,8 +103,8 @@ h4 {
 }
 
 .table-body {
-    overflow: scroll;
-    overflow-x: hidden;
+    /* overflow: scroll;
+    overflow-x: hidden; */
     max-height: 610px;
     background-color: #cbd5e1;
     border-radius: 10px;

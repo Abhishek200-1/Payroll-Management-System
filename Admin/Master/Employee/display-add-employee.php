@@ -28,7 +28,7 @@
             <h4>Employee Master Table</h4>
             <button class="add btn btn-light" type="submit" onclick="location.href='add-employee.php'"><i class="fa-solid fa-plus me-2"></i>Add New Employee</button>
             <table class="col-xs-7 table table-striped table-condensed table-fixed">
-                <thead class="table-info">
+                <thead class="table-info" style="position:sticky">
                     <tr>
                         <th class="col">Emp Id</th>
                         <th class="col">Fisrt Name</th>
