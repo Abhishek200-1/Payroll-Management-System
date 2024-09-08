@@ -16,23 +16,17 @@ function calculateMonthlySalary($employee_id, $month_year)
     $employee_result = $conn->query($employee_query);
     $employee_data = $employee_result->fetch_assoc();
     $base_salary = $employee_data['salary'];
-    echo "<br>";
-    echo "--------------------------------new emp data------------------------------------";
-    echo "EmpId : $employee_id<br>";
-    echo "Base salary :  $base_salary <br>";
-
     // Get total days in the month
     $days_in_month = date('t', strtotime($month_year . '-01'));
-    echo "Days in month : $days_in_month <br>";
 
     // Get attendance summary for the month
     $attendance_query = "SELECT 
-            SUM(CASE WHEN status = 'present' THEN 1 ELSE 0 END) as present_days,
-            SUM(CASE WHEN status = 'absent' THEN 1 ELSE 0 END) as absent_days,
-            SUM(CASE WHEN status = 'leave' THEN 1 ELSE 0 END) as leave_days
-        FROM attendance
-        WHERE employee_id = $employee_id 
-        AND DATE_FORMAT(attendance_date, '%Y-%m') = '$month_year'";
+            SUM(CASE WHEN Is_Present = 'present' THEN 1 ELSE 0 END) as present_days,
+            SUM(CASE WHEN Is_Present = 'absent' THEN 1 ELSE 0 END) as absent_days,
+            SUM(CASE WHEN Is_Present = 'leave' THEN 1 ELSE 0 END) as leave_days
+        FROM tbladdattendance
+        WHERE Emp_Id = $employee_id 
+        AND DATE_FORMAT(date, '%Y-%m') = '$month_year'";
 
     $attendance_result = $conn->query($attendance_query);
     $attendance_data = $attendance_result->fetch_assoc();
@@ -41,43 +35,44 @@ function calculateMonthlySalary($employee_id, $month_year)
     $absent_days = $attendance_data['absent_days'];
     $leave_days = $attendance_data['leave_days'];
 
-    echo "Present days : $present_days, Absent Days : $absent_days, Leave days : $leave_days <br>";
     // Calculate daily salary
     $daily_salary = $base_salary / $days_in_month;
-    echo "Daily salary : $daily_salary <br>";
 
     // Calculate total salary before deductions
     $total_salary = ($daily_salary * $present_days);
-    echo "Total salary : $total_salary <br>";
 
     // Calculate HRA, DA, PF
     $hra = $base_salary * HRA_PERCENTAGE;
     $da = $base_salary * DA_PERCENTAGE;
     $pf = $base_salary * PF_PERCENTAGE;
 
-    echo "HRA : $hra, DA : $da, PF : $pf <br>";
     // Calculate net salary
     $net_salary = $total_salary + $hra + $da - $pf;
-    echo "Net salary : $net_salary";
     // Save salary record
-    // $insert_salary_query = "
-    //     INSERT INTO salaries (employee_id, month_year, base_salary, hra, da, pf, total_present_days, total_absent_days, total_leave_days, total_salary, net_salary)
-    //     VALUES ($employee_id, '$month_year', $base_salary, $hra, $da, $pf, $present_days, $absent_days, $leave_days, $total_salary, $net_salary)
-    //     ON DUPLICATE KEY UPDATE 
-    //         hra = $hra,
-    //         da = $da,
-    //         pf = $pf,
-    //         total_present_days = $present_days, 
-    //         total_absent_days = $absent_days, 
-    //         total_leave_days = $leave_days, 
-    //         total_salary = $total_salary,
-    //         net_salary = $net_salary";
 
-    // if ($conn->query($insert_salary_query) === TRUE) {
-    //     echo "Salary calculated and saved successfully for Employee ID: $employee_id for the month $month_year.<br>";
-    // } else {
-    //     echo "Error: " . $conn->error . "<br>";
-    // }
+    $insert_salary_query = "INSERT INTO salaries (employee_id, month_year, base_salary, hra, da, pf, total_present_days, total_absent_days, total_leave_days, total_salary, net_salary)
+        VALUES ('$employee_id', '$month_year', '$base_salary', '$hra', '$da', '$pf', '$present_days', '$absent_days', '$leave_days', '$total_salary', '$net_salary')
+        ON DUPLICATE KEY UPDATE 
+            hra = $hra,
+            da = $da,
+            pf = $pf,
+            total_present_days = $present_days, 
+            total_absent_days = $absent_days, 
+            total_leave_days = $leave_days, 
+            total_salary = $total_salary,
+            net_salary = $net_salary";
+    try {
+        if ($conn->query($insert_salary_query) === TRUE) {
+            echo "Salary record inserted/updated successfully for Employee ID: $employee_id for the month $month_year.<br>";
+        }
+    } catch (mysqli_sql_exception $e) {
+        // Check if the error is related to a duplicate entry
+        if ($e->getCode() == 1062) { // Error code 1062 corresponds to duplicate entry
+            echo "Error: Salary data for Employee ID: $employee_id for the month $month_year already exists.<br>";
+        } else {
+            echo "Error: " . $e->getMessage() . "<br>";
+        }
+    }
 }
 
 // Calculate salary for all employees for a specific month
@@ -89,6 +84,7 @@ if (isset($_POST['month_year'])) {
     while ($employee = $employee_result->fetch_assoc()) {
         calculateMonthlySalary($employee['Emp_Id'], $month_year);
     }
+    echo mysqli_error($conn);
 }
 
 $conn->close();
