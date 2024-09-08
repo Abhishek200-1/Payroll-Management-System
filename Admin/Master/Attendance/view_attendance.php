@@ -22,7 +22,7 @@
         $year = date('Y', strtotime($month));
         $month_number = date('m', strtotime($month));
 
-        $sql = "SELECT e.Emp_Id, e.First_Name, e.Last_Name, e.Image, e.Department, e.Shift, a.date, a.Is_Present 
+        $sql = "SELECT e.Emp_Id, e.First_Name, e.Last_Name, e.employeeprofile, e.Department, e.Shift, a.date, a.Is_Present 
                 FROM tbladdemployee e 
                 LEFT JOIN tbladdattendance a ON e.Emp_Id = a.Emp_Id 
                 WHERE YEAR(a.date) = '$year' AND MONTH(a.date) = '$month_number'";
