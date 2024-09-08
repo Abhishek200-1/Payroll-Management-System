@@ -136,7 +136,7 @@ a:hover i {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    background: #fff;
+    background: #4d84e2;
     border-radius: 10px;
     padding: 10px 2rem;
     margin-bottom: 1rem;
@@ -245,10 +245,10 @@ a:hover i {
 .users .card-sec .icon {
     color: #fff;
     padding: 1.2rem;
-    height: 70px;
-    width: 70px;
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
-    font-size: 45px;
+    font-size: 30px;
     background: #4d84e2;
     display: flex;
     align-items: center;
@@ -256,11 +256,11 @@ a:hover i {
 
 .users .card-sec .icon-s {
     color: #fff;
-    padding: 0.70rem;
-    height: 70px;
-    width: 70px;
+    padding: 0.80rem;
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
-    font-size: 45px;
+    font-size: 30px;
     background: #4d84e2;
     display: flex;
     align-items: center;
