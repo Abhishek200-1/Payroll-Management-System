@@ -27,7 +27,7 @@ body {
     border-radius: 10px;
     display: flex;
     align-items: center;
-    gap: 1050px;
+    gap: 1040px;
 }
 
 .table-uppar-second{
@@ -149,7 +149,7 @@ h4 {
 
 .Indications{
     height: 50px;
-    margin-left: 1250px;
+    margin-left: 1240px;
 }
 
 .Indications h5{
