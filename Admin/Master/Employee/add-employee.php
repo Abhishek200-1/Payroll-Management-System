@@ -123,7 +123,7 @@ if (isset($_POST['btn']))
                         </div>
 
                         <div class="input-box">
-                            <label for="Dob">Base Salary</label>
+                            <label for="salary">Base Salary</label>
                             <input type="text" placeholder="Enter Salary" name="salary" required>
                         </div>
                         

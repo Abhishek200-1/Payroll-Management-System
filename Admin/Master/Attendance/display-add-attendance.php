@@ -118,7 +118,7 @@ include("../../../Backend/Database/connection.php");
             ?>
             <table class="col-xs-7 table table-striped table-condensed table-fixed table-bordered " cellspacing="0">
                 <thead class="table-info">
-                    <tr>
+                    <tr align="center">
                         <th class="col">Emp Id</th>
                         <th class="col">Employee Name</th>
                         <th class="col">T.W.T.</th>

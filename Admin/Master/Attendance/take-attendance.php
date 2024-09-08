@@ -37,7 +37,7 @@ include("../../../Backend/Database/connection.php");
                 </div>
                 <table class="col-xs-7 table table-striped table-condensed table-fixed">
                     <thead class="table-info">
-                        <tr>
+                        <tr align="center">
                             <th class="col">Emp Id</th>
                             <th class="col">First Name</th>
                             <th class="col">Last Name</th>
@@ -51,7 +51,7 @@ include("../../../Backend/Database/connection.php");
                         $result = $conn->query("SELECT * FROM `tbladdemployee` WHERE status='active'");
                         while ($row = $result->fetch_assoc()) {
                             echo
-                            "<tr>
+                            "<tr align='center'>
                                 <td>{$row['Emp_Id']}</td>
                                 <td>{$row['First_Name']}</td>
                                 <td>{$row['Last_Name']}</td>
