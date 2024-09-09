@@ -12,15 +12,21 @@ if (isset($_POST['btn'])) {
     $Date_Of_Joining = $_POST['DOJ'];
     $Gender = $_POST['Gender'];
 
-    $addAdminQuery = "INSERT INTO `tbladdadmin` (First_Name, Last_Name, Email, Department, Shift_Name, Phone_Number, Address, Date_Of_Birth, Date_Of_Joining, Gender) 
-                      VALUES ('$First_Name', '$Last_Name', '$Email', '$Department', '$Shift_Name', '$Phone_Number', '$Address', '$Date_Of_Birth', '$Date_Of_Joining', '$Gender')";
-    $result = mysqli_query($conn, $addAdminQuery);
-    if ($result) {
-        header('location:display-add-Admin.php');
-        echo "<script>alert('Record Inserted Successfully');</script>";
+    $existUserQuery = "SELECT * FROM tbladdadmin where Email='$Email' OR Phone_Number='$Phone_Number';";
+    $existUser = mysqli_query($conn, $existUserQuery);
+    if ($existUser) {
+        echo "<script>alert('Admin already exists!');</script>";
     } else {
-        die(mysqli_error($conn));
-        echo "<script>alert('Record not Inserted');</script>";
+        $addAdminQuery = "INSERT INTO `tbladdadmin` (First_Name, Last_Name, Email, Department, Shift_Name, Phone_Number, Address, Date_Of_Birth, Date_Of_Joining, Gender) 
+                      VALUES ('$First_Name', '$Last_Name', '$Email', '$Department', '$Shift_Name', '$Phone_Number', '$Address', '$Date_Of_Birth', '$Date_Of_Joining', '$Gender')";
+        $result = mysqli_query($conn, $addAdminQuery);
+        if ($result) {
+            header('location:display-add-Admin.php');
+            echo "<script>alert('Record Inserted Successfully');</script>";
+        } else {
+            die(mysqli_error($conn));
+            echo "<script>alert('Record not Inserted');</script>";
+        }
     }
 }
 ?>
@@ -37,7 +43,7 @@ if (isset($_POST['btn'])) {
     <!-- Include SweetAlert2 JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="icon" type="image/png" href="../Employee/image/favicon.png">
-        <title>Add-Admin-Page</title>
+    <title>Add-Admin-Page</title>
 </head>
 
 <body>
