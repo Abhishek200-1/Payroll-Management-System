@@ -25,7 +25,7 @@ if (!$result) {
             <ul>
                 <?php while ($row = mysqli_fetch_assoc($result)): ?>
                     <li>
-                        <p><strong>Message:</strong> <?php echo htmlspecialchars($row['message']); ?></p>
+                        <p><strong>Admin :</strong> <?php echo htmlspecialchars($row['message']); ?></p>
                         <p><small><?php echo htmlspecialchars($row['created_at']); ?></small></p>
                     </li>
                 <?php endwhile; ?>
