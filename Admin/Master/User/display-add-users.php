@@ -29,7 +29,7 @@
             <button class="add btn btn-light" type="submit" onclick="location.href='../Employee/add-employee.php'"><i class="fa-solid fa-plus me-2"></i>Add New User</button>
             <table class="col-xs-7 table table-striped table-condensed table-fixed">
                 <thead class="table-info">
-                    <tr>
+                    <tr align="center">
                         <th class="col">Emp Id</th>
                         <th class="col">Fisrt Name</th>
                         <th class="col">Last Name</th>
@@ -68,7 +68,7 @@
                             $Shift = $row['Shift'];
                             $Phone_Number = $row['Pnumber'];
                             echo
-                            '<tr>
+                            '<tr align="center">
                                 <th scope="row" align="center">' . $i++ . '</th>
                                 <td>' . $name . '</td>
                                 <td>' . $lastname . '</td>

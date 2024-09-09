@@ -30,7 +30,7 @@
             <button class="add btn btn-light" type="submit" onclick="location.href='add-department.php'"><i class="fa-solid fa-plus me-2"></i> Add New Department</button>
             <table class="col-xs-7 table table-striped table-condensed table-fixed">
                 <thead class="table-info">
-                    <tr>
+                    <tr align="center">
                         <th class="col">Sr. No.</th>
                         <th class="col">Id</th>
                         <th class="col">Department Name</th>
@@ -54,7 +54,7 @@
                             $DepartmentId = $row['Id'];
                             $DepartmentName = $row['Name'];
                             echo
-                            '<tr>
+                            '<tr align="center">
                                 <th scope="row">' . $i++ . '</th>
                                     <td>' . $DepartmentId . '</td>
                                     <td>' . $DepartmentName . '</td>
