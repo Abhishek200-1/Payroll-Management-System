@@ -99,7 +99,7 @@ if (mysqli_num_rows($result) > 0) {
                     </a>
                 </li>
                 <li>
-                    <a href="salary_slip.html">
+                    <a href="salary_slip.php">
                         <span class="icon">
                             <ion-icon name="document-outline"></ion-icon>
                         </span>
@@ -222,7 +222,7 @@ if (mysqli_num_rows($result) > 0) {
                     </div>
                     <div class="Details-pro">
                         <div class="name">
-                            <h3>Accountant Department</h3>
+                            <h3>Personal Profile Details</h3>
                         </div>
                         <div class="basic-details">
                             <h5>Employee Id : <?php echo $Emp_Id ?></h5>

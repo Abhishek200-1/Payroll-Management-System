@@ -64,11 +64,8 @@ function calculateMonthlySalary($employee_id, $month_year)
             net_salary = $net_salary";
     try {
         if ($conn->query($insert_salary_query) === TRUE) {
-<<<<<<< HEAD
             // echo "Salary record inserted/updated successfully for Employee ID: $employee_id for the month $month_year.<br>";
-=======
             echo "<p class='success-message animated'>Salary record inserted/updated successfully for Employee ID: $employee_id for the month $month_year.</p>";
->>>>>>> 74e6401af8dadb8abbf422fafdc8bf865ec5f59c
         }
     } catch (mysqli_sql_exception $e) {
         if ($e->getCode() == 1062) {

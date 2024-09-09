@@ -1,53 +1,124 @@
-/* Basic styles for the admin and employee pages */
-.container {
-    width: 80%;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+/* Reset some default styles */
+body, h1, p, ul {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Basic styles for body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #cfe2ce;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container styles */
+.container {
+    background: #fff;
+    border-radius: 20px;
+    border: 2px solid #a3b68f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    animation: fadeIn 1s ease-out;
+}
+
+.container:hover{
+    scale: 1.05;
+    transition: 0.5s;
+}
+
+/* Header styles */
 h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #333;
     text-align: center;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin: 10px 0 5px;
-}
-
-textarea {
-    resize: vertical;
-}
-
-button {
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
+/* List styles */
 ul {
     list-style-type: none;
-    padding: 0;
+    padding: 0; /* Added padding to prevent text from sticking to the border */
 }
 
 li {
-    padding: 10px;
     border-bottom: 1px solid #ddd;
+    padding: 15px;
+    transition: background 0.3s ease;
 }
 
-li p {
+/* Remove bottom border from last list item */
+li:last-child {
+    border-bottom: none;
+}
+
+/* Message text styles */
+p {
     margin: 5px 0;
+}
+
+strong {
+    color: #333;
+}
+
+/* Small text styles */
+small {
+    color: #777;
+    font-size: 0.9em;
+}
+
+/* Hover effect for list items */
+li:hover {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+/* Animation for fading in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 14px;
+    }
 }

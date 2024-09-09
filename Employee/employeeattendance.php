@@ -7,6 +7,26 @@ $month = isset($_GET['month']) ? (int)$_GET['month'] : date("n");
 $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
 $firstDayOfMonth = date('N', strtotime("$year-$month-01"));
 ?>
+
+<?php
+$empId = $_SESSION["EmployeeId"];
+
+$query = "SELECT * FROM `tbladdemployee` WHERE Emp_Id='$empId'";
+$result = mysqli_query($conn, $query);
+
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $firstName = $row["First_Name"];
+        $lastname = $row["Last_Name"];
+        $Emp_Id = $row["Emp_Id"];
+        $EmailId = $row["Email"];
+        $Number = $row["Pnumber"];
+        $AddressEmp = $row["Date_Of_Joining"];
+        $employeeprofile = $row["employeeprofile"];
+        $department = $row["Department"];
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -126,9 +146,12 @@ $firstDayOfMonth = date('N', strtotime("$year-$month-01"));
             $totalDays = $daysInMonth;
             $presentPercentage = $totalDays > 0 ? ($totalPresentDays / $totalDays) * 100 : 0;
             $absentPercentage = $totalDays > 0 ? ($totalAbsentDays / $totalDays) * 100 : 0;
+
+            // Calculate total working hours based on present days (10 hours per day)
+            $averageWorkingHoursPerDay = 10; // Average working hours per day
+            $totalWorkingHours = $totalPresentDays * $averageWorkingHoursPerDay;
             ?>
             <div class="calendar">
-                <!-- Display the days of the week -->
                 <div class="day"><strong>Mon</strong></div>
                 <div class="day"><strong>Tue</strong></div>
                 <div class="day"><strong>Wed</strong></div>
@@ -161,11 +184,11 @@ $firstDayOfMonth = date('N', strtotime("$year-$month-01"));
             <div class="details">
                 <div class="chart-details">
                     <p>Your Attendance for <?php echo date("F Y", mktime(0, 0, 0, $month, 1, $year)); ?></p>
-                    <h5>Employee Name : </h5>
-                    <h5>Employee Id : </h5>
-                    <h5>Department : </h5>
-                    <h5>Total Working Day's : </h5>
-                    <h5>Total Working Hours : </h5>
+                    <h5>Employee Name : <?php echo $firstName ?> <?php echo $lastname ?></h5>
+                    <h5>Employee Id : <?php echo $Emp_Id ?></h5>
+                    <h5>Department : <?php echo $department?></h5>
+                    <h5>Total Working Day's : 26</h5>
+                    <h5>Total Working Hours: <?php echo $totalWorkingHours; ?> hours</h5>
                     <h5>Total Present Days : <?php echo $totalPresentDays; ?></h5>
                     <h5>Total Absent Days : <?php echo $totalAbsentDays; ?></h5>
                     <h5>Present Percentage : <?php echo number_format($presentPercentage, 2); ?>%</h5>
@@ -177,62 +200,19 @@ $firstDayOfMonth = date('N', strtotime("$year-$month-01"));
                 </div>
 
                 <div class="note">
-                <h2>Note :</h2>
-                <p></p>
-            </div>
+                    <h2>Note :</h2>
+                    <p></p>
+                </div>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    
     <script>
         const presentPercentage = <?php echo $presentPercentage; ?>;
         const absentPercentage = <?php echo $absentPercentage; ?>;
-
-        const ctx = document.getElementById('attendanceChart').getContext('2d');
-        const attendanceChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Present', 'Absent'],
-                datasets: [{
-                    label: 'Attendance',
-                    data: [presentPercentage, absentPercentage],
-                    backgroundColor: [
-                        '#28a745',
-                        '#dc3545',
-                    ],
-                    borderColor: [
-                        '#fff',
-                    ],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            label: function(tooltipItem) {
-                                let label = tooltipItem.label || '';
-                                if (label) {
-                                    label += ': ' + tooltipItem.raw.toFixed(2) + '%';
-                                }
-                                return label;
-                            }
-                        }
-                    },
-                    legend: {
-                        display: true
-                    },
-                    animation: {
-                        animateScale: true,
-                        animateRotate: true
-                    }
-                }
-            }
-        });
     </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="javascript/employeechart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

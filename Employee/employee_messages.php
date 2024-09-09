@@ -1,11 +1,12 @@
 <?php
 include("../Backend/Database/connection.php"); // Include your database connection file
 
-
-$departmentId = 1; 
-
-$query = "SELECT message, created_at FROM department_messages WHERE department_id = '$departmentId' ORDER BY created_at DESC";
+$query = "SELECT message, created_at FROM department_messages ORDER BY created_at DESC";
 $result = mysqli_query($conn, $query);
+
+if (!$result) {
+    die("Error executing query: " . mysqli_error($conn));
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@ $result = mysqli_query($conn, $query);
             <ul>
                 <?php while ($row = mysqli_fetch_assoc($result)): ?>
                     <li>
-                        <p><strong>Administrator:</strong> <?php echo htmlspecialchars($row['message']); ?></p>
+                        <p><strong>Message:</strong> <?php echo htmlspecialchars($row['message']); ?></p>
                         <p><small><?php echo htmlspecialchars($row['created_at']); ?></small></p>
                     </li>
                 <?php endwhile; ?>
@@ -32,6 +33,8 @@ $result = mysqli_query($conn, $query);
         <?php else: ?>
             <p>No messages found.</p>
         <?php endif; ?>
+        
+        <a href="EmployeeDashboard.php" class="back-button">Back to Dashboard</a>
     </div>
 </body>
 </html>
