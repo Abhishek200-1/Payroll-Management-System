@@ -15,7 +15,7 @@ if (isset($_POST['addUserBtn'])) {
     $Password = $_POST['password'];
     
     // Insert Emp_Id along with User_Name and Password
-    $q = "INSERT INTO `tblusername` (User_Name, Password, Employee_Id) VALUES ('$User_Name', '$Password', '$emp_id')";
+    $q = "UPDATE tbladdemployee SET Password = '$Password' WHERE Emp_Id='$emp_id';";
     $result = mysqli_query($conn, $q);
     
     if ($result) {
@@ -43,15 +43,6 @@ if (isset($_POST['addUserBtn'])) {
 <body>
     <div class="container-fluid">
         <section class="main">
-            <div class="main-top">
-                <!-- <h1>Department</h1> -->
-                <!-- <li><a href="">
-                    <i class="fas fa-solid fa-sign-out-alt pe-2"></i>
-                    <h6>Logout</h6>
-                    </a>
-                </li> -->
-            </div>
-
             <section class="attendance">
                 <div class="department-entry">
                     <h3>Users Master Data</h3>
@@ -71,7 +62,7 @@ if (isset($_POST['addUserBtn'])) {
                         </div>
 
                         <div class="alert">
-                            <p>By Clicking Add Button, You Are Going To Assugn New Username To Employee</p>
+                            <p>By Clicking Add Button, You Are Going To Assign New Username To Employee</p>
                         </div>
 
                         <button class="btnAddDepartment-add" name="addUserBtn"><i class="fa-solid fa-square-plus"></i>
