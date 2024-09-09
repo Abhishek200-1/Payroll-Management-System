@@ -1,7 +1,6 @@
 <?php
 include("../../../Backend/Database/connection.php");
-if (isset($_POST['btn'])) 
-{
+if (isset($_POST['btn'])) {
     $Firstname = $_POST['Fname'];
     $Lastname = $_POST['Lname'];
     $Email = $_POST['mail'];
@@ -15,11 +14,16 @@ if (isset($_POST['btn']))
     $salary = $_POST['salary'];
     $status = $_POST['status'];
 
-
-    $q = "INSERT into `tbladdemployee` (First_Name,Last_Name,Email,Department,Shift,Pnumber,Address,Date_of_Birth,Date_of_Joining,Gender,salary, status) values ('$Firstname','$Lastname','$Email','$Department','$Shift','$Pnumber','$Address','$Dateofbirth','$Dateofjoining','$Gender','$salary', '$status')";
-    $result = mysqli_query($conn, $q);
-    if ($result) {
-        header('location:../../../Admin/Master/Employee/display-add-employee.php');
+    $existUserQuery = "SELECT * FROM tbladdemployee where Email='$Email' OR Pnumber='$Pnumber';";
+    $existUser = mysqli_query($conn, $existUserQuery);
+    if ($existUser) {
+        echo "<script>alert('User already exists!');</script>";
+    } else {
+        $q = "INSERT into `tbladdemployee` (First_Name, Last_Name, Email, Department, Shift, Pnumber, Address, Date_of_Birth, Date_of_Joining, Gender, salary, status) values ('$Firstname', '$Lastname', '$Email', '$Department', '$Shift', '$Pnumber', '$Address', '$Dateofbirth', '$Dateofjoining', '$Gender', '$salary', '$status')";
+        $result = mysqli_query($conn, $q);
+        if ($result) {
+            header('location:../../../Admin/Master/Employee/display-add-employee.php');
+        }
     }
 }
 ?>
@@ -33,11 +37,11 @@ if (isset($_POST['btn']))
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/81aa89284e.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="../../../Employee/image/favicon.png">
-        <title>Admin-Employee Management</title>
+    <title>Admin-Employee Management</title>
 </head>
 
 <body>
-<div class="container">
+    <div class="container">
         <div class="form-image">
             <img src="../../../src/Images/svg/bussiness man.svg" alt="">
         </div>
@@ -126,7 +130,7 @@ if (isset($_POST['btn']))
                             <label for="salary">Base Salary</label>
                             <input type="text" placeholder="Enter Salary" name="salary" required>
                         </div>
-                        
+
                         <div class="input-box">
                             <label for="Dob">Status</label>
                             <select class="option" name="status">
