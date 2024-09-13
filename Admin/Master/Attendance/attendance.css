@@ -14,7 +14,7 @@ body {
     background: rgb(225, 225, 226);
     margin-top: 20px;
     max-width: 100%;
-    /* overflow: hidden; */
+    overflow: hidden;
     height: fit-content;
 }
 
@@ -103,9 +103,9 @@ h4 {
 }
 
 .table-body {
-    /* overflow: scroll;
-    overflow-x: hidden; */
-    max-height: 610px;
+    overflow: scroll;
+    overflow-x: hidden;
+    max-height: 530px;
     background-color: #cbd5e1;
     border-radius: 10px;
     display: flex;

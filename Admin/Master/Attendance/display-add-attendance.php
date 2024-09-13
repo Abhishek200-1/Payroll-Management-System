@@ -52,8 +52,8 @@ include("../../../Backend/Database/connection.php");
             </form>
             <div class="Indications">
                     <h5>---Indications---</h5>
-                    <p>** T.W.T. -> Total Working Time</p> 
-                    <p>** T.P.D. -> Total Present Days</p>
+                    <p>** T.W.T. -> Total Working Time**</p> 
+                    <p>** T.P.D. -> Total Present Days**</p>
             </div>
         </div>
         <div class="table-body">
@@ -121,7 +121,7 @@ include("../../../Backend/Database/connection.php");
                     <tr align="center">
                         <th class="col">Emp Id</th>
                         <th class="col">Employee Name</th>
-                        <th class="col">T.W.T.</th>
+                        
                         <?php
                         for ($day = 1; $day <= $daysInMonth; $day++) {
                             echo '<th>' . $day . '</th>';
@@ -136,8 +136,7 @@ include("../../../Backend/Database/connection.php");
                         echo 
                             '<tr>
                                 <td align="center">' . $empData['Emp_Id'] . '</td>
-                                <td>' . $empData['First_Name'] . " " . $empData['Last_Name'] . '</td>
-                                <td align="center">' . $empData['Total_Work_Time'] . '</td>';
+                                <td>' . $empData['First_Name'] . " " . $empData['Last_Name'] . '</td>';
                                 for ($day = 1; $day <= $daysInMonth; $day++) 
                                 {
                                     $status = $empData['Days'][$day];
