@@ -27,9 +27,8 @@
                     <h4>Data Tables Location</h4>
                     <table class="table">
                         <thead>
-                            <tr> 
+                            <tr align="center"> 
                                 <th>#</th>
-            
                                 <th>Location Name</th>
                                 <th>Operations</th>
                             </tr>
@@ -47,7 +46,7 @@
                             
                                         $LocationName = $row['Location_Name'];
                                         echo
-                                        '<tr>
+                                        '<tr align="center">
                                             <th>' . $i++ . '</th>
 
                                                 <td>' . $LocationName . '</td>

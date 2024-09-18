@@ -52,16 +52,17 @@ include("../../../Backend/Database/connection.php");
             </form>
             <div class="Indications">
                     <h5>---Indications---</h5>
-                    <p>** T.W.T. -> Total Working Time</p> 
-                    <p>** T.P.D. -> Total Present Days</p>
+                    <p>** T.W.T. -> Total Working Time**</p> 
+                    <p>** T.P.D. -> Total Present Days**</p>
             </div>
         </div>
         <div class="table-body">
-            <h4>Employee's Attendance Master Table</h4>
+            <h4>Employee's Attendance Table</h4>
             <button class="add btn btn-light" type="submit" onclick="location.href='take-attendance.php'"><i class="fa-solid fa-clipboard-user me-2"></i>Take Attendance</button>
             <button class="add btn btn-light" type="submit" onclick="location.href='view_attendance.php'"><i class="fa-regular fa-calendar-days me-2"></i>Monthly Attendance Report</button>
             <button class="add btn btn-light" type="submit" onclick="location.href='calculate_salary.php'"><i class="fa-solid fa-calculator me-2"></i>Calculate Salary</button>
             <button class="add btn btn-light" type="submit" onclick="location.href='salary_report.php'"><i class="fa-solid fa-file-invoice me-2"></i>Salary Report</button>
+            <button class="add btn btn-light" type="submit" onclick="location.href='update_attendance.php'"><i class="fa-solid fa-pen me-2"></i>Update Attendance</button>
             <?php
             include("../../../Backend/Database/connection.php");
 
@@ -119,9 +120,9 @@ include("../../../Backend/Database/connection.php");
             <table class="col-xs-7 table table-striped table-condensed table-fixed table-bordered " cellspacing="0">
                 <thead class="table-info">
                     <tr align="center">
-                        <th class="col">Emp Id</th>
+                        <th  class="col">Emp Id</th>
                         <th class="col">Employee Name</th>
-                        <th class="col">T.W.T.</th>
+                        
                         <?php
                         for ($day = 1; $day <= $daysInMonth; $day++) {
                             echo '<th>' . $day . '</th>';
@@ -136,8 +137,7 @@ include("../../../Backend/Database/connection.php");
                         echo 
                             '<tr>
                                 <td align="center">' . $empData['Emp_Id'] . '</td>
-                                <td>' . $empData['First_Name'] . " " . $empData['Last_Name'] . '</td>
-                                <td align="center">' . $empData['Total_Work_Time'] . '</td>';
+                                <td >' . $empData['First_Name'] . " " . $empData['Last_Name'] . '</td>';
                                 for ($day = 1; $day <= $daysInMonth; $day++) 
                                 {
                                     $status = $empData['Days'][$day];
@@ -150,7 +150,7 @@ include("../../../Backend/Database/connection.php");
                                     {
                                         $backgroundColor = 'style="color: #dc3545;"'; 
                                     }
-                                    echo '<td ' . $backgroundColor . '>' . $status . '</td>';
+                                    echo '<td align="center" ' . $backgroundColor . '>' . $status . '</td>';
                                 }
                                 echo '<td align="center">' . $empData['Total_Present'] . '</td>';
                                 echo 

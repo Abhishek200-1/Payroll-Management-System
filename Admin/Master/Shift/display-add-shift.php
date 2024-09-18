@@ -31,7 +31,7 @@
             <button class="add btn btn-light" type="submit" onclick="location.href='add-shift.php'"><i class="fa-solid fa-plus me-2"></i>Add New Shift</button>
             <table class="col-xs-7 table table-striped table-condensed table-fixed">
                 <thead class="table-info">
-                    <tr>
+                    <tr align="center">
                         <th class="col">Id</th>
                         <th class="col">Shift Name</th>
                         <th class="col">Shift Start Time</th>
@@ -57,7 +57,7 @@
                             $ShiftStartTime = $row['Start_Time'];
                             $ShiftEndTime = $row['End_Time'];
                             echo
-                            '<tr>
+                            '<tr align="center">
                                 <th>' . $Id . '</th>
                                 <td>' . $ShiftName . '</td>
                                 <td>' . $ShiftStartTime . '</td>

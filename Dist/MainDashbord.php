@@ -105,12 +105,12 @@ if (!isset($_SESSION['AdminId'])) {
                         <span class="nav-item">Send Message</span>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="../Admin/calculator.html">
                         <i class="fas fa-solid fa-calculator"></i>
                         <span class="nav-item">Calculator</span>
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a href="../Admin/Master/Attendance/display-add-attendance.php">
                         <i class="fas fa-solid fa-chart-bar pe-2"></i>

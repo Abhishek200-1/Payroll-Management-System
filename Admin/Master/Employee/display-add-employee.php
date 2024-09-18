@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +9,6 @@
     <link rel="icon" type="image/png" href="../../../Employee/image/favicon.png">
     <title>Admin-Employee Management</title>
 </head>
-
 <body>
     <div class="container-fluid">
         <div class="table-uppar">
@@ -29,7 +27,7 @@
             <button class="add btn btn-light" type="submit" onclick="location.href='add-employee.php'"><i class="fa-solid fa-plus me-2"></i>Add New Employee</button>
             <table class="col-xs-7 table table-striped table-condensed table-fixed">
                 <thead class="table-info" style="position:sticky">
-                    <tr>
+                    <tr align="center">
                         <th class="col">Emp Id</th>
                         <th class="col">Fisrt Name</th>
                         <th class="col">Last Name</th>
@@ -67,7 +65,7 @@
                             $Dob = $row['Date_Of_Birth'];
                             $Doj = $row['Date_Of_Joining'];
                             $Gender = $row['Gender'];
-                            echo '<tr>
+                            echo '<tr align="center">
                                 <th scope="row">' . $i++ . '</th>
                                     <td>' . $name . '</td>
                                     <td>' . $lastname . '</td>
@@ -88,12 +86,8 @@
                     }
                     ?>
                 </tbody>
-                <link rel="stylesheet" href="">
             </table>
-            <link rel="stylesheet" href="">
         </div>
     </div>
 </body>
-
 </html>
-<link rel="stylesheet" href="">
