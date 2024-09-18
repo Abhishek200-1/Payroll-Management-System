@@ -12,14 +12,14 @@ include("../../../Backend/Database/connection.php");
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="attendance.css">
     <link rel="icon" type="image/png" href="../../../Employee/image/favicon.png">
-        <title>Take Attendance</title>
+    <title>Take Attendance</title>
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="table-uppar">
             <div class="Button-container">
-                <button type="button" class="btn btn-light" onclick="location.href='display-add-attendance.php'"><i class="fa-solid fa-arrow-left me-2"></i>Go Back</button>
+                <button type="button" class="btn btn-light" onclick="location.href='display-add-attendance.php';"><i class="fa-solid fa-arrow-left me-2"></i>Go Back</button>
             </div>
             <form>
                 <div class="d-flex" role="search">
@@ -34,6 +34,8 @@ include("../../../Backend/Database/connection.php");
                 <div class="form-floating mb-3 ps-3 mt-2" style="margin-left: 620px;">
                     <input type="date" class="form-control ps-3" id="attendance_date" name="attendance_date" min="<?php echo date('Y-m-d'); ?>" required value="<?php echo date('Y-m-d'); ?>">
                     <label class="ms-3" for="attendance_date">Select Attendance Date</label>
+                    <button type="submit" onclick="location.href='update-attendance.php';">update Attendance</button>
+                    <button class="add btn btn-light" type="submit" onclick="location.href='update-attendance.php'"><i class="fa-solid fa-clipboard-user me-2"></i>Take Attendance</button>
                 </div>
                 <table class="col-xs-7 table table-striped table-condensed table-fixed">
                     <thead class="table-info">
