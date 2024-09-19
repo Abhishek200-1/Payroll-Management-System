@@ -12,7 +12,7 @@ if (isset($_POST['btn'])) {
     $Date_Of_Birth = $_POST['DOB'];
     $Date_Of_Joining = $_POST['DOJ'];
     $Gender = $_POST['Gender'];
-
+    
     
     $existUserQuery = "SELECT * FROM tbladdadmin WHERE Email='$Email' OR Phone_Number='$Phone_Number'";
     $existUser = mysqli_query($conn, $existUserQuery);
@@ -144,5 +144,4 @@ if (isset($_POST['btn'])) {
 
     <script src="../src/Javascript/adminformvalidations.js"></script>
 </body>
-
 </html>
