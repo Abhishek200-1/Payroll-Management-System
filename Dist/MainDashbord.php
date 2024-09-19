@@ -118,12 +118,12 @@ if (!isset($_SESSION['AdminId'])) {
                     </a>
                 </li>
                 <h5>Report</h5>
-                <li>
+                <!-- <li>
                     <a href="">
                         <i class="fas fa-solid fa-database pe-2"></i>
                         <span class="nav-item">Print Report</span>
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a href="../Admin/Logout.php">
                         <i class="fas fa-solid fa-sign-out pe-2"></i>

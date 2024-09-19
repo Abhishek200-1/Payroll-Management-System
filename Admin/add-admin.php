@@ -1,5 +1,6 @@
 <?php
 include("../Backend/Database/connection.php");
+
 if (isset($_POST['btn'])) {
     $First_Name = $_POST['Fname'];
     $Last_Name = $_POST['Lname'];
@@ -12,35 +13,36 @@ if (isset($_POST['btn'])) {
     $Date_Of_Joining = $_POST['DOJ'];
     $Gender = $_POST['Gender'];
 
-    $existUserQuery = "SELECT * FROM tbladdadmin where Email='$Email' OR Phone_Number='$Phone_Number';";
+    
+    $existUserQuery = "SELECT * FROM tbladdadmin WHERE Email='$Email' OR Phone_Number='$Phone_Number'";
     $existUser = mysqli_query($conn, $existUserQuery);
-    if ($existUser) {
-        echo "<script>alert('Admin already exists!');</script>";
+
+    if (mysqli_num_rows($existUser) > 0) {
+        echo "<script>alert('Admin with this Email or Phone Number already exists!');</script>";
     } else {
-        $addAdminQuery = "INSERT INTO `tbladdadmin` (First_Name, Last_Name, Email, Department, Shift_Name, Phone_Number, Address, Date_Of_Birth, Date_Of_Joining, Gender) 
-                      VALUES ('$First_Name', '$Last_Name', '$Email', '$Department', '$Shift_Name', '$Phone_Number', '$Address', '$Date_Of_Birth', '$Date_Of_Joining', '$Gender')";
+        $addAdminQuery = "INSERT INTO `tbladdadmin` 
+                          (First_Name, Last_Name, Email, Department, Shift_Name, Phone_Number, Address, Date_Of_Birth, Date_Of_Joining, Gender) 
+                          VALUES 
+                          ('$First_Name', '$Last_Name', '$Email', '$Department', '$Shift_Name', '$Phone_Number', '$Address', '$Date_Of_Birth', '$Date_Of_Joining', '$Gender')";
+                          
         $result = mysqli_query($conn, $addAdminQuery);
         if ($result) {
-            header('location:display-add-Admin.php');
-            echo "<script>alert('Record Inserted Successfully');</script>";
+            echo "<script>alert('Record Inserted Successfully'); window.location.href = 'display-add-Admin.php';</script>";
         } else {
-            die(mysqli_error($conn));
-            echo "<script>alert('Record not Inserted');</script>";
+            echo "<script>alert('Record not Inserted: " . mysqli_error($conn) . "');</script>";
         }
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Include CSS -->
     <link rel="stylesheet" href="../src/css/admin.css">
-    <!-- Include SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <!-- Include SweetAlert2 JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="icon" type="image/png" href="../Employee/image/favicon.png">
     <title>Add-Admin-Page</title>

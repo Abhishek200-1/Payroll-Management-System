@@ -1,5 +1,6 @@
 <?php
 include("../../../Backend/Database/connection.php");
+
 if (isset($_POST['btn'])) {
     $Firstname = $_POST['Fname'];
     $Lastname = $_POST['Lname'];
@@ -14,15 +15,24 @@ if (isset($_POST['btn'])) {
     $salary = $_POST['salary'];
     $status = $_POST['status'];
 
-    $existUserQuery = "SELECT * FROM tbladdemployee where Email='$Email' OR Pnumber='$Pnumber';";
+
+    $existUserQuery = "SELECT * FROM tbladdemployee WHERE Email='$Email' OR Pnumber='$Pnumber';";
     $existUser = mysqli_query($conn, $existUserQuery);
-    if ($existUser) {
-        echo "<script>alert('User already exists!');</script>";
+
+    if (mysqli_num_rows($existUser) > 0) {
+        echo "<script>alert('Employee with this Email or Phone Number already exists!');</script>";
     } else {
-        $q = "INSERT into `tbladdemployee` (First_Name, Last_Name, Email, Department, Shift, Pnumber, Address, Date_of_Birth, Date_of_Joining, Gender, salary, status) values ('$Firstname', '$Lastname', '$Email', '$Department', '$Shift', '$Pnumber', '$Address', '$Dateofbirth', '$Dateofjoining', '$Gender', '$salary', '$status')";
+        $q = "INSERT INTO `tbladdemployee` 
+            (First_Name, Last_Name, Email, Department, Shift, Pnumber, Address, Date_of_Birth, Date_of_Joining, Gender, salary, status) 
+            VALUES 
+            ('$Firstname', '$Lastname', '$Email', '$Department', '$Shift', '$Pnumber', '$Address', '$Dateofbirth', '$Dateofjoining', '$Gender', '$salary', '$status')";
+        
         $result = mysqli_query($conn, $q);
+
         if ($result) {
-            header('location:../../../Admin/Master/Employee/display-add-employee.php');
+            echo "<script>alert('Employee added successfully'); window.location.href='../../../Admin/Master/Employee/display-add-employee.php';</script>";
+        } else {
+            echo "<script>alert('Error inserting record: " . mysqli_error($conn) . "');</script>";
         }
     }
 }
@@ -141,12 +151,9 @@ if (isset($_POST['btn'])) {
 
                         <span class="gender-title">Gender</span>
                         <div class="gender-category">
-                            <input type="radio" name="Gender" id="Male">
-                            <label>Male</label>
-                            <input type="radio" name="Gender" id="Female">
-                            <labe>Female</labe>
-                            <input type="radio" name="Gender" id="Other">
-                            <label>Other</label>
+                            <input type="radio" name="Gender" value="Male" required> Male
+                            <input type="radio" name="Gender" value="Female" required> Female
+                            <input type="radio" name="Gender" value="Other" required> Other
                         </div>
                         <button type="submit" name="btn"><i class="fa-solid fa-square-plus"></i> Add New Employee</button>
                     </div>
