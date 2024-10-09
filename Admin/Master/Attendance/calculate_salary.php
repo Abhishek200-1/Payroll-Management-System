@@ -256,7 +256,7 @@ $conn->close();
         function redirectToSummaryPage() {
             // Redirect to the desired page after 6 seconds (after the message fades out)
             setTimeout(function() {
-                window.location.href = 'display-add-attendance.php'; // Replace with your desired URL
+                window.location.href = 'display-add-attendance.php'; 
             }, 6000); // 6 seconds delay
         }
 
