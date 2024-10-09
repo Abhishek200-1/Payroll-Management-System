@@ -44,7 +44,7 @@ include("../../../Backend/Database/connection.php");
                             <th class="col">Last Name</th>
                             <th class="col">Department</th>
                             <th class="col">Present</th>
-                            <th class="col">Leave</th>
+                            <!-- <th class="col">Leave</th> -->
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
@@ -58,12 +58,6 @@ include("../../../Backend/Database/connection.php");
                                 <td>{$row['Last_Name']}</td>
                                 <td>{$row['Department']}</td>
                                 <td><input type='checkbox' name='attendance[{$row['Emp_Id']}]' value='present'></td>
-                                <td>
-                                    <select name='leave[{$row['Emp_Id']}]'>
-                                        <option value=''>No Leave</option>
-                                        <option value='leave'>Leave</option>
-                                    </select>
-                                </td>
                             </tr>";
                         }
                         ?>
@@ -76,3 +70,12 @@ include("../../../Backend/Database/connection.php");
 </body>
 
 </html>
+
+
+
+                                <!-- <td>
+                                    <select name='leave[{$row['Emp_Id']}]'>
+                                        <option value=''>No Leave</option>
+                                        <option value='leave'>Leave</option>
+                                    </select>
+                                </td> -->
